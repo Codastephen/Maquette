@@ -6,9 +6,9 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
+    <?php require_once 'autoload.php' ?>
 	<?php
-		session_start();
-		require('listeClient.php');
-		$_SESSION['liste'] = new ListeClient();
+        if(!isset($_SESSION['liste']))
+            $_SESSION['liste'] = new ListeClient();
 	?>
  

@@ -8,7 +8,9 @@
  <div class="container-fluid">
   <div class="row" style="margin-bottom : 50px">
     <div class="col-lg-4 col-lg-offset-4">
-      <img src="./img/designal.png" class="img-responsive"/>
+      <a href="index.php">
+      	<img src="./img/designal.png" class="img-responsive"/>
+      </a>
     </div>
   </div>
   <?= $contenu ?>
