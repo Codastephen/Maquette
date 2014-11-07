@@ -1,11 +1,6 @@
 <?php $titre = "Accueil" ?>
 
 <?php ob_start(); ?>
-<div class="row" style="margin-bottom : 50px">
-	<div class="col-lg-4 col-lg-offset-4">
-		<img src="./img/designal.png" class="img-responsive"/>
-	</div>
-</div>
 <div class="row">
 	<div class="col-sm-6 col-sm-offset-3">
 		<div class="row">
