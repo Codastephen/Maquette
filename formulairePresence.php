@@ -1,11 +1,11 @@
 
 <?php $titre = "Formulaire" ?>
 
-
 <?php
   require_once 'autoload.php';
   session_start();
 ?>
+
 <?php ob_start(); ?>
 
 <div class="row text-center">

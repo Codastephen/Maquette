@@ -6,3 +6,7 @@ body{
 table#tablevisitor tr:hover{
 	cursor:pointer;
 }
+
+.btn,.btn-lg{
+	border-radius : 0px;
+}
