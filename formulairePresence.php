@@ -1,10 +1,6 @@
 
 <?php $titre = "Formulaire" ?>
 
-<?php
-session_start();
- $_SESSION['liste']->size();
-?>
 
 <?php ob_start(); ?>
 
