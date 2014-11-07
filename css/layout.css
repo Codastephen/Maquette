@@ -2,3 +2,7 @@ body{
 	margin-top:50px;
 	background-color: #eaf1f1;
 }
+
+table#tablevisitor tr:hover{
+	cursor:pointer;
+}

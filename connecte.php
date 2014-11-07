@@ -73,7 +73,10 @@
 				</td>
 			</tr>
 		</table>
+		<a class="btn btn-success" href="#">Recontacter M.Toto</a>
+		<a class="btn btn-danger" href="#">Contacter une autre personne</a>
 		<a class="btn btn-default" href="presence.php">Retour</a>
+
 	</div>
 </div>
 
