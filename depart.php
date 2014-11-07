@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-	<?php
-		require_once('header.php');
-	?>
-  </head>
- <body>
+<?php $titre = "Départ" ?>
 
-	<h3> Veuillez séléctionner votre nom dans la liste ci-dessous </h3> </br> </br>
+<?php ob_start(); ?>
+<h3> Veuillez séléctionner votre nom dans la liste ci-dessous </h3> </br> </br>
 	 <table class="table">
 	<th>
 		Nom
@@ -38,9 +32,8 @@
 		
 		$cli->toString();
 	?>
-    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
 
-  </body>
-</html>
+	
+<?php $contenu = ob_get_clean(); ?>
+
+<?php require 'layout.php'; ?>
