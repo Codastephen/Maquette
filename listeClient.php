@@ -2,16 +2,22 @@
 class ListeClient
 {
 	var $_liste;
+
+
+	function __construct()
+    {
+        $this->_liste = array();
+    }
 	
   // to String
   public function ajouter($client)
   {
-	$_liste = $client;
+	$this->_liste[] = $client;
   }
   
    public function size()
   {
-	echo sizeof($_liste);
+	echo sizeof($this->_liste);
   }
   }
 ?>
