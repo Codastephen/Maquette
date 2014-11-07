@@ -8,7 +8,7 @@
     <link href="css/layout.css" rel="stylesheet">
 	<?php
 		session_start();
-		require_once('ListeClient.php');
-		$_SESSION['liste']-> new ListeClient();
+		require('listeClient.php');
+		$_SESSION['liste'] = new ListeClient();
 	?>
  

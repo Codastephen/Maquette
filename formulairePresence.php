@@ -1,6 +1,13 @@
+
 <?php $titre = "Formulaire" ?>
 
+<?php
+session_start();
+ $_SESSION['liste']->size();
+?>
+
 <?php ob_start(); ?>
+
 <div class="row text-center">
   <h1>Qui êtes-vous?</h1>
 </div>
@@ -26,7 +33,6 @@
     </form>
   </div>
 </div>
-
 
 <?php $contenu = ob_get_clean(); ?>
 
