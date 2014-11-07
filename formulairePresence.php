@@ -10,15 +10,15 @@
     <form Action ="connexion.php" method ="post" role="form" act>
       <div class="form-group">
         <label for="nom">Nom :</label>
-        <input type="text" class="form-control" id="nom" name ="nom" placeholder="Entrer votre nom">
+        <input type="text" class="form-control" id="nom" name ="nom" placeholder="Entrer votre nom" required>
       </div>
       <div class="form-group">
         <label for="prenom">Prénom :</label>
-        <input type="text" class="form-control" id="prenom" name ="prenom" placeholder="Entrer votre prénom">
+        <input type="text" class="form-control" id="prenom" name ="prenom" placeholder="Entrer votre prénom" required>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Société :</label>
-        <input type="text" class="form-control" id="societe" name ="societe" placeholder="Entrer votre société">
+        <input type="text" class="form-control" id="societe" name ="societe" placeholder="Entrer votre société" required>
       </div>
 
       <button type="submit" class="btn btn-success">Valider</button>
