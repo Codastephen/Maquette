@@ -9,12 +9,17 @@ class ListeClient
     $this->_liste = array();
   }
 
-  // to String
+
   public function ajouter($client)
   {
    $this->_liste[] = $client;
  }
 
+  public function suprimer($index)
+  {
+	unset($this->_liste[$index]);
+	array_merge($this->_liste );
+ }
  public function size()
  {
    echo sizeof($this->_liste);

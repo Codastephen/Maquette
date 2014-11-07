@@ -20,9 +20,8 @@
 				echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <tr>";
 				}
 			?>
-
 		</table>
-		<a class="btn btn-danger btn-lg" href="#">Partir</a>
+		<a class="btn btn-danger btn-lg" href="deconnexion.php">Partir</a>
 		<a class="btn btn-default btn-lg pull-right" href="index.php">Retour</a>
 
 	</div>
