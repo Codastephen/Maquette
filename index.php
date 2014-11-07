@@ -22,7 +22,7 @@
 		</div>
 	</div>
 </div>
-<div class="row" style="margin-top : 20px">
+<div class="row" style="margin-top : 5%">
 	<div class="col-sm-6 col-sm-offset-3">
 		<div class="row">
 			<div class="col-sm-5">
