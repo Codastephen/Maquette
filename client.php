@@ -1,16 +1,23 @@
 <?php
 class Client
 {
-	private $_nom;
-	private $_prenom;
-    private $_societe;
-	private $_hArrive;
-	private $_hDepart;
+	var $_nom;
+	var $_prenom;
+    var $_societe;
+	var $_hArrive;
+	var $_hDepart;
+
 	
-  // Nous déclarons une méthode dont le seul but est d'afficher un texte.
+	function __construct()
+    {
+        $this->_nom = "toto";
+        $this->_prenom = "tata";
+    }
+
+  // to String
   public function toString()
   {
-	echo'$_nom' . '$_prenom'. '$_societe' . '$_nom' . '$_nom';
+	echo $this->_nom;
   }
 }
 ?>

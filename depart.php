@@ -32,7 +32,12 @@
 	</table>
 	
 	<button type="button" class="btn btn-default" onclick="self.location.href='presence.php'">Retour</button> </br></br>
-	
+		
+	<?php
+		$cli = new Client();
+		
+		$cli->toString();
+	?>
     <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
