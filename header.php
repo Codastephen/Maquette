@@ -5,7 +5,4 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-	<?php require_once('Client.php'); ?>
 	
-  </head>
-

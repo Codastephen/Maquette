@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<?php require_once('header.php'); ?>
+  	<?php require('header.php'); ?>
   	<title><?= $titre ?></title>
   </head>
   <body>
