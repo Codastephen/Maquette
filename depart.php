@@ -1,7 +1,6 @@
 <?php $titre = "Départ" ?>
-<?php require('Client.php'); ?>
-<?php require_once('ListeClient.php'); ?>
-
+<?php require("autoload.php"); ?>
+<?php session_start(); ?>
 <?php ob_start(); ?>
 <div class="row text-center">
 	<h1>Qui êtes-vous?</h1>
@@ -16,64 +15,12 @@
 			<th col-width="2">
 				Prénom
 			</th>
-			<th col-width="2">
-				Société
-			</th>
-			<tr>
-				<td>
-					Coda	
-				</td>
-				<td>
-					Stephen
-				</td>
-				<td>
-					Designal Systems
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Coda	
-				</td>
-				<td>
-					Stephen
-				</td>
-				<td>
-					Designal Systems
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Coda	
-				</td>
-				<td>
-					Stephen
-				</td>
-				<td>
-					Designal Systems
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Coda	
-				</td>
-				<td>
-					Stephen
-				</td>
-				<td>
-					Designal Systems
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Coda	
-				</td>
-				<td>
-					Stephen
-				</td>
-				<td>
-					Designal Systems
-				</td>
-			</tr>
+			<?php
+			foreach ($_SESSION['liste']->_liste as $item) {
+				echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <tr>";
+				}
+			?>
+
 		</table>
 		<a class="btn btn-danger btn-lg" href="#">Partir</a>
 		<a class="btn btn-default btn-lg pull-right" href="index.php">Retour</a>

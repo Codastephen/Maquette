@@ -5,12 +5,7 @@
 <?php
   require_once 'autoload.php';
   session_start();
-  if(isset($_SESSION['liste']))
-    echo $_SESSION['liste']->toString();
-  else
-    echo "session liste non défini";
 ?>
-
 <?php ob_start(); ?>
 
 <div class="row text-center">

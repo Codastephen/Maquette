@@ -1,5 +1,6 @@
 <?php $titre = "Accueil" ?>
-
+<?php require("autoload.php"); ?>
+<?php session_start(); ?>
 <?php ob_start(); ?>
 <div class="row text-center">
 	<h1>Qui êtes-vous?</h1>
@@ -14,64 +15,11 @@
 			<th col-width="2">
 				Prénom
 			</th>
-			<th col-width="2">
-				Société
-			</th>
-			<tr>
-				<td>
-					Coda	
-				</td>
-				<td>
-					Stephen
-				</td>
-				<td>
-					Designal Systems
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Coda	
-				</td>
-				<td>
-					Stephen
-				</td>
-				<td>
-					Designal Systems
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Coda	
-				</td>
-				<td>
-					Stephen
-				</td>
-				<td>
-					Designal Systems
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Coda	
-				</td>
-				<td>
-					Stephen
-				</td>
-				<td>
-					Designal Systems
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Coda	
-				</td>
-				<td>
-					Stephen
-				</td>
-				<td>
-					Designal Systems
-				</td>
-			</tr>
+			<?php
+			foreach ($_SESSION['liste']->_liste as $item) {
+				echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <tr>";
+				}
+			?>
 		</table>
 		<a class="btn btn-success" href="#">Recontacter M.Toto</a>
 		<a class="btn btn-danger" href="#">Contacter une autre personne</a>
