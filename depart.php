@@ -9,17 +9,24 @@
 <div class="row">
 	<div class="col-xs-6 col-xs-offset-3">
 		<table id="tablevisitor" class="table table-hover table-striped">
-			<th col-width="1">
-				Nom
-			</th>
-			<th col-width="2">
-				Prénom
-			</th>
-			<?php
-			foreach ($_SESSION['liste']->_liste as $item) {
-				echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <tr>";
+			<thead>
+				<tr>
+					<th col-width=4>
+						Nom
+					</th>
+					<th col-width=4>
+						Prénom
+					</th>
+					<th col-width=2></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				foreach ($_SESSION['liste']->_liste as $item) {
+					echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <td><a href='listeContact.php' class='btn btn-primary' style='opacity:0'>C'est bien moi</a><td></tr>";
 				}
-			?>
+				?>
+			</tbody>
 
 		</table>
 		<a class="btn btn-danger btn-lg" href="#">Partir</a>
