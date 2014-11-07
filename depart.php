@@ -1,10 +1,7 @@
 <?php $titre = "Départ" ?>
 <?php require('Client.php'); ?>
-<?php
-$cli = new Client();
+<?php require_once('ListeClient.php'); ?>
 
-$cli->toString();
-?>
 <?php ob_start(); ?>
 <h3> Veuillez séléctionner votre nom dans la liste ci-dessous </h3> </br> </br>
 <table class="table">

@@ -8,16 +8,19 @@ class Client
 	var $_hDepart;
 
 	
-	function __construct()
+	function __construct($nom, $prenom, $societe)
     {
-        $this->_nom = "toto";
-        $this->_prenom = "tata";
+        $this->_nom = $nom;
+        $this->_prenom = $prenom;
+		$this->_societe = $societe;
     }
 
   // to String
   public function toString()
   {
-	echo $this->_nom;
+	echo " Nom :". $this->_nom;
+	echo " </br> Prenom :". $this->_prenom;
+	echo " </br> Societe :". $this->_societe;
   }
 }
 ?>
