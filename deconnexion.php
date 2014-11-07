@@ -2,9 +2,6 @@
 require_once("autoload.php");
 
 session_start();
-unset($_SESSION['liste'][0]);
-$array = array_values($_SESSION['liste']);
-
-
+$_SESSION['liste']->suprimer(1);
 ?>
 <button type="button" class="btn btn-default" onclick="self.location.href='presence.php'">Retour</button> </br></br>
