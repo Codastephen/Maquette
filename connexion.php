@@ -1,6 +1,5 @@
 <?php
-require_once('Client.php');
-require_once('ListeClient.php');
+require_once('autoload.php');
 
 session_start();
 

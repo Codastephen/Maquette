@@ -1,5 +1,5 @@
 <?php $titre = "Accueil" ?>
-<?php require("autoload.php"); ?>
+<?php require_once("autoload.php"); ?>
 <?php session_start(); ?>
 <?php ob_start(); ?>
 <div class="row text-center">

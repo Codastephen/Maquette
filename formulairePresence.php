@@ -1,12 +1,9 @@
-
-<?php $titre = "Formulaire" ?>
-
-<?php
-  require_once 'autoload.php';
-  session_start();
+<?php 
+require_once 'autoload.php';
+$titre = "Formulaire";
+session_start();
+ob_start(); 
 ?>
-
-<?php ob_start(); ?>
 
 <div class="row text-center">
   <h1>Qui êtes-vous?</h1>

@@ -1,7 +1,8 @@
-<?php $titre = "Départ" ?>
-<?php require("autoload.php"); ?>
-<?php session_start(); ?>
-<?php ob_start(); ?>
+<?php 
+require_once("autoload.php");
+$titre = "Départ";
+session_start();
+ob_start(); ?>
 <div class="row text-center">
 	<h1>Qui êtes-vous?</h1>
 </div>

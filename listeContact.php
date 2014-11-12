@@ -1,6 +1,6 @@
 <?php 
 $titre = "Liste des contacts";
-require("autoload.php");
+require_once("autoload.php");
 session_start();
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
 	header("Location: index.php");
@@ -17,9 +17,7 @@ $visitor = $_SESSION['liste']->getItem($id);
 			<div class="col-sm-6">
 				<div class="block-update-card status">
 					<div class="v-status present"></div>
-					<a class="pull-left" href="#">
-						<img class="media-object update-card-MDimentions" src="./img/people.png" alt="...">
-					</a>
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -35,9 +33,7 @@ $visitor = $_SESSION['liste']->getItem($id);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status away"></div>
-					<a class="pull-left" href="#">
-						<img class="media-object update-card-MDimentions" src="./img/people.png" alt="...">
-					</a>
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -53,9 +49,7 @@ $visitor = $_SESSION['liste']->getItem($id);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status disturb"></div>
-					<a class="pull-left" href="#">
-						<img class="media-object update-card-MDimentions" src="./img/people.png" alt="...">
-					</a>
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -71,9 +65,7 @@ $visitor = $_SESSION['liste']->getItem($id);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status present"></div>
-					<a class="pull-left" href="#">
-						<img class="media-object update-card-MDimentions" src="./img/people.png" alt="...">
-					</a>
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -91,9 +83,7 @@ $visitor = $_SESSION['liste']->getItem($id);
 			<div class="col-sm-6">
 				<div class="block-update-card status">
 					<div class="v-status present"></div>
-					<a class="pull-left" href="#">
-						<img class="media-object update-card-MDimentions" src="./img/people.png" alt="...">
-					</a>
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -109,9 +99,7 @@ $visitor = $_SESSION['liste']->getItem($id);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status away"></div>
-					<a class="pull-left" href="#">
-						<img class="media-object update-card-MDimentions" src="./img/people.png" alt="...">
-					</a>
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -127,9 +115,7 @@ $visitor = $_SESSION['liste']->getItem($id);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status disturb"></div>
-					<a class="pull-left" href="#">
-						<img class="media-object update-card-MDimentions" src="./img/people.png" alt="...">
-					</a>
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -145,9 +131,7 @@ $visitor = $_SESSION['liste']->getItem($id);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status away"></div>
-					<a class="pull-left" href="#">
-						<img class="media-object update-card-MDimentions" src="./img/people.png" alt="...">
-					</a>
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -165,7 +149,7 @@ $visitor = $_SESSION['liste']->getItem($id);
 		</div>
 	</div>
 </div>
-<div class="row" style="margin-top : 5%">
+<div class="row" style="margin-top : 1%">
 	<div class="col-sm-6 col-sm-offset-3 text-center">
 		<a class="btn btn-lg btn-default" href="index.php">
 			Retour à l'accueil
