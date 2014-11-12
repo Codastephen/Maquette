@@ -15,10 +15,10 @@ class ListeClient
    $this->_liste[] = $client;
  }
 
-  public function suprimer($index)
-  {
-	unset($this->_liste[$index]);
-	array_merge($this->_liste );
+ public function supprimer($index)
+ {
+   unset($this->_liste[$index]);
+   array_merge($this->_liste );
  }
  public function size()
  {
