@@ -23,7 +23,7 @@
 			<tbody>
 				<?php
 				foreach ($_SESSION['liste']->_liste as $key=>$item) {
-					echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <td><a href='deconnexion.php?id=".$key."' class='btn btn-primary' style='opacity:0'>C'est bien moi</a><td></tr>";
+					echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <td><a href='deconnexion.php?id=".$key."' class='btn btn-primary' style='opacity:0'>Me déconnecter</a><td></tr>";
 				}
 				?>
 			</tbody>

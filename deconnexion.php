@@ -4,5 +4,5 @@ require_once("autoload.php");
 session_start();
 $id = $_GET['id'];
 $_SESSION['liste']->suprimer($id);
+header("Location: index.php");
 ?>
-<button type="button" class="btn btn-default" onclick="self.location.href='selectconnexion.php'">Retour</button> </br></br>
