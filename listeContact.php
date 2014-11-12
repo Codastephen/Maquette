@@ -1,5 +1,11 @@
-<?php $titre = "Liste des contacts" ?>
-
+<?php 
+$titre = "Liste des contacts";
+require("autoload.php");
+session_start();
+if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
+	header("Location: index.php");
+}
+?>
 <?php ob_start(); ?>
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">

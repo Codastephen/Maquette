@@ -21,7 +21,7 @@ if($validate == "true"){
 		echo "<p>Nom : ".$_SESSION['liste']->_liste[0]->_nom."</p>";
 		echo "<p>Prénom : ".$_SESSION['liste']->_liste[0]->_prenom."</p>";
 
-		echo "<a href='deconnexion.php?id=".$id."&validate=true' class='btn btn-danger'>Me déconnecter</a>";
+		echo "<a href='deconnexion.php?id=\'".$id."\'&validate=true' class='btn btn-danger'>Me déconnecter</a>";
 		?>
 		<a class="btn btn-default" href="index.php">Retour</a>
 	</div>
