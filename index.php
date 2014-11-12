@@ -3,14 +3,17 @@ $titre = "Accueil";
 
 require_once("autoload.php");
 session_start();
-$size = count($_SESSION['liste']->_liste);
+$link = '<img src="./img/depart-gray.png" class="img-responsive"/>';
+if(isset($_SESSION['liste'])){
+	$size = count($_SESSION['liste']->_liste);
 
-if($size==0){
-	$link = '<img src="./img/depart-gray.png" class="img-responsive"/>';
-}else{
-	$link = '<a href="depart.php">
-	<img src="./img/depart.png" class="img-responsive"/>
-	</a>';
+	if($size==0){
+		$link = '<img src="./img/depart-gray.png" class="img-responsive"/>';
+	}else{
+		$link = '<a href="depart.php">
+		<img src="./img/depart.png" class="img-responsive"/>
+		</a>';
+	}
 }
 
 ?>
