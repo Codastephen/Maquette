@@ -10,7 +10,7 @@
 				</a>
 			</div>
 			<div class="col-sm-5 col-sm-offset-2">
-				<a href="connecte.php">
+				<a href="reconnexion.php">
 					<img src="./img/resignal.png" class="img-responsive"/>
 				</a>
 			</div>

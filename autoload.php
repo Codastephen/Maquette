@@ -1,5 +1,8 @@
 <?php
 function __autoload($class_name) {
-	include $class_name . '.php';
+	$filename = $class_name . '.php';
+	if (file_exists($filename)) { //Dossier principal
+		include $filename;
+	}
 }
 ?>

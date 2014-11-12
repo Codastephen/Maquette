@@ -2,6 +2,7 @@
 require_once("autoload.php");
 
 session_start();
-$_SESSION['liste']->suprimer(1);
+$id = $_GET['id'];
+$_SESSION['liste']->suprimer($id);
 ?>
-<button type="button" class="btn btn-default" onclick="self.location.href='presence.php'">Retour</button> </br></br>
+<button type="button" class="btn btn-default" onclick="self.location.href='selectconnexion.php'">Retour</button> </br></br>

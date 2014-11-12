@@ -29,7 +29,7 @@
       </div>
 
       <button type="submit" class="btn btn-success">Valider</button>
-      <a class="btn btn-danger" href="presence.php">Retour</a>
+      <a class="btn btn-danger" href="selectconnexion.php">Retour</a>
     </form>
   </div>
 </div>

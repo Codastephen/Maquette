@@ -5,7 +5,7 @@
 	<div class="col-sm-6 col-sm-offset-3">
 		<div class="row">
 			<div class="col-sm-5">
-				<a href="presence.php">
+				<a href="selectconnexion.php">
 					<img src="./img/arrivee.png" class="img-responsive"/>
 				</a>
 			</div>

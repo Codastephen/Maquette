@@ -22,7 +22,7 @@
 				}
 			?>
 		</table>
-		<a class="btn btn-default" href="presence.php">Retour</a>
+		<a class="btn btn-default" href="selectconnexion.php">Retour</a>
 
 	</div>
 </div>

@@ -8,4 +8,4 @@ $_SESSION['liste']->ajouter($cli);
  
 header('Location: listecontact.php');      
 ?>
-<button type="button" class="btn btn-default" onclick="self.location.href='presence.php'">Retour</button> </br></br>
+<button type="button" class="btn btn-default" onclick="self.location.href='selectconnexion.php'">Retour</button> </br></br>
