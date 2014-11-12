@@ -1,6 +1,19 @@
-<?php $titre = "Présence" ?>
+<?php 
+$titre = "Présence";
 
-<?php ob_start(); ?>
+require_once("autoload.php");
+session_start();
+$size = count($_SESSION['liste']->_liste);
+
+if($size==0){
+	$link = '<img src="./img/resignal-gray.png" class="img-responsive"/>';
+}else{
+	$link = '<a href="reconnexion.php">
+	<img src="./img/resignal.png" class="img-responsive"/>
+	</a>';
+}
+ob_start(); 
+?>
 <div class="row">
 	<div class="col-sm-6 col-sm-offset-3">
 		<div class="row">
@@ -10,9 +23,7 @@
 				</a>
 			</div>
 			<div class="col-sm-5 col-sm-offset-2">
-				<a href="reconnexion.php">
-					<img src="./img/resignal.png" class="img-responsive"/>
-				</a>
+				<?php echo $link ?>
 			</div>
 		</div>
 	</div>

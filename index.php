@@ -1,4 +1,19 @@
-<?php $titre = "Accueil" ?>
+<?php 
+$titre = "Accueil";
+
+require_once("autoload.php");
+session_start();
+$size = count($_SESSION['liste']->_liste);
+
+if($size==0){
+	$link = '<img src="./img/depart-gray.png" class="img-responsive"/>';
+}else{
+	$link = '<a href="depart.php">
+	<img src="./img/depart.png" class="img-responsive"/>
+	</a>';
+}
+
+?>
 
 <?php ob_start(); ?>
 <div class="row">
@@ -10,9 +25,7 @@
 				</a>
 			</div>
 			<div class="col-sm-5 col-sm-offset-2">
-				<a href="depart.php">
-					<img src="./img/depart.png" class="img-responsive"/>
-				</a>
+				<?php echo $link ?>
 			</div>
 		</div>
 	</div>
