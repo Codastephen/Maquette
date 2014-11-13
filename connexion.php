@@ -16,17 +16,16 @@ if(isset($_POST['type'])){
 		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
 		$conn->ajouterClient($cli);
 
-		// Instruction 1
+		// Ouverture du fichier
 		$fp = fopen ("log/log.txt", "a");
 
-		// Instruction 4
 		fseek ($fp, 0);
 		$r = chr(13); 
-		// Instruction 5
-		fprintf($fp,date('Y-m-d H:i:s',time()). " = " .$_POST['nomprenom']." de la société ".$_POST['societe']." est arrivé".$r);
+		// Ecriture dans le fichier
+		fprintf($fp,date('Y-m-d H:i:s',time()). " = ARRIVEE : " .$_POST['nomprenom']."  ".$_POST['societe'].$r);
 		
 								
-		// Instrcution 6
+		// Fermeture du fichier 
 		fclose ($fp);
 
 		
