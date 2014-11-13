@@ -10,7 +10,7 @@ class ConnexionBDD
 		
 		try
 		{
-			$bdd = new PDO('mysql:host='.$host.';dbname=maquette', 'root', 'root');
+			$bdd = new PDO('mysql:host=localhost;dbname=maquette', 'root', 'root');
 		}
 		catch (Exception $e)
 		{

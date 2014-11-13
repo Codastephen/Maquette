@@ -13,7 +13,7 @@ if(isset($_POST['type'])){
 		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
 		$conn->ajouterClient($cli);
 		
-		header('Location: listeContact.php?id='.$_SESSION['liste']->ajouter($cli));
+		header('Location: listeContact.php?id=0');
 	}
 }
 ?>
@@ -48,7 +48,7 @@ if(isset($_POST['type'])){
 			
 			while ($donnees = $reponse->fetch())
 			{
-				echo "<tr> <td> ".$donnees['Nom']." </td> <td><a href='listeContact.php?id=0' class='btn btn-primary' style='opacity:0'>C'est bien moi</a></td> <tr>";
+				echo "<tr> <td> ".$donnees['Nom']." </td> <td><a href='listeContact.php?id=0' class='btn btn-primary' style='opacity:0'>C'est bien moi</a></td> </tr>";
 			}
 
 				
