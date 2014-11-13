@@ -11,7 +11,8 @@ if(isset($_GET['nomprenom']) && isset($_GET['societe'])){
 	$bdd->retirerClient($cli);
 	
 	// Ouverture du fichier
-	$fp = fopen ("log/log.txt", "a");
+	$d = date('m-y',time());
+	$fp = fopen ("log/log".$d.".txt", "a");
 
 	fseek ($fp, 0);
 	$r = chr(13); 

@@ -17,7 +17,8 @@ if(isset($_POST['type'])){
 		$conn->ajouterClient($cli);
 
 		// Ouverture du fichier
-		$fp = fopen ("log/log.txt", "a");
+		$d = date('m-y',time());
+		$fp = fopen ("log/log".$d.".txt", "a");
 
 		fseek ($fp, 0);
 		$r = chr(13); 
