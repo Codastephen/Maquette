@@ -25,7 +25,6 @@ require_once("autoload.php");
 					echo "<tr>
 					<td> ".$donnees['Nom']." </td>
 					<td>
-					<button class='btn btn-success' style='opacity:0' onclick='$(this).next().show();$(this).fadeOut();'>Me déconnecter</button>
 					<a class='btn btn-danger btn-hidden' href='validatedeconnexion.php?id=0&validate=true style='vertical-align:middle'>Valider</a>
 					</td>
 					</tr>";
