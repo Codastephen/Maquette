@@ -31,6 +31,10 @@ img + h3{
 .img-responsive {
     margin: 0 auto;
 }
+.wrapper-img.black{
+	background-color:#000000;
+	color:white;
+}
 .wrapper-img.green{
 	background-color:#18bc9c;
 	color:white;
