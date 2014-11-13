@@ -2,7 +2,7 @@
 require_once('autoload.php');
 session_start();
 if(!$_SESSION['admin']){
-	echo "log";
+	header('Location:connexionadmin.php');
 }
 ob_start(); 
 ?>

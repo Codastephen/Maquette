@@ -1,16 +1,10 @@
 <?php 
 require_once 'autoload.php';
-$titre = "Formulaire";
-session_start();
-ob_start(); 
 ?>
 
-<div class="row text-center">
-  <h1>Qui êtes-vous?</h1>
-</div>
-
 <div class="row">
-  <div class="col-xs-6 col-xs-offset-3">
+  <div class="col-xs-4 col-xs-offset-1">
+    <h1 class="text-center">Nouvel arrivant</h1>
     <form Action ="connexion.php" method ="post" role="form" act>
       <div class="form-group">
         <label for="nomprenom">Nom Prénom :</label>
@@ -22,17 +16,23 @@ ob_start();
       </div>
       <input type="hidden" name="type" value="visitor">
 
-      <button type="submit" class="btn btn-success btn-lg">Valider</button>
-      <a class="btn btn-danger btn-lg" href="selectconnexion.php">Retour</a>
+      <button type="submit" class="btn btn-success btn-lg pull-right">Valider</button>
     </form>
   </div>
+  <div class="col-xs-4 col-xs-offset-2">
+    <h1 class="text-center">Déjà inscrit?</h1>
+    <table id="tablevisitor" class="table table-hover table-striped">
+      <th>
+        NomPrénom
+      </th>
+      <th></th>
+      <?php
+      foreach ($_SESSION['liste']->_liste as $key=>$item) {
+        echo "<tr> <td> ".$item->_nomprenom." </td> <td><a href='listeContact.php?id=".$key."' class='btn btn-primary' style='opacity:0'>C'est bien moi</a></td><tr>";
+      }
+      ?>
+    </table>
+  </div>
 </div>
-
-		<?php
-		$conn = new connexionBDD();
-		$conn->afficherClient();
-		?>
 		
-<?php $contenu = ob_get_clean(); ?>
 
-<?php require 'layout.php'; ?>
