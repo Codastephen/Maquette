@@ -22,7 +22,7 @@ require_once("autoload.php");
 			
 			while ($donnees = $reponse->fetch())
 			{
-				echo "<tr> <td> ".$donnees['Nom']." </td> <td><button class='btn btn-success' style='opacity:0' onclick='$(this).next().show();$(this).fadeOut();'>Me déconnecter</button><a class='btn btn-danger btn-hidden' onclick='validate(".$key.")' style='vertical-align:middle'>Valider</a><td><tr>";
+				echo "<tr> <td> ".$donnees['Nom']." </td> <td><button class='btn btn-success' style='opacity:0' onclick='$(this).next().show();$(this).fadeOut();'>Me déconnecter</button><a class='btn btn-danger btn-hidden' deconnexion.php?id=".$id."&validate=true style='vertical-align:middle'>Valider</a><td><tr>";
 			}
 				
 			?>

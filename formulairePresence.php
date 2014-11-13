@@ -40,5 +40,3 @@ require_once 'autoload.php';
     </table>
   </div>
 </div>
-		
-

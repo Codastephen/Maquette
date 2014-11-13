@@ -10,11 +10,6 @@ $(document).ready(function(){
 	$(".top").css("height",$(window).height()/4);
 });
 
-function validate(index){
-	var validator = "Etes-vous sur?<button class='btn btn-success' style='opacity:0' onclick='deconnexion.php?id="+index+"&validate=true'>Oui</button>";
-	alert($(this));
-}
-
 function showValidate(){
 	$(this).next().fadeIn();
 	$(this).fadeOut();
