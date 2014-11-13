@@ -1,6 +1,6 @@
 body{
-	margin-top:50px;
 	background-color: #eaf1f1;
+	overflow-y: hidden;
 }
 
 table#tablevisitor tr:hover{
@@ -9,4 +9,37 @@ table#tablevisitor tr:hover{
 
 .btn,.btn-lg{
 	border-radius : 0px;
+}
+
+.col-padding-less{
+	padding-left:0;
+	padding-right:0;
+}
+
+.wrapper-img{
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+.top{
+	padding-top: 50px;
+}
+
+.nav > li > a{
+	padding:0;
+}
+
+.nav-stacked > li + li{
+	margin-top:0;
+}
+.no-padding{
+	padding:0 0;
+}
+
+.btn-hidden{
+	display:none;
+}
+
+tr{
+	height: 70px;
 }

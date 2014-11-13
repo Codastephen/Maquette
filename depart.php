@@ -1,14 +1,10 @@
 <?php 
 require_once("autoload.php");
-$titre = "Départ";
-session_start();
-ob_start(); ?>
-<div class="row text-center">
-	<h1>Qui êtes-vous?</h1>
-</div>
+?>
 
 <div class="row">
-	<div class="col-xs-6 col-xs-offset-3">
+	<div class="col-xs-8 col-xs-offset-2">
+		<h1 class="text-center">Qui êtes-vous?</h1>
 		<table id="tablevisitor" class="table table-hover table-striped">
 			<thead>
 				<tr>
@@ -21,16 +17,11 @@ ob_start(); ?>
 			<tbody>
 				<?php
 				foreach ($_SESSION['liste']->_liste as $key=>$item) {
-					echo "<tr> <td> ".$item->_nomprenom." </td> <td><a href='deconnexion.php?id=".$key."&validate=false' class='btn btn-success' style='opacity:0'>Me déconnecter</a><td></tr>";
+					echo "<tr> <td> ".$item->_nomprenom." </td> <td><button class='btn btn-success' style='opacity:0' onclick='$(this).next().show();$(this).fadeOut();'>Me déconnecter</button><a class='btn btn-danger btn-hidden' onclick='validate(".$key.")' style='vertical-align:middle'>Valider</a><td></tr>";
 				}
 				?>
 			</tbody>
 		</table>
-		<a class="btn btn-danger btn-lg pull-right" href="index.php">Retour</a>
 
 	</div>
 </div>
-
-<?php $contenu = ob_get_clean(); ?>
-
-<?php require 'layout.php'; ?>
