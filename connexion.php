@@ -41,7 +41,7 @@ if(isset($_POST['type'])){
   <div class="col-xs-4 col-xs-offset-2">
     <h1 class="text-center">Déjà inscrit?</h1>
     <div style="overflow-y: auto; height: 400px">
-      <table id="tablevisitor" class="table table-hover table-striped">
+      <table id="tablevisitor" class="table  table-striped">
         <th>
           Nom prénom
         </th>
