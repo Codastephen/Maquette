@@ -26,5 +26,5 @@ $("ul.nav > li > a").click(function(){
 function size(){
 	$(".wrapper-img").css("height",Math.ceil($(window).height()/4));
 	$(".top").css("height",Math.ceil($(window).height()/4));
-	$("#tableresize").css("height",$(window).height()-(120 + parseInt($('#toto').css('margin-top'), 10) + $('#toto').outerHeight()));
+	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#toto').css('margin-top'), 10) + $('#toto').outerHeight()));
 }

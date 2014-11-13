@@ -89,11 +89,6 @@ img + h3{
 .btn-hidden{
 	display:none;
 }
-
-.table-handler{
-	height: 400px;
-	overflow-y: auto;
-}
 tr{
 	height: 70px;
 }

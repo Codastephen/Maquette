@@ -55,9 +55,9 @@ if(isset($_POST['type'])){
     </form>
   </div>
   <div class="col-xs-5">
-    <h1 class="text-center">Déjà inscrit?</h1>
+    <h1 class="text-center">Déjà sur place?</h1>
     <p class="text-center"><i>Choisissez votre nom dans la liste ci-dessous :</i></p>
-    <div id="tableresize" style="overflow-y:auto">
+    <div class="tableresize" style="overflow-y:auto">
       <table id="tablevisitor" class="table  table-striped">
         <?php
         $conn = new connexionBDD();
