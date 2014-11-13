@@ -10,7 +10,17 @@ $(document).ready(function(){
 	$(".top").css("height",Math.ceil($(window).height()/4));
 });
 
+$(window).resize(function(){
+	$(".wrapper-img").css("height",Math.ceil($(window).height()/4));
+	$(".top").css("height",Math.ceil($(window).height()/4));
+});
+
 function showValidate(){
 	$(this).next().fadeIn();
 	$(this).fadeOut();
 }
+
+$("ul.nav > li > a").click(function(){
+	$("ul.nav > li > a > div.wrapper-img").removeClass("active");
+	$(this).find("div.wrapper-img").addClass("active");
+})

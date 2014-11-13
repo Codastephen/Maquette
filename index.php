@@ -6,7 +6,7 @@ session_start();
 
 // $linkdepart = '<div class="wrapper-img" style="background-image :url(\'./img/depart-gray.png\')"></div>';
 $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="tab">
-<div class="col-xs-12 wrapper-img text-center red">
+<div class="col-xs-12 wrapper-img text-center">
 <img src="./img/depart-logo.PNG" class="img-responsive">
 <h3>Partir</h3>
 </div>
@@ -19,7 +19,7 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 		<ul class="nav nav-stacked" role="tablist">
 			<li role="presentation" class="active">
 				<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
-					<div class="col-xs-12 wrapper-img text-center black">
+					<div class="col-xs-12 wrapper-img text-center">
 						<img src="./img/people.PNG" class="img-responsive">
 						<h3>Accueil</h3>
 					</div>
@@ -27,7 +27,7 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 			</li>
 			<li role="presentation">
 				<a href="#signal" aria-controls="signal" role="tab" data-toggle="tab">
-					<div class="col-xs-12 wrapper-img text-center green">
+					<div class="col-xs-12 wrapper-img text-center active">
 						<img src="./img/people.PNG" class="img-responsive">
 						<h3>Signaler sa présence</h3>
 					</div>
@@ -38,7 +38,7 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 			</li>
 			<li role="presentation">
 				<a href="#map" aria-controls="map" role="tab" data-toggle="tab">
-					<div class="col-xs-12 wrapper-img text-center blue">
+					<div class="col-xs-12 wrapper-img text-center">
 						<img src="./img/map-logo.PNG" class="img-responsive">
 						<h3>Plan du site</h3>
 					</div>
@@ -50,7 +50,7 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 
 
 	</div>
-	<div class="col-sm-10">
+	<div class="col-sm-10 borderer">
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade in active" id="home">
 				<?php include 'home.php';?>
