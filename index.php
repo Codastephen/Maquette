@@ -4,7 +4,10 @@ $titre = "Accueil";
 require_once("autoload.php");
 session_start();
 
-$linkdepart = '<div class="wrapper-img" style="background-image :url(\'./img/depart-gray.png\')"></div>';
+// $linkdepart = '<div class="wrapper-img" style="background-image :url(\'./img/depart-gray.png\')"></div>';
+$linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="tab">
+		<div class="wrapper-img" style="background-image :url(\'./img/depart.png\')"></div>
+		</a>';
 if(isset($_SESSION['liste'])){
 	$size = count($_SESSION['liste']->_liste);
 
@@ -56,7 +59,6 @@ if(isset($_SESSION['liste'])){
 </div> -->
 <div class="row">
 	<div class="col-sm-2 no-padding" role="tabpanel">
-		<!-- Nav tabs -->
 		<ul class="nav nav-stacked" role="tablist">
 			<li role="presentation" class="active">
 				<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
