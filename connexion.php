@@ -16,6 +16,20 @@ if(isset($_POST['type'])){
 		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
 		$conn->ajouterClient($cli);
 
+		// Instruction 1
+		$fp = fopen ("log/log.txt", "a");
+
+		// Instruction 4
+		fseek ($fp, 0);
+		$r = chr(13); 
+		// Instruction 5
+		fprintf($fp,date('Y-m-d H:i:s',time()). " = " .$_POST['nomprenom']." de la société ".$_POST['societe']." est arrivé".$r);
+		
+								
+		// Instrcution 6
+		fclose ($fp);
+
+		
     $_SESSION['client'] = serialize($cli);
 		header('Location: listeContact.php');
 	}

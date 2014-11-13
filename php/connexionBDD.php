@@ -21,7 +21,7 @@ class ConnexionBDD
 		$req->execute(array(
 			'nom' => $client->_nomprenom,
 			'societe' => $client->_societe,
-			'heureA' => date('Y-m-d H:i:s',$client->_hArrive)
+			'heureA' => date('Y-m-d H:i:s',$client->_hArrive)	
 			));
 	}
 	
