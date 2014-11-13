@@ -6,63 +6,23 @@ session_start();
 
 // $linkdepart = '<div class="wrapper-img" style="background-image :url(\'./img/depart-gray.png\')"></div>';
 $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="tab">
-		<div class="wrapper-img" style="background-image :url(\'./img/depart.png\')"></div>
-		</a>';
-if(isset($_SESSION['liste'])){
-	$size = count($_SESSION['liste']->_liste);
-
-	if($size!=0){
-		$linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="tab">
-		<div class="wrapper-img" style="background-image :url(\'./img/depart.png\')"></div>
-		</a>';
-	}
-}
-
+<div class="col-xs-12 wrapper-img text-center red">
+<img src="./img/depart-logo.PNG" class="img-responsive">
+<h3>Partir</h3>
+</div>
+</a>';
 ?>
 
 <?php ob_start(); ?>
-
-<!-- <div class="row">
-	<div class="col-sm-2 col-padding-less">
-		<a href="formulairePresence.php">
-			<div class="wrapper-img" style="background-image :url('./img/signal.png')" data-toggle="tab"></div>
-		</a>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-2 col-padding-less">
-		<?php echo $linkreco ?>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-2 col-padding-less">
-		<div class="wrapper-img">
-			<?php echo $linkdepart ?>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-2 col-padding-less">
-		<div class="wrapper-img">
-			<a href="plan.php">
-				<div class="wrapper-img" style="background-image :url('./img/map.png')"></div>
-			</a>
-		</div>
-	</div>
-</div>
-<div class="row"> 
-	<div class="col-sm-2 col-padding-less">
-		<a href="help.php">
-			<img src="./img/help.png" class="img-responsive"/>
-		</a>
-	</div>	
-</div> -->
 <div class="row">
 	<div class="col-sm-2 no-padding" role="tabpanel">
 		<ul class="nav nav-stacked" role="tablist">
 			<li role="presentation" class="active">
 				<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
-					<div class="wrapper-img" style="background-image :url('./img/signal.png')"></div>
+					<div class="col-xs-12 wrapper-img text-center green">
+						<img src="./img/people.PNG" class="img-responsive">
+						<h3>Signaler sa présence</h3>
+					</div>
 				</a>
 			</li>
 			<li role="presentation">
@@ -70,7 +30,10 @@ if(isset($_SESSION['liste'])){
 			</li>
 			<li role="presentation">
 				<a href="#map" aria-controls="map" role="tab" data-toggle="tab">
-					<div class="wrapper-img" style="background-image :url('./img/map.png')"></div>
+					<div class="col-xs-12 wrapper-img text-center blue">
+						<img src="./img/map-logo.PNG" class="img-responsive">
+						<h3>Plan du site</h3>
+					</div>
 				</a>
 			</li>
 		</ul>

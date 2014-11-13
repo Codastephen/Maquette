@@ -16,10 +16,31 @@ table#tablevisitor tr:hover{
 }
 
 .wrapper-img{
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	padding-top:5%;
 }
+
+img + h3{
+	margin-top:10px;
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+.wrapper-img.green{
+	background-color:#18bc9c;
+	color:white;
+}
+
+.wrapper-img.red{
+	background-color:#e05b49;
+	color:white;
+}
+
+.wrapper-img.blue{
+	background-color:#1fa4b6;
+	color:white;
+}
+
 .top{
 	padding-top: 50px;
 }
