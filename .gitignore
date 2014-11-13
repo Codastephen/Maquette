@@ -42,5 +42,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-./log/log.txt
-log/log.txt
+./log/*
+log/*
