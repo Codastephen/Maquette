@@ -49,6 +49,7 @@ if(isset($_SESSION['liste'])){
 		</div>
 	</div>
 </div>
+<a href="connexionadmin.php">Admin</a>
 <?php $contenu = ob_get_clean(); ?>
 
 

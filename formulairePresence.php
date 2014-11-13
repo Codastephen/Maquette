@@ -24,6 +24,7 @@ ob_start();
         <label for="exampleInputPassword1">Société :</label>
         <input type="text" class="form-control" id="societe" name ="societe" placeholder="Entrer votre société" required>
       </div>
+      <input type="hidden" name="type" value="visitor">
 
       <button type="submit" class="btn btn-success btn-lg">Valider</button>
       <a class="btn btn-danger btn-lg" href="selectconnexion.php">Retour</a>
