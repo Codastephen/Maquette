@@ -6,6 +6,7 @@ require_once("autoload.php");
 if(isset($_POST['type'])){
 	if($_POST['type']=="admin"){
 		if($_POST['password']=="toto"){
+      $_SESSION['admin']=true;
 			header('Location:admin.php');
 		}else{
 			header('Location:connexionadmin.php');

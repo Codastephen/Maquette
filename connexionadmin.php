@@ -1,6 +1,8 @@
 <?php $titre = "Admin" ?>
 <?php require_once("autoload.php"); ?>
-<?php session_start(); ?>
+<?php if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+} ?>
 <?php ob_start(); ?>
 <div class="row text-center">
 	<h1>Qui êtes-vous?</h1>
