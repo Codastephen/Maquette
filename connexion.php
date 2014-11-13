@@ -14,7 +14,7 @@ if(isset($_POST['type'])){
 		}
 	}else{
 		$_SESSION['admin']=false;
-		$cli = new Client($_POST['nom'],$_POST['prenom'],$_POST['societe']);
+		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
 		header('Location: listeContact.php?id='.$_SESSION['liste']->ajouter($cli));
 	}
 }

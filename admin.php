@@ -16,10 +16,7 @@ ob_start();
 			<thead>
 				<tr>
 					<th col-width=4>
-						Nom
-					</th>
-					<th col-width=4>
-						Prénom
+						NomPrénom
 					</th>
 					<th col-width=4>
 						Société
@@ -31,8 +28,7 @@ ob_start();
 				<?php
 				foreach ($_SESSION['liste']->_liste as $key=>$item) {
 					echo "<tr>
-							<td> ".$item->_nom." </td>
-							<td> ".$item->_prenom." </td>
+							<td> ".$item->_nomprenom." </td>
 							<td> ".$item->_societe." </td>
 							<td><a href='deconnexion.php?id=".$key."&validate=true&type=admin' class='btn btn-success'>Me déconnecter</a></td>
 						</tr>";

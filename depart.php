@@ -13,10 +13,7 @@ ob_start(); ?>
 			<thead>
 				<tr>
 					<th col-width=4>
-						Nom
-					</th>
-					<th col-width=4>
-						Prénom
+						NomPrénom
 					</th>
 					<th col-width=2></th>
 				</tr>
@@ -24,7 +21,7 @@ ob_start(); ?>
 			<tbody>
 				<?php
 				foreach ($_SESSION['liste']->_liste as $key=>$item) {
-					echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <td><a href='deconnexion.php?id=".$key."&validate=false' class='btn btn-success' style='opacity:0'>Me déconnecter</a><td></tr>";
+					echo "<tr> <td> ".$item->_nomprenom." </td> <td><a href='deconnexion.php?id=".$key."&validate=false' class='btn btn-success' style='opacity:0'>Me déconnecter</a><td></tr>";
 				}
 				?>
 			</tbody>

@@ -13,7 +13,7 @@ $visitor = $_SESSION['liste']->getItem($id);
 	<div class="col-sm-8 col-sm-offset-2">
 		
 		<div class="row">
-			<p>Connecté en tant que <b><?php echo $visitor->_nom ?></b> <b><?php echo $visitor->_prenom ?></b> de la société <b><?php echo $visitor->_societe ?></b></p>
+			<p>Connecté en tant que <b><?php echo $visitor->_nomprenom ?></b> de la société <b><?php echo $visitor->_societe ?></b></p>
 			<div class="col-sm-6">
 				<div class="block-update-card status">
 					<div class="v-status present"></div>

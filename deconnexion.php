@@ -21,8 +21,7 @@ if(isset($_GET['type']) && $_GET['type'] == 'admin'){
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">
 		<?php
-		echo "<p>Nom : ".$_SESSION['liste']->_liste[$id]->_nom."</p>";
-		echo "<p>Prénom : ".$_SESSION['liste']->_liste[$id]->_prenom."</p>";
+		echo "<p>Nom : ".$_SESSION['liste']->_liste[$id]->_nomprenom."</p>";
 
 		echo "<a href='deconnexion.php?id=".$id."&validate=true' class='btn btn-success btn-lg'>Me déconnecter</a>";
 		?>

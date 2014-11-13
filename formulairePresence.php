@@ -13,12 +13,8 @@ ob_start();
   <div class="col-xs-6 col-xs-offset-3">
     <form Action ="connexion.php" method ="post" role="form" act>
       <div class="form-group">
-        <label for="nom">Nom :</label>
-        <input type="text" class="form-control" id="nom" name ="nom" placeholder="Entrer votre nom" required>
-      </div>
-      <div class="form-group">
-        <label for="prenom">Prénom :</label>
-        <input type="text" class="form-control" id="prenom" name ="prenom" placeholder="Entrer votre prénom" required>
+        <label for="nomprenom">NomPrénom :</label>
+        <input type="text" class="form-control" id="nomprenom" name ="nomprenom" placeholder="Entrer votre nom prénom" required>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Société :</label>
