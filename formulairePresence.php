@@ -25,8 +25,8 @@ ob_start();
         <input type="text" class="form-control" id="societe" name ="societe" placeholder="Entrer votre société" required>
       </div>
 
-      <button type="submit" class="btn btn-success">Valider</button>
-      <a class="btn btn-danger" href="selectconnexion.php">Retour</a>
+      <button type="submit" class="btn btn-success btn-lg">Valider</button>
+      <a class="btn btn-danger btn-lg" href="selectconnexion.php">Retour</a>
     </form>
   </div>
 </div>

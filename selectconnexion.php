@@ -30,7 +30,7 @@ ob_start();
 </div>
 <div class="row" style="margin-top : 5%">
 	<div class="col-sm-6 col-sm-offset-3 text-center">
-		<a class="btn btn-lg btn-default" href="index.php">
+		<a class="btn btn-lg btn-danger" href="index.php">
 			Retour
 		</a>
 	</div>

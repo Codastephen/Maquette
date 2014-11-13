@@ -24,12 +24,12 @@ ob_start(); ?>
 			<tbody>
 				<?php
 				foreach ($_SESSION['liste']->_liste as $key=>$item) {
-					echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <td><a href='deconnexion.php?id=".$key."&validate=false' class='btn btn-danger' style='opacity:0'>Me déconnecter</a><td></tr>";
+					echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <td><a href='deconnexion.php?id=".$key."&validate=false' class='btn btn-success' style='opacity:0'>Me déconnecter</a><td></tr>";
 				}
 				?>
 			</tbody>
 		</table>
-		<a class="btn btn-default btn-lg pull-right" href="index.php">Retour</a>
+		<a class="btn btn-danger btn-lg pull-right" href="index.php">Retour</a>
 
 	</div>
 </div>
