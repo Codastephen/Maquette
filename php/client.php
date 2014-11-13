@@ -11,6 +11,7 @@ class Client
 	{
 		$this->_nomprenom = $nomprenom;
 		$this->_societe = $societe;
+		$this->_hArrive = time();
 	}
 
   // to String

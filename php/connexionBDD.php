@@ -18,11 +18,10 @@ class ConnexionBDD
 		}
 		
 		$req = $bdd->prepare('INSERT INTO visiteur(nom, societe,heureA) VALUES(:nom, :societe, :heureA)');
-		$time = time();
 		$req->execute(array(
 			'nom' => $client->_nomprenom,
 			'societe' => $client->_societe,
-			'heureA' => $time
+			'heureA' => date('Y-m-d H:i:s',$client->_hArrive)
 			));
 	}
 	

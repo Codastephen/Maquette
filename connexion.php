@@ -12,8 +12,10 @@ if(isset($_POST['type'])){
 		$conn = new connexionBDD();
 		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
 		$conn->ajouterClient($cli);
+
+    $_SESSION['client']=$cli;
 		
-		header('Location: listeContact.php?id=0');
+		header('Location: listeContact.php');
 	}
 }
 ?>
@@ -37,22 +39,25 @@ if(isset($_POST['type'])){
   </div>
   <div class="col-xs-4 col-xs-offset-2">
     <h1 class="text-center">Déjà inscrit?</h1>
-    <table id="tablevisitor" class="table table-hover table-striped">
-      <th>
-        NomPrénom
-      </th>
-      <th></th>
-      <?php
-	  		$conn = new connexionBDD();
-			$reponse = $conn->afficherClient();
-			
-			while ($donnees = $reponse->fetch())
-			{
-				echo "<tr> <td> ".$donnees['Nom']." </td> <td><a href='listeContact.php?id=0' class='btn btn-primary' style='opacity:0'>C'est bien moi</a></td> </tr>";
-			}
+    <div style="overflow-y: auto; height: 400px">
+      <table id="tablevisitor" class="table table-hover table-striped">
+        <th>
+          NomPrénom
+        </th>
+        <th></th>
+        <?php
+        $conn = new connexionBDD();
+        $reponse = $conn->afficherClient();
 
-				
-      ?>
-    </table>
+        while ($donnees = $reponse->fetch())
+        {
+          echo "<tr> <td> ".$donnees['Nom']." </td> <td><a href='listeContact.php?id=0' class='btn btn-primary' style='opacity:0'>C'est bien moi</a></td> </tr>";
+        }
+
+
+        ?>
+      </table>
+    </div>
   </div>
+  
 </div>

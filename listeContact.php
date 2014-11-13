@@ -1,19 +1,18 @@
 <?php 
-$titre = "Liste des contacts";
-require_once("autoload.php");
 session_start();
-if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
-	header("Location: index.php");
+require_once("autoload.php");
+
+if(!isset($_SESSION['client'])){
+	echo($_SESSION['client']);
+	//header("Location: index.php");
 }
-$id = $_GET['id'];
-$visitor = $_SESSION['liste']->getItem($id);
 ?>
 <?php ob_start(); ?>
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">
 		
 		<div class="row">
-			<p>Connecté en tant que <b><?php echo $visitor->_nomprenom ?></b> de la société <b><?php echo $visitor->_societe ?></b></p>
+			<p>Connecté en tant que <b><?php echo $_SESSION['client']->_nomprenom ?></b> de la société <b><?php echo $_SESSION['client']->_societe ?></b></p>
 			<div class="col-sm-6">
 				<div class="block-update-card status">
 					<div class="v-status present"></div>
