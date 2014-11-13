@@ -1,18 +1,19 @@
 <?php 
-session_start();
+$titre="Liste contact";
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once("autoload.php");
 
-if(!isset($_SESSION['client'])){
 
-	//header("Location: index.php");
-}
+$client = unserialize($_SESSION['client']);
 ?>
 <?php ob_start(); ?>
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">
 		
 		<div class="row">
-			<p>Connecté en tant que <b><?php echo $_SESSION['client']->_nomprenom ?></b> de la société <b><?php echo $_SESSION['client']->_societe ?></b></p>
+			<p>Connecté en tant que <b><?php echo  $client->_nomprenom ?></b> de la société <b><?php echo $client->_societe ?></b></p>
 			<div class="col-sm-6">
 				<div class="block-update-card status">
 					<div class="v-status present"></div>

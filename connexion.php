@@ -1,6 +1,8 @@
 <?php
-require_once('autoload.php');
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+require_once("autoload.php");
 if(isset($_POST['type'])){
 	if($_POST['type']=="admin"){
 		if($_POST['password']=="toto"){
@@ -13,8 +15,7 @@ if(isset($_POST['type'])){
 		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
 		$conn->ajouterClient($cli);
 
-    $_SESSION['client']='te';
-		
+    $_SESSION['client'] = serialize($cli);
 		header('Location: listeContact.php');
 	}
 }
@@ -51,7 +52,7 @@ if(isset($_POST['type'])){
 
         while ($donnees = $reponse->fetch())
         {
-          echo "<tr> <td> ".$donnees['Nom']." </td> <td><a href='listeContact.php?id=0' class='btn btn-primary' style='opacity:0'>C'est bien moi</a></td> </tr>";
+          echo "<tr> <td> ".$donnees['Nom']." </td> <td><a href='listeContact.php?id=0' class='btn btn-primary' style='display:none'>C'est bien moi</a></td> </tr>";
         }
 
 
