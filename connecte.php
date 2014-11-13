@@ -15,11 +15,19 @@
 			<th col-width="2">
 				Prénom
 			</th>
+			
+			
 			<?php
-			foreach ($_SESSION['liste']->_liste as $item) {
-				echo "<tr> <td> ".$item->_nom." </td> <td> ".$item->_prenom." </td> <tr>";
+			
+			$conn = new connexionBDD();
+			$liste = $conn->afficherClient();
+			foreach ($liste as $item) {
+				echo "<tr> <td> ".$item->Nom." </td> <td> ".$item->Societe." </td> <tr>";
 				}
 			?>
+			
+			
+			
 		</table>
 		<a class="btn btn-default" href="presence.php">Retour</a>
 

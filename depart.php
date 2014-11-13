@@ -13,17 +13,23 @@ ob_start(); ?>
 			<thead>
 				<tr>
 					<th col-width=4>
-						NomPrénom
+						Nom et prénom
 					</th>
 					<th col-width=2></th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php
-				foreach ($_SESSION['liste']->_liste as $key=>$item) {
-					echo "<tr> <td> ".$item->_nomprenom." </td> <td><a href='deconnexion.php?id=".$key."&validate=false' class='btn btn-success' style='opacity:0'>Me déconnecter</a><td></tr>";
-				}
-				?>
+			<?php
+			
+			$conn = new connexionBDD();
+			$reponse = $conn->afficherClient();
+			
+			while ($donnees = $reponse->fetch())
+			{
+				echo "<tr> <td> ".$donnees['Nom']." </td><tr>";
+			}
+				
+			?>
 			</tbody>
 		</table>
 		<a class="btn btn-danger btn-lg pull-right" href="index.php">Retour</a>

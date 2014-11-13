@@ -6,15 +6,15 @@ session_start();
 if(isset($_POST['type'])){
 	if($_POST['type']=="admin"){
 		if($_POST['password']=="toto"){
-			$_SESSION['admin']=true;
 			header('Location:admin.php');
 		}else{
-			$_SESSION['admin']=false;
 			header('Location:connexionadmin.php');
 		}
 	}else{
-		$_SESSION['admin']=false;
+		$conn = new connexionBDD();
 		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
+		$conn->ajouterClient($cli);
+		
 		header('Location: listeContact.php?id='.$_SESSION['liste']->ajouter($cli));
 	}
 }

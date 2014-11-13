@@ -7,7 +7,9 @@ require_once("autoload.php");
 <?php ob_start(); ?>
 <div class="row text-center">
 		<?php
-			$cli = new connexionBDD();
+			$conn = new connexionBDD();
+			$cli = new Client('coda','Designal');
+			$conn->ajouterClient($cli);
 		?>
 </div>
 
