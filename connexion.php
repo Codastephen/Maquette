@@ -1,6 +1,6 @@
 <?php
 require_once('autoload.php');
-
+session_start();
 if(isset($_POST['type'])){
 	if($_POST['type']=="admin"){
 		if($_POST['password']=="toto"){
@@ -13,7 +13,7 @@ if(isset($_POST['type'])){
 		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
 		$conn->ajouterClient($cli);
 
-    $_SESSION['client']=$cli;
+    $_SESSION['client']='te';
 		
 		header('Location: listeContact.php');
 	}
@@ -42,7 +42,7 @@ if(isset($_POST['type'])){
     <div style="overflow-y: auto; height: 400px">
       <table id="tablevisitor" class="table table-hover table-striped">
         <th>
-          NomPrénom
+          Nom prénom
         </th>
         <th></th>
         <?php

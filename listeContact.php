@@ -3,7 +3,7 @@ session_start();
 require_once("autoload.php");
 
 if(!isset($_SESSION['client'])){
-	echo($_SESSION['client']);
+
 	//header("Location: index.php");
 }
 ?>
