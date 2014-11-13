@@ -79,10 +79,10 @@ if(isset($_SESSION['liste'])){
 	<div class="col-sm-10">
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade in active" id="home">
-				<?php include 'formulairePresence.php';?>
+				<?php include 'connexion.php';?>
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="depart">
-				<?php include 'depart.php';?>
+				<?php include 'deconnexion.php';?>
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="map">
 				<?php include 'plan.php';?>

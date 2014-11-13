@@ -1,33 +1,33 @@
-<?php
+<?php 
 require_once("autoload.php");
-
-session_start();
-$id = $_GET['id'];
-$validate = $_GET['validate'];
-if(isset($_GET['type']) && $_GET['type'] == 'admin'){
-	$_SESSION['liste']->supprimer($id);
-	header("Location: admin.php");
-}else if($validate == "true"){
-	$_SESSION['liste']->supprimer($id);
-	header("Location: index.php");
-}
 ?>
 
-<?php $titre = "Voulez-vous vraiment partir?" ?>
-<?php ob_start(); ?>
-<div class="row text-center">
-	<h1>Voulez-vous vraiment partir?</h1>
-</div>
 <div class="row">
-	<div class="col-sm-8 col-sm-offset-2">
-		<?php
-		echo "<p>Nom : ".$_SESSION['liste']->_liste[$id]->_nomprenom."</p>";
+	<div class="col-xs-8 col-xs-offset-2">
+		<h1 class="text-center">Qui êtes-vous?</h1>
+		<table id="tablevisitor" class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th col-width=4>
+						Nom et prénom
+					</th>
+					<th col-width=2></th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php
+			
+			$conn = new connexionBDD();
+			$reponse = $conn->afficherClient();
+			
+			while ($donnees = $reponse->fetch())
+			{
+				echo "<tr> <td> ".$donnees['Nom']." </td> <td><button class='btn btn-success' style='opacity:0' onclick='$(this).next().show();$(this).fadeOut();'>Me déconnecter</button><a class='btn btn-danger btn-hidden' href='validatedeconnexion.php?id=0&validate=true style='vertical-align:middle'>Valider</a><td><tr>";
+			}
+				
+			?>
+			</tbody>
+		</table>
 
-		echo "<a href='deconnexion.php?id=".$id."&validate=true' class='btn btn-success btn-lg'>Me déconnecter</a>";
-		?>
-		<a class="btn btn-lg btn-danger" href="index.php">Retour</a>
 	</div>
 </div>
-<?php $contenu = ob_get_clean(); ?>
-
-<?php require 'layout.php'; ?>

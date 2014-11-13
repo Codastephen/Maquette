@@ -30,7 +30,7 @@ ob_start();
 					echo "<tr>
 							<td> ".$item->_nomprenom." </td>
 							<td> ".$item->_societe." </td>
-							<td><a href='deconnexion.php?id=".$key."&validate=true&type=admin' class='btn btn-success'>Me déconnecter</a></td>
+							<td><a href='validatedeconnexion.php?id=".$key."&validate=true&type=admin' class='btn btn-success'>Me déconnecter</a></td>
 						</tr>";
 				}
 				?>
