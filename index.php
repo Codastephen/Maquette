@@ -8,10 +8,14 @@ if(isset($_SESSION['liste'])){
 	$size = count($_SESSION['liste']->_liste);
 
 	if($size==0){
-		$link = '<img src="./img/depart-gray.png" class="img-responsive"/>';
+		$linkdepart = '<img src="./img/depart-gray.png" class="img-responsive"/>';
+		$linkreco = '<img src="./img/resignal-gray.png" class="img-responsive"/>';
 	}else{
-		$link = '<a href="depart.php">
+		$linkdepart = '<a href="depart.php">
 		<img src="./img/depart.png" class="img-responsive"/>
+		</a>';
+		$linkreco = '<a href="reconnexion.php">
+		<img src="./img/resignal.png" class="img-responsive"/>
 		</a>';
 	}
 }
@@ -22,13 +26,16 @@ if(isset($_SESSION['liste'])){
 <div class="row">
 	<div class="col-sm-6 col-sm-offset-3">
 		<div class="row">
-			<div class="col-sm-5">
-				<a href="selectconnexion.php">
-					<img src="./img/arrivee.png" class="img-responsive"/>
+			<div class="col-sm-4">
+				<a href="formulairePresence.php">
+					<img src="./img/signal.png" class="img-responsive"/>
 				</a>
 			</div>
-			<div class="col-sm-5 col-sm-offset-2">
-				<?php echo $link ?>
+			<div class="col-sm-4">
+				<?php echo $linkreco ?>
+			</div>
+			<div class="col-sm-4">
+				<?php echo $linkdepart ?>
 			</div>
 		</div>
 	</div>

@@ -23,7 +23,7 @@ ob_start();
       <input type="hidden" name="type" value="visitor">
 
       <button type="submit" class="btn btn-success btn-lg">Valider</button>
-      <a class="btn btn-danger btn-lg" href="selectconnexion.php">Retour</a>
+      <a class="btn btn-danger btn-lg" href="index.php">Retour</a>
     </form>
   </div>
 </div>
