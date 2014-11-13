@@ -3,6 +3,7 @@ $titre = "Accueil";
 
 require_once("autoload.php");
 session_start();
+
 $linkdepart = '<div class="wrapper-img" style="background-image :url(\'./img/depart-gray.png\')"></div>';
 if(isset($_SESSION['liste'])){
 	$size = count($_SESSION['liste']->_liste);

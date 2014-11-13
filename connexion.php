@@ -1,6 +1,9 @@
 <?php
-require_once('autoload.php');
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+require_once("autoload.php");
 if(isset($_POST['type'])){
 	if($_POST['type']=="admin"){
 		if($_POST['password']=="toto"){
@@ -13,8 +16,8 @@ if(isset($_POST['type'])){
 		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
 		$conn->ajouterClient($cli);
 
-    $_SESSION['client']=$cli;
-		
+    $_SESSION['client'] = serialize($cli);
+
 		header('Location: listeContact.php');
 	}
 }
