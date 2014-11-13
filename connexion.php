@@ -54,13 +54,9 @@ if(isset($_POST['type'])){
     </form>
   </div>
   <div class="col-xs-4 col-xs-offset-2">
-    <h1 class="text-center">Déjà inscrit?</h1>
+    <h1 class="text-center">Déjà inscrit?</h1> </br>
     <div style="overflow-y: auto; height: 400px">
       <table id="tablevisitor" class="table  table-striped">
-        <th>
-          Nom prénom
-        </th>
-        <th></th>
         <?php
         $conn = new connexionBDD();
         $reponse = $conn->afficherClient();
