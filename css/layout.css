@@ -2,7 +2,7 @@
 	outline: 0; 
 }
 body{
-	background-color: #E0E0E0;
+	background: url("../img/section_shadower.jpg") repeat-x scroll center top #ffffff;
 	overflow-y: hidden;
 }
 a:focus
@@ -39,20 +39,21 @@ img + h3{
     margin: 0 auto;
 }
 .wrapper-img.active{
-	background-color:#575656;
+	background-color:#334d5c;
 	color:white;
 	border-top: solid 1px white;
 	border-bottom: solid 1px white;
 }
+
 .wrapper-img{
-	background-color:#8C8C8C;
+	background-color:#18bc9c;
 	color:white;
-	border-top: solid 1px #8C8C8C;
-	border-bottom: solid 1px #8C8C8C;
+	border-top: solid 1px #18bc9c;
+	border-bottom: solid 1px #18bc9c;
 }
 
-.wrapper-img:hover{
-	background-color:#575656;
+.wrapper-img:not(.active):hover{
+	background-color:#334d5c;
 	color:white;
 }
 
