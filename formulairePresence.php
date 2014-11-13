@@ -27,9 +27,13 @@ require_once 'autoload.php';
       </th>
       <th></th>
       <?php
-      foreach ($_SESSION['liste']->_liste as $key=>$item) {
-        echo "<tr> <td> ".$item->_nomprenom." </td> <td><a href='listeContact.php?id=".$key."' class='btn btn-primary' style='opacity:0'>C'est bien moi</a></td><tr>";
-      }
+			$conn = new connexionBDD();
+			$reponse = $conn->afficherClient();
+			
+			while ($donnees = $reponse->fetch())
+			{
+				echo "<tr> <td> ".$donnees['Nom']." </td><tr>";
+			}		
       ?>
     </table>
   </div>
