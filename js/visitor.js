@@ -6,8 +6,8 @@ $("table#tablevisitor tr").click(function(){
 })
 
 $(document).ready(function(){
-	$(".wrapper-img").css("height",$(window).height()/4);
-	$(".top").css("height",$(window).height()/4);
+	$(".wrapper-img").css("height",Math.ceil($(window).height()/4));
+	$(".top").css("height",Math.ceil($(window).height()/4));
 });
 
 function showValidate(){
