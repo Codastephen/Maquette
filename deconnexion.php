@@ -24,8 +24,8 @@ require_once("autoload.php");
 				{
 					echo "<tr>
 					<td> ".$donnees['Nom']." </td>
-					<td>
-					<a class='btn btn-danger btn-hidden' href='validatedeconnexion.php?id=0&validate=true style='vertical-align:middle'>Valider</a>
+					<td style='vertical-align:middle;'>
+					<a class='btn btn-danger btn-hidden' href='validatedeconnexion.php?nomprenom=".$donnees['Nom']."&societe=".$donnees['Societe']."' style='vertical-align:middle'>Valider</a>
 					</td>
 					</tr>";
 				}
