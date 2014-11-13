@@ -17,15 +17,15 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 <div class="row">
 	<div class="col-sm-2 no-padding" role="tabpanel">
 		<ul class="nav nav-stacked" role="tablist">
-			<li role="presentation" class="active">
+			<li role="presentation">
 				<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
-					<div class="col-xs-12 wrapper-img text-center">
+					<div class="col-xs-12 wrapper-img text-center ">
 						<img src="./img/people.PNG" class="img-responsive">
 						<h3>Accueil</h3>
 					</div>
 				</a>
 			</li>
-			<li role="presentation">
+			<li role="presentation"  class="active">
 				<a href="#signal" aria-controls="signal" role="tab" data-toggle="tab">
 					<div class="col-xs-12 wrapper-img text-center active">
 						<img src="./img/people.PNG" class="img-responsive">
@@ -51,11 +51,18 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 
 	</div>
 	<div class="col-sm-10 borderer">
+		<div id="toto" class="row" style="margin-top:50px">
+			<div class="col-lg-4 col-lg-offset-4">
+				<a href="index.php">
+					<img src="./img/designal.png" class="img-responsive"/>
+				</a>
+			</div>
+		</div>
 		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane fade in active" id="home">
+			<div role="tabpanel" class="tab-pane fade" id="home">
 				<?php include 'home.php';?>
 			</div>
-			<div role="tabpanel" class="tab-pane fade" id="signal">
+			<div role="tabpanel" class="tab-pane fade in active" id="signal">
 				<?php include 'connexion.php';?>
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="depart">
