@@ -1,8 +1,8 @@
 $("table#tablevisitor tr").click(function(){
 	$("table#tablevisitor tr").removeClass("success");
 	$(this).addClass('success');
-	$("table#tablevisitor tr").find("button").css('opacity',0);
-	$(this).find("button").css('opacity',1);
+	$("table#tablevisitor tr").find("a").fadeOut();
+	$(this).find("a").fadeIn();
 })
 
 $(document).ready(function(){

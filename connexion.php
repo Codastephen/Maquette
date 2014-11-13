@@ -54,7 +54,7 @@ if(isset($_POST['type'])){
 
         while ($donnees = $reponse->fetch())
         {
-          echo "<tr> <td> ".$donnees['Nom']." </td> <td><a href='listeContact.php?id=0' class='btn btn-primary' style='opacity:0'>C'est bien moi</a></td> </tr>";
+          echo "<tr> <td> ".$donnees['Nom']." </td> <td><a href='listeContact.php?id=0' class='btn btn-primary' style='display:none'>C'est bien moi</a></td> </tr>";
         }
 
 
