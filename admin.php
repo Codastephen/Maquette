@@ -6,9 +6,13 @@ if (session_status() == PHP_SESSION_NONE) {
 if(!$_SESSION['admin']){
 	header('Location:connexionadmin.php');
 }
-$d = date('m-y',time());
-$fichier = "log/log".$d.".txt";
-$log = str_replace("\r","<br/>",file_get_contents($fichier));
+$conn = new BDDLog();
+$reponse = $conn->afficherLog();
+$log = "";
+while ($donnees = $reponse->fetch())
+{
+	$log .= $donnees['date']." ".$donnees['action']." ".$donnees['visiteur_nomprenom']." ".$donnees['visiteur_societe']."<br/>";
+}
 
 ob_start(); 
 ?>
