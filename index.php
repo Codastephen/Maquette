@@ -16,7 +16,7 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 <?php ob_start(); ?>
 <div class="row">
 	<div class="col-sm-2 no-padding border-white" role="tabpanel">
-		<ul class="nav nav-stacked" role="tablist">
+		<ul id="myTab" class="nav nav-stacked" role="tablist">
 			<li role="presentation" class="active">
 				<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
 					<div class="col-xs-12 wrapper-img text-center active">

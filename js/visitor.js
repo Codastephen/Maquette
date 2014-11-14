@@ -20,6 +20,11 @@ $("table.tablevisitor tr").on("touchend",function(){
 	handlertable($(this));
 })
 
+$('#myTab a').on("touchend",function (e) {
+  e.preventDefault()
+  $(this).tab('show');
+})
+
 function handlertable(item){
 	if(scrolling){
 		scrolling = false;
