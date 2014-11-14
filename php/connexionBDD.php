@@ -54,7 +54,7 @@ class ConnexionBDD
 		}
 		
 		
-		$reponse = $bdd->query('SELECT * FROM visiteur');
+		$reponse = $bdd->query('SELECT Nom, Societe FROM visiteur ORDER BY Nom');
 		return $reponse;
 	}	
 }

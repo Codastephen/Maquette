@@ -57,7 +57,7 @@ if(isset($_POST['type'])){
 				$conn = new connexionBDD();
 				$reponse = $conn->afficherClient();
 
-				while ($donnees = $reponse->fetch())
+				while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
 				{
 					echo "<tr>
 					<td width='75%'> ".$donnees['Nom']." </td>
