@@ -20,7 +20,7 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 			<li role="presentation">
 				<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
 					<div class="col-xs-12 wrapper-img text-center ">
-						<img src="./img/people.PNG" class="img-responsive">
+						<img src="./img/people_white.PNG" class="img-responsive">
 						<h3>Accueil</h3>
 					</div>
 				</a>

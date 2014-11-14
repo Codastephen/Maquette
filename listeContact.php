@@ -11,13 +11,19 @@ $client = unserialize($_SESSION['client']);
 <?php ob_start(); ?>
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">
-		
+		<div id="rowlogo" class="row" style="margin-top:50px">
+			<div class="col-xs-8 col-xs-offset-2">
+				<a href="index.php">
+					<img src="./img/designal.png" class="img-responsive"/>
+				</a>
+			</div>
+		</div>
 		<div class="row">
 			<p>Connecté en tant que <b><?php echo  $client->_nomprenom ?></b> de la société <b><?php echo $client->_societe ?></b></p>
 			<div class="col-sm-6">
 				<div class="block-update-card status">
 					<div class="v-status present"></div>
-					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -33,7 +39,7 @@ $client = unserialize($_SESSION['client']);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status away"></div>
-					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -49,7 +55,7 @@ $client = unserialize($_SESSION['client']);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status disturb"></div>
-					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -65,7 +71,7 @@ $client = unserialize($_SESSION['client']);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status present"></div>
-					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -83,7 +89,7 @@ $client = unserialize($_SESSION['client']);
 			<div class="col-sm-6">
 				<div class="block-update-card status">
 					<div class="v-status present"></div>
-					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -99,7 +105,7 @@ $client = unserialize($_SESSION['client']);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status away"></div>
-					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -115,7 +121,7 @@ $client = unserialize($_SESSION['client']);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status disturb"></div>
-					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
@@ -131,7 +137,7 @@ $client = unserialize($_SESSION['client']);
 				</div>
 				<div class="block-update-card status">
 					<div class="v-status away"></div>
-					<img class="media-object update-card-MDimentions pull-left" src="./img/people.png" alt="...">
+					<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
 					<div class="update-card-body">
 						<div class="col-sm-8">
 							<h4>Vinothbabu K</h4>
