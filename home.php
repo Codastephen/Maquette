@@ -10,7 +10,7 @@
 			<label for="nomprenom">Nom et prénom :</label>
 			<input type="text" class="form-control" id="nomprenom" name ="nomprenom" placeholder="Entrer votre nom prénom" required>
 		</div>
-		<input type="hidden" name="type" value="visitor">
+		<input type="hidden" name="type" value="newvisitor">
 
 		<button type="submit" class="btn btn-success btn-lg pull-right">Valider</button>
 	</form>

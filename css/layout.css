@@ -95,7 +95,10 @@ tr{
 	padding: 0 0;
 }
 
-.big{
+a.big{
 	height: 70px;
 	padding-top: 25px;
+}
+button.big{
+	height: 70px;
 }

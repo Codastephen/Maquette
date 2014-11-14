@@ -16,11 +16,15 @@ if(isset($_POST['type'])){
 			header('Location: index.php');
 			exit();
 		}
-			
-		$conn = new connexionBDD();
 		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
-		$conn->ajouterClient($cli);
-
+		$type = "ACTION";
+		if($_POST['type']=="newvisitor"){
+			$conn = new connexionBDD();
+			$conn->ajouterClient($cli);
+			$type = "ARRIVEE";
+		}else if($_POST['type']=="reconexion"){
+			$type = "RECONNEXION";
+		}
 		// Ouverture du fichier
 		$d = date('m-y',time());
 		$fp = fopen ("log/log".$d.".txt", "a");
@@ -28,19 +32,17 @@ if(isset($_POST['type'])){
 		fseek ($fp, 0);
 		$r = chr(13); 
 		// Ecriture dans le fichier
-		fprintf($fp,date('Y-m-d H:i:s',time()). " = ARRIVEE : " .$_POST['nomprenom']."  ".$_POST['societe'].$r);
+		fprintf($fp,date('Y-m-d H:i:s',time()). " = ".$type." : " .$_POST['nomprenom']."  ".$_POST['societe'].$r);
 		
 
 		// Fermeture du fichier 
 		fclose ($fp);
-
 		
 		$_SESSION['client'] = serialize($cli);
 		header('Location: listeContact.php');
 	}
 }
 ?>
-
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
 		<h1 class="text-center">Déjà sur place?</h1>
@@ -56,7 +58,14 @@ if(isset($_POST['type'])){
 					echo "<tr>
 					<td width='75%'> ".$donnees['Nom']." </td>
 					<td class='no-padding'  width='25%'>
-					<a href='listeContact.php' class='btn btn-primary pull-right big' style='display:none;width:100%'>C'est bien moi</a>
+					<form Action ='connexion.php' method ='post' role='form' act>
+					<input type='hidden' id='nomprenom' name='nomprenom' value=".$donnees['Nom'].">
+					<input type='hidden' id='societe' name='societe' value=".$donnees['Societe'].">
+					<input type='hidden' id='type' name='type' value='reconexion'>
+
+					<button type='submit' class='btn btn-primary pull-right big' style='display:none;width:100%'>C'est bien moi</a>
+
+					</form>
 					</td> 
 					</tr>";
 				}

@@ -28,11 +28,14 @@ function handlertable(item){
 	item.addClass('success');
 	$("table.tablevisitor tr").find("a").hide();
 	item.find("a").show();
+	$("table.tablevisitor tr").find("button").hide();
+	item.find("button").show();
 }
 }
 function resetTable(){
 	$("table.tablevisitor tr").removeClass("success");
 	$("table.tablevisitor tr").find("a").hide();
+	$("table.tablevisitor tr").find("button").hide();
 	$(".tableresize").animate({scrollTop : 0},1);
 }
 
