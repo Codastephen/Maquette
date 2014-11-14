@@ -1,5 +1,10 @@
 $(document).ready(function(){
 	size();
+	if($("#alertbox").is(":visible")){
+		setTimeout(function(){
+			$("#alertbox").fadeOut();
+		}, 5000);
+	}
 });
 
 $(window).resize(function(){

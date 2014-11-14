@@ -7,20 +7,20 @@ body{
 }
 a:focus
 {
-outline:0;
+	outline:0;
 } 
 ::-webkit-scrollbar {
-    width: 12px;
+	width: 12px;
 }
- 
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+	border-radius: 10px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
 table.tablevisitor tr:hover{
@@ -49,7 +49,7 @@ img + h3{
 }
 
 .img-responsive {
-    margin: 0 auto;
+	margin: 0 auto;
 }
 .wrapper-img.active{
 	background-color:#334d5c;
@@ -101,4 +101,17 @@ a.big{
 }
 button.big{
 	height: 70px;
+}
+
+#alertbox{
+	position: absolute;
+	z-index: 5000;
+	height: 50px;
+	text-align:center;
+	padding-top:10px;
+	color:white;
+}
+
+.alert{
+	border-radius: 0;
 }

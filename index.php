@@ -63,21 +63,21 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 <input type="button" id="buttonStart" value="Démarrer" onclick="start()" />
 <input type="button" id="buttonStop" value="Arrêter" onclick="stop()" disabled="" />
 </p> -->
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="home">
-				<?php include 'home.php';?>
-			</div>
-			<div role="tabpanel" class="tab-pane" id="signal">
-				<?php include 'connexion.php';?>
-			</div>
-			<div role="tabpanel" class="tab-pane" id="depart">
-				<?php include 'deconnexion.php';?>
-			</div>
-			<div role="tabpanel" class="tab-pane" id="map">
-				<?php include 'plan.php';?>
-			</div>
-		</div>
+<div class="tab-content">
+	<div role="tabpanel" class="tab-pane active" id="home">
+		<?php include 'home.php';?>
 	</div>
+	<div role="tabpanel" class="tab-pane" id="signal">
+		<?php include 'connexion.php';?>
+	</div>
+	<div role="tabpanel" class="tab-pane" id="depart">
+		<?php include 'deconnexion.php';?>
+	</div>
+	<div role="tabpanel" class="tab-pane" id="map">
+		<?php include 'plan.php';?>
+	</div>
+</div>
+</div>
 </div>
 
 <!-- <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">//<![CDATA[

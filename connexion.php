@@ -7,12 +7,16 @@ if(isset($_POST['type'])){
 	if($_POST['type']=="admin"){
 		if($_POST['password']=="toto"){
 			$_SESSION['admin']=true;
+			$_SESSION['infomsg'] = "Bienvenue maitre admin";
+			$_SESSION['infotype'] = "success";
 			header('Location:admin.php');
 		}else{
 			header('Location:connexionadmin.php');
 		}
 	}else{
 		if(empty($_POST['nomprenom']) || empty($_POST['societe'])){
+			$_SESSION['infomsg'] = "Erreur, champs incomplet";
+			$_SESSION['infotype'] = "danger";
 			header('Location: index.php');
 			exit();
 		}
