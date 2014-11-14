@@ -10,17 +10,8 @@ if(isset($_GET['nomprenom']) && isset($_GET['societe'])){
 	$bdd = new ConnexionBDD();
 	$bdd->retirerClient($cli);
 	
-	// Ouverture du fichier
-	$d = date('m-y',time());
-	$fp = fopen ("log/log".$d.".txt", "a");
-
-	fseek ($fp, 0);
-	$r = chr(13); 
-	// Ecriture dans le fichier
-	fprintf($fp,date('Y-m-d H:i:s',time()). " = DEPART : " .$_GET['nomprenom']."  ".$_GET['societe'].$r);
-		
-	// Fermeture du fichier 
-	fclose ($fp);
+	$log = new BDDLog();
+	$log->ajouterLigne("DEPART",$cli);
 	
 	if(isset($_GET['type']) && $_GET['type'] == 'admin'){
 		$_SESSION['infomsg'] = "Visiteur bien déconnecté";

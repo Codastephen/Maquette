@@ -29,18 +29,21 @@ if(isset($_POST['type'])){
 		}else if($_POST['type']=="reconexion"){
 			$type = "RECONNEXION";
 		}
-		// Ouverture du fichier
-		$d = date('m-y',time());
-		$fp = fopen ("log/log".$d.".txt", "a");
 
-		fseek ($fp, 0);
-		$r = chr(13); 
-		// Ecriture dans le fichier
-		fprintf($fp,date('Y-m-d H:i:s',time()). " = ".$type." : " .$_POST['nomprenom']."  ".$_POST['societe'].$r);
+		$log = new BDDLog();
+		$log->ajouterLigne($type,$cli);
+		// // Ouverture du fichier
+		// $d = date('m-y',time());
+		// $fp = fopen ("log/log".$d.".txt", "a");
+
+		// fseek ($fp, 0);
+		// $r = chr(13); 
+		// // Ecriture dans le fichier
+		// fprintf($fp,date('Y-m-d H:i:s',time()). " = ".$type." : " .$_POST['nomprenom']."  ".$_POST['societe'].$r);
 		
 
-		// Fermeture du fichier 
-		fclose ($fp);
+		// // Fermeture du fichier 
+		// fclose ($fp);
 		
 		$_SESSION['client'] = serialize($cli);
 		header('Location: listeContact.php?');
