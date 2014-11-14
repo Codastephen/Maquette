@@ -5,7 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 require_once("autoload.php");
 
-
 // $client = unserialize($_SESSION['client']);
 ?>
 <?php ob_start(); ?>

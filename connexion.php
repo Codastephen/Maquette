@@ -1,17 +1,22 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+	session_start();
 }
 require_once("autoload.php");
 if(isset($_POST['type'])){
 	if($_POST['type']=="admin"){
 		if($_POST['password']=="toto"){
-      $_SESSION['admin']=true;
+			$_SESSION['admin']=true;
 			header('Location:admin.php');
 		}else{
 			header('Location:connexionadmin.php');
 		}
 	}else{
+		if(empty($_POST['nomprenom']) || empty($_POST['societe'])){
+			header('Location: index.php');
+			exit();
+		}
+			
 		$conn = new connexionBDD();
 		$cli = new Client($_POST['nomprenom'],$_POST['societe']);
 		$conn->ajouterClient($cli);
@@ -25,41 +30,41 @@ if(isset($_POST['type'])){
 		// Ecriture dans le fichier
 		fprintf($fp,date('Y-m-d H:i:s',time()). " = ARRIVEE : " .$_POST['nomprenom']."  ".$_POST['societe'].$r);
 		
-								
+
 		// Fermeture du fichier 
 		fclose ($fp);
 
 		
-    $_SESSION['client'] = serialize($cli);
+		$_SESSION['client'] = serialize($cli);
 		header('Location: listeContact.php');
 	}
 }
 ?>
 
 <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
-    <h1 class="text-center">Déjà sur place?</h1>
-    <p class="text-center"><i>Choisissez votre nom dans la liste ci-dessous :</i></p>
-    <div class="tableresize" style="overflow-y:auto">
-      <table class="table table-striped tablevisitor">
-        <?php
-        $conn = new connexionBDD();
-        $reponse = $conn->afficherClient();
+	<div class="col-xs-10 col-xs-offset-1">
+		<h1 class="text-center">Déjà sur place?</h1>
+		<p class="text-center"><i>Choisissez votre nom dans la liste ci-dessous :</i></p>
+		<div class="tableresize" style="overflow-y:auto">
+			<table class="table table-striped tablevisitor">
+				<?php
+				$conn = new connexionBDD();
+				$reponse = $conn->afficherClient();
 
-        while ($donnees = $reponse->fetch())
-        {
-          echo "<tr>
-                <td width='75%'> ".$donnees['Nom']." </td>
-                <td class='no-padding'  width='25%'>
-                    <a href='listeContact.php' class='btn btn-primary pull-right big' style='display:none;width:100%'>C'est bien moi</a>
-                </td> 
-                </tr>";
-        }
+				while ($donnees = $reponse->fetch())
+				{
+					echo "<tr>
+					<td width='75%'> ".$donnees['Nom']." </td>
+					<td class='no-padding'  width='25%'>
+					<a href='listeContact.php' class='btn btn-primary pull-right big' style='display:none;width:100%'>C'est bien moi</a>
+					</td> 
+					</tr>";
+				}
 
 
-        ?>
-      </table>
-    </div>
-  </div>
-  
+				?>
+			</table>
+		</div>
+	</div>
+
 </div>
