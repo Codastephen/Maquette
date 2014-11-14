@@ -44,6 +44,14 @@ table.tablevisitor tr:hover{
 	margin-bottom:0%;
 }
 
+.wrapper-img-admin{
+	padding-top:5%;
+}
+
+.wrapper-img-admin > h3{
+	margin-bottom:0%;
+}
+
 img + h3{
 	margin-top:10px;
 }
@@ -51,6 +59,21 @@ img + h3{
 .img-responsive {
 	margin: 0 auto;
 }
+
+.wrapper-img-admin.active{
+	background-color:#334d5c;
+	color:white;
+	border-top: solid 1px white;
+	border-bottom: solid 1px white;
+}
+
+.wrapper-img-admin{
+	background-color:#18bc9c;
+	color:white;
+	border-top: solid 1px #18bc9c;
+	border-bottom: solid 1px #18bc9c;
+}
+
 .wrapper-img.active{
 	background-color:#334d5c;
 	color:white;

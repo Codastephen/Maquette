@@ -6,6 +6,10 @@ if (session_status() == PHP_SESSION_NONE) {
 if(!$_SESSION['admin']){
 	header('Location:connexionadmin.php');
 }
+$d = date('m-y',time());
+$fichier = "log/log".$d.".txt";
+$log = str_replace("\r","<br/>",file_get_contents($fichier));
+
 ob_start(); 
 ?>
 <div class="row text-center">
@@ -34,11 +38,8 @@ ob_start();
 				?>
 			</table>
 		</div>
-		<a class="btn btn-lg btn-default pull-right" href="index.php">
-			Retour
-		</a>
 	</div>
 </div>
-<?php $contenu = ob_get_clean(); ?>
+<?php $liste = ob_get_clean(); ?>
 
-<?php require 'layout.php'; ?>
+<?php require 'layoutadmin.php'; ?>

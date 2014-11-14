@@ -65,12 +65,15 @@ $("ul.nav > li > a").on("touchend",function(){
 function handlerlink(item){
 	$("ul.nav > li > a > div.wrapper-img").removeClass("active");
 	item.find("div.wrapper-img").addClass("active");
+	$("ul.nav > li > a > div.wrapper-img-admin").removeClass("active");
+	item.find("div.wrapper-img-admin").addClass("active");
 	resetTable();
 }
 
 
 function size(){
 	$(".wrapper-img").css("height",Math.ceil($(window).height()/4));
+	$(".wrapper-img-admin").css("height",Math.ceil($(window).height()/2));
 	$(".top").css("height",Math.ceil($(window).height()/4));
 	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
 }
