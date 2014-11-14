@@ -64,16 +64,16 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 <input type="button" id="buttonStop" value="Arrêter" onclick="stop()" disabled="" />
 </p> -->
 <div class="tab-content">
-	<div role="tabpanel" class="tab-pane active" id="home">
+	<div role="tabpanel" class="tab-pane fade in active" id="home">
 		<?php include 'home.php';?>
 	</div>
-	<div role="tabpanel" class="tab-pane" id="signal">
+	<div role="tabpanel" class="tab-pane fade" id="signal">
 		<?php include 'connexion.php';?>
 	</div>
-	<div role="tabpanel" class="tab-pane" id="depart">
+	<div role="tabpanel" class="tab-pane fade" id="depart">
 		<?php include 'deconnexion.php';?>
 	</div>
-	<div role="tabpanel" class="tab-pane" id="map">
+	<div role="tabpanel" class="tab-pane fade" id="map">
 		<?php include 'plan.php';?>
 	</div>
 </div>

@@ -43,7 +43,7 @@ if(isset($_POST['type'])){
 		fclose ($fp);
 		
 		$_SESSION['client'] = serialize($cli);
-		header('Location: listeContact.php');
+		header('Location: listeContact.php?');
 	}
 }
 ?>
@@ -63,8 +63,8 @@ if(isset($_POST['type'])){
 					<td width='75%'> ".$donnees['Nom']." </td>
 					<td class='no-padding'  width='25%'>
 					<form Action ='connexion.php' method ='post' role='form' act>
-					<input type='hidden' id='nomprenom' name='nomprenom' value=".$donnees['Nom'].">
-					<input type='hidden' id='societe' name='societe' value=".$donnees['Societe'].">
+					<input type='hidden' id='nomprenom' name='nomprenom' value='".$donnees['Nom']."''>
+					<input type='hidden' id='societe' name='societe' value='".$donnees['Societe']."''>
 					<input type='hidden' id='type' name='type' value='reconexion'>
 
 					<button type='submit' class='btn btn-primary pull-right big' style='display:none;width:100%'>C'est bien moi</a>
