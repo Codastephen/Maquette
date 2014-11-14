@@ -3,8 +3,9 @@ require_once("autoload.php");
 ?>
 
 <div class="row">
-	<div class="col-xs-8 col-xs-offset-2">
+	<div class="col-xs-10 col-xs-offset-1">
 		<h1 class="text-center">Qui êtes-vous?</h1>
+		<p class="text-center"><i>Choisissez votre nom dans la liste ci-dessous :</i></p>
 		<div class="tableresize" style="overflow-y:auto">
 			<table class="table tablevisitor table-striped">
 				<?php
