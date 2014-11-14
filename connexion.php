@@ -58,14 +58,19 @@ if(isset($_POST['type'])){
     <h1 class="text-center">Déjà sur place?</h1>
     <p class="text-center"><i>Choisissez votre nom dans la liste ci-dessous :</i></p>
     <div class="tableresize" style="overflow-y:auto">
-      <table id="tablevisitor" class="table  table-striped">
+      <table class="table table-striped tablevisitor">
         <?php
         $conn = new connexionBDD();
         $reponse = $conn->afficherClient();
 
         while ($donnees = $reponse->fetch())
         {
-          echo "<tr> <td> ".$donnees['Nom']." </td> <td><a href='listeContact.php?id=0' class='btn btn-primary' style='display:none'>C'est bien moi</a></td> </tr>";
+          echo "<tr>
+                <td width='75%'> ".$donnees['Nom']." </td>
+                <td class='no-padding'  width='25%'>
+                    <a href='listeContact.php' class='btn btn-primary pull-right big' style='display:none;width:100%'>C'est bien moi</a>
+                </td> 
+                </tr>";
         }
 
 
