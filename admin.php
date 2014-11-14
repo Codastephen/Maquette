@@ -14,34 +14,26 @@ ob_start();
 
 <div class="row">
 	<div class="col-xs-6 col-xs-offset-3">
-		<table id="tablevisitor" class="table table-hover table-striped">
-			<thead>
-				<tr>
-					<th col-width=4>
-						Nom et prénom
-					</th>
-					<th col-width=2></th>
-				</tr>
-			</thead>
-			<tbody>
+		<div class="tableresize" style="overflow-y:auto">
+			<table class="table tablevisitor table-striped">
 				<?php
-				
 				$conn = new connexionBDD();
 				$reponse = $conn->afficherClient();
-				
+
 				while ($donnees = $reponse->fetch())
 				{
 					echo "<tr>
-					<td> ".$donnees['Nom']." </td>
-					<td style='vertical-align:middle;'>
-					<a class='btn btn-danger btn-hidden' href='validatedeconnexion.php?nomprenom=".$donnees['Nom']."&societe=".$donnees['Societe']."&type=admin' style='vertical-align:middle'>Valider</a>
+					<td width='75%'> ".$donnees['Nom']." </td>
+					<td class='no-padding' width='25%'>
+					<a href='validatedeconnexion.php?nomprenom=".$donnees['Nom']."&societe=".$donnees['Societe']."&type=admin' class='btn btn-danger pull-right big' style='display:none;width:100%'>Partir</a>
 					</td>
 					</tr>";
 				}
-				
+
+
 				?>
-			</tbody>
-		</table>
+			</table>
+		</div>
 		<a class="btn btn-lg btn-default pull-right" href="index.php">
 			Retour
 		</a>

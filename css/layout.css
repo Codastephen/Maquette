@@ -2,7 +2,7 @@
 	outline: 0; 
 }
 body{
-	background: url("../img/section_shadower.jpg") repeat-x scroll center top #ffffff;
+	background-color :white;
 	overflow-y: hidden;
 }
 a:focus
