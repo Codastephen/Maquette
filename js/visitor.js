@@ -16,6 +16,7 @@ $("table.tablevisitor tr").click(function(){
 function resetTable(){
 	$("table.tablevisitor tr").removeClass("success");
 	$("table.tablevisitor tr").find("a").hide();
+	$(".tableresize").animate({scrollTop : 0},1);
 }
 
 function showValidate(){
@@ -32,5 +33,5 @@ $("ul.nav > li > a").click(function(){
 function size(){
 	$(".wrapper-img").css("height",Math.ceil($(window).height()/4));
 	$(".top").css("height",Math.ceil($(window).height()/4));
-	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#toto').css('margin-top'), 10) + $('#toto').outerHeight()));
+	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
 }

@@ -51,8 +51,8 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 
 	</div>
 	<div class="col-sm-10 borderer">
-		<div id="toto" class="row" style="margin-top:50px">
-			<div class="col-lg-4 col-lg-offset-4">
+		<div id="rowlogo" class="row" style="margin-top:50px">
+			<div class="col-xs-8 col-xs-offset-2">
 				<a href="index.php">
 					<img src="./img/designal.png" class="img-responsive"/>
 				</a>
