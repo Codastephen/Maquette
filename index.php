@@ -17,9 +17,9 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 <div class="row">
 	<div class="col-sm-2 no-padding border-white" role="tabpanel">
 		<ul id="myTab" class="nav nav-stacked" role="tablist">
-			<li role="presentation" class="active">
+			<li role="presentation">
 				<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
-					<div class="col-xs-12 wrapper-img text-center active">
+					<div class="col-xs-12 wrapper-img text-center">
 						<img src="./img/people_white.PNG" class="img-responsive">
 						<h3>Accueil</h3>
 					</div>
@@ -59,7 +59,7 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 			</div>
 		</div>
 		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane fade in active" id="home">
+			<div role="tabpanel" class="tab-pane fade" id="home">
 				<?php include 'home.php';?>
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="signal">

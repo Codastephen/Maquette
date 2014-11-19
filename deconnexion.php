@@ -13,7 +13,7 @@ if(isset($_POST['code'])){
 	if(!$result){
 		$_SESSION['infomsg'] = "Le code n'éxiste pas";
 		$_SESSION['infotype'] = "danger";
-		header("Location: index.php");
+		header("Location: index.php#depart");
 	}else{
 		$log = new BDDLog();
 		$log->ajouterLigne("DEPART",$cli);
