@@ -8,7 +8,7 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 		verifAdmin();
 	}else{ 
 		//Je suis visiteur
-		if(!empty($_POST['code'])){ 
+		if($_POST['type']=='reco'){ 
 		//Je me reconnecte
 			$bdd = new connexionBDD();
 			$cli = $bdd->getClientCode($_POST['code']);
@@ -61,10 +61,10 @@ function verifAdmin(){
 		<h1 class="text-center">Déjà sur place?</h1>
 		<p class="text-center"><i>Rentrez votre code dans le champ ci-dessous pour vous reconnecter :</i></p>
 		<form Action ='connexion.php' method ='post' role='form' act>
-			<input type='hidden' id='type' name='type' value='visitor'>
+			<input type='hidden' id='type' name='type' value='reco'>
 			<div class="row">
 				<div class="col-xs-6 col-xs-offset-3">
-					<input type="text" class="form-control upperCase" id="code" name ="code" placeholder="Entrer votre code" autocomplete="off" required>
+					<input type="number" class="form-control upperCase" id="code" name ="code" autocomplete="off" required>
 				</div>
 			</div>
 			<br/>

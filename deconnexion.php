@@ -41,7 +41,7 @@ if(isset($_POST['code'])){
 			<input type='hidden' id='type' name='type' value='visitor'>
 			<div class="row">
 				<div class="col-xs-6 col-xs-offset-3">
-					<input type="text" class="form-control upperCase" id="code" name ="code" placeholder="Entrer votre code" autocomplete="off" required>
+					<input type="number" class="form-control upperCase" id="code" name ="code" autocomplete="off" required>
 				</div>
 			</div>
 			<br/>
