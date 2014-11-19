@@ -47,6 +47,11 @@ ob_start(); ?>
 
 	</div>
 	<div class="col-sm-10 borderer">
+		<div class="row">
+			<div class="col-xs-12 btn-primary text-center" style="height:40px;padding-top:10px">
+				<marquee scrolldelay="60" scrollamount="3">Ce texte va défiler de la droite vers la gauche</marquee>
+			</div>
+		</div>
 		<div id="rowlogo" class="row" style="margin-top:50px">
 			<div class="col-xs-8 col-xs-offset-2">
 				<a href="index.php">

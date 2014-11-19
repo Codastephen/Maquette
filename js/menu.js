@@ -30,4 +30,5 @@ function handlerlink(item){
 	$("ul.nav > li > a > div.wrapper-img-admin").removeClass("active");
 	item.find("div.wrapper-img-admin").addClass("active");
 	resetTable();
+	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
 }
