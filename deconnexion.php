@@ -51,6 +51,5 @@ if(isset($_POST['code'])){
 				</div>
 			</div>
 		</form>
-
 	</div>
 </div>
