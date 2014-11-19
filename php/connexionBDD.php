@@ -78,6 +78,8 @@ class ConnexionBDD
 
 	public function getClientCode($code){
 		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$code.'"');
+		if($reponse->rowCount()==0)
+			return false;
 		$data = $reponse->fetch();
 		$client = Client::withCodeAndHour($data['Nom'],$data['Societe'],$data['HeureA'],$data['code']);
 		return $client;
