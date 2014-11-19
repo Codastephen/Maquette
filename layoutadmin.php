@@ -62,6 +62,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- <script src="./js/jquery.mobile-1.4.5.min.js"></script> -->
 	<script src="./js/bootstrap.js"></script>
-	<script src="./js/visitor.js"></script>
+	<script src="./js/layout.js"></script>
+	<script src="./js/menu.js"></script>
+	<script src="./js/table.js"></script>
 </body>
 </html>
