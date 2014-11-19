@@ -47,7 +47,7 @@ if(isset($_POST['code'])){
 			<br/>
 			<div class="row">
 				<div class="col-xs-4 col-xs-offset-4">
-					<button type='submit' class='btn btn-danger pull-right big' style="width:100%">Partir</button>
+					<button type='submit' class='btn btn-danger btn-lg' style="width:100%">Partir</button>
 				</div>
 			</div>
 		</form>
