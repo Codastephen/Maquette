@@ -15,7 +15,7 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 			if(!$cli){  
 				$_SESSION['infomsg'] = "Erreur, mauvais code";
 				$_SESSION['infotype'] = "danger";
-				header('Location: index.php#signal');
+				header('Location: index.php#reconnexion');
 				exit();
 			}else{ 
 				//Mon code de reconnexion est bon

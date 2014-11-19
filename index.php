@@ -4,16 +4,7 @@ $titre = "Accueil";
 require_once("autoload.php");
 session_start();
 
-// $linkdepart = '<div class="wrapper-img" style="background-image :url(\'./img/depart-gray.png\')"></div>';
-$linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="tab">
-<div class="col-xs-12 wrapper-img text-center">
-<img src="./img/depart-logo.PNG" class="img-responsive">
-<h3>Partir</h3>
-</div>
-</a>';
-?>
-
-<?php ob_start(); ?>
+ob_start(); ?>
 <div class="row">
 	<div class="col-sm-2 no-padding border-white" role="tabpanel">
 		<ul id="myTab" class="nav nav-stacked" role="tablist">
@@ -26,7 +17,7 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 				</a>
 			</li>
 			<li role="presentation">
-				<a href="#signal" aria-controls="signal" role="tab" data-toggle="tab">
+				<a href="#reconnexion" aria-controls="signal" role="tab" data-toggle="tab">
 					<div class="col-xs-12 wrapper-img text-center">
 						<img src="./img/people_white.PNG" class="img-responsive">
 						<h3>Déjà sur place</h3>
@@ -34,7 +25,12 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 				</a>
 			</li>
 			<li role="presentation">
-				<?php echo $linkdepart ?>
+				<a href="#leave" aria-controls="depart" role="tab" data-toggle="tab">
+					<div class="col-xs-12 wrapper-img text-center">
+						<img src="./img/depart-logo.PNG" class="img-responsive">
+						<h3>Partir</h3>
+					</div>
+				</a>
 			</li>
 			<li role="presentation">
 				<a href="#map" aria-controls="map" role="tab" data-toggle="tab">
@@ -62,10 +58,10 @@ $linkdepart = '<a href="#depart" aria-controls="depart" role="tab" data-toggle="
 			<div role="tabpanel" class="tab-pane fade" id="home">
 				<?php include 'home.php';?>
 			</div>
-			<div role="tabpanel" class="tab-pane fade" id="signal">
+			<div role="tabpanel" class="tab-pane fade" id="reconnexion">
 				<?php include 'connexion.php';?>
 			</div>
-			<div role="tabpanel" class="tab-pane fade" id="depart">
+			<div role="tabpanel" class="tab-pane fade" id="leave">
 				<?php include 'deconnexion.php';?>
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="map">

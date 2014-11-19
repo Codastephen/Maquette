@@ -13,7 +13,7 @@ if(isset($_POST['code'])){
 	if(!$result){
 		$_SESSION['infomsg'] = "Le code n'éxiste pas";
 		$_SESSION['infotype'] = "danger";
-		header("Location: index.php#depart");
+		header("Location: index.php#leave");
 	}else{
 		$log = new BDDLog();
 		$log->ajouterLigne("DEPART",$cli);
@@ -35,7 +35,7 @@ if(isset($_POST['code'])){
 
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
-		<h1 class="text-center">Qui êtes-vous?</h1>
+		<h1 class="text-center">Voulez-vous vraiment partir?</h1>
 		<p class="text-center"><i>Rentrez votre code dans le champ ci-dessous pour confirmer votre départ :</i></p>
 		<form Action ='deconnexion.php' method ='post' role='form' act>
 			<input type='hidden' id='type' name='type' value='visitor'>
