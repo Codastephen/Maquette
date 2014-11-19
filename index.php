@@ -48,7 +48,7 @@ ob_start(); ?>
 	</div>
 	<div class="col-sm-10 borderer">
 		<div class="row">
-			<marquee id="defilor" class="Scroller" direction="left" width="100%" scrolldelay="80" scrollamount="3" scrolldelay="0">
+			<marquee id="defilor" direction="left" width="100%" scrolldelay="80" scrollamount="3" scrolldelay="0">
 			</marquee>
 			<!-- <div id="defilor" class="col-xs-12 text-center marquee">
 			</div> -->
