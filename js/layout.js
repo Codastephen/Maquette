@@ -16,6 +16,8 @@ $(document).ready(function(){
 	});
 	if($_GET['helper']==0)
 		$("#myModal").modal();
+
+	getMsg();
 });
 
 $(window).resize(function(){
@@ -26,4 +28,21 @@ function size(){
 	$(".wrapper-img").css("height",Math.ceil($(window).height()/4));
 	$(".wrapper-img-admin").css("height",Math.ceil($(window).height()/2));
 	$(".top").css("height",Math.ceil($(window).height()/4));
+}
+
+function getMsg()
+{
+	var result = null;
+	var scriptUrl = "getMsg.php";
+	$.ajax({
+		url: scriptUrl,
+		type: 'get',
+		dataType: 'html',
+		async: false,
+		success: function(data) {
+			result = data;
+		} 
+	});
+	$("#defilor").html(result);
+	$("#defilor").click();
 }
