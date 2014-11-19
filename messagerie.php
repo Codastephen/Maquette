@@ -5,6 +5,13 @@
 } 
 
 if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut']) && isset($_POST['heurefin'])){
+	if(empty($_POST['nomprenom'])){ 
+			//Erreurs dans les champs
+		$_SESSION['infomsg'] = "Erreur, champs incomplet";
+		$_SESSION['infotype'] = "danger";
+		header('Location: messagerie.php');
+		exit();
+	}
 	$msg = new Message(0,$_POST['message'],$_POST['date']." ".$_POST['heuredebut'],$_POST['date']." ".$_POST['heurefin']);
 	$bdd= new ConnexionBDD();
 	$bdd->addMsg($msg);
@@ -31,21 +38,26 @@ if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut
 				<label for="message">Message :</label>
 				<input type="text" class="form-control" id="message" name ="message" required>
 			</div>
-			<div class="form-group">
-				Date d'affichage
-				<input class="inputdate" name="date" type="date" value="<?php echo date('Y-m-d'); ?>"/>
+			<div class="row">
+				<div class="form-group col-xs-4">
+					<label for="date">Date d'affichage :</label>
+					<input class="inputdate" name="date" style="min-width:100%" type="date" value="<?php echo date('Y-m-d'); ?>"/>
+				</div>
+				<div class="form-group col-xs-4">
+					<label for="heuredebut">Heure de début :</label>
+					<input class="inputdate" name="heuredebut" style="min-width:100%" type="time" value="<?php echo date('H:i'); ?>"/>
+				</div>
+				<div class="form-group col-xs-4">
+					<label for="heurefin">Heure de fin :</label>
+					<input class="inputdate" name="heurefin" style="min-width:100%" type="time" value="<?php echo date('H:i'); ?>"/>
+				</div>
 			</div>
-			<div class="form-group">
-				Heure de début
-				<input class="inputdate" name="heuredebut" type="time" value="<?php echo date('H:i'); ?>"/>
-			</div>
-			<div class="form-group">
-				Heure de fin
-				<input class="inputdate" name="heurefin" type="time" value="<?php echo date('H:i'); ?>"/>
-			</div>
+			
 			<input type="hidden" name="type" value="admin">
 
-			<button type="submit" class="btn btn-success btn-lg">Valider</button>
+			<div class="col-xs-4 col-xs-offset-4">
+				<button type='submit' class='btn btn-success btn-lg ' style="width:100%">Valider</button>
+			</div>
 		</form>
 	</div>
 </div>

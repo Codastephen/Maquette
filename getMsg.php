@@ -8,7 +8,7 @@ $msg="<p>";
 $first=true;
 while ($donnees = $reponse->fetch())
 {
-	if(date('Y-m-d H:i:s')<$donnees['datedebut'] || date('Y-m-d H:i:s')>$donnees['datefin'] )
+	if(date('Y-m-d H:i:s')<$donnees['datedebut'] || date('Y-m-d H:i:s')>$donnees['datefin'])
 		continue;
 
 	if(!$first)
