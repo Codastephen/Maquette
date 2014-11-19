@@ -17,12 +17,31 @@ $(document).ready(function(){
 	if($_GET['helper']==0)
 		$("#myModal").modal();
 
-	getMsg();
+	repeatEvery(getMsg, 60 * 1000);
 });
 
 $(window).resize(function(){
 	size();
 });
+
+function repeatEvery(func, interval) {
+    // Check current time and calculate the delay until next interval
+    var now = new Date,
+        delay = interval - now % interval;
+
+    function start() {
+        // Execute function now...
+        func();
+        // ... and every interval
+        setInterval(func, interval);
+    }
+
+    getMsg();
+    // Delay execution until it's an even interval
+    setTimeout(start, delay);
+}
+
+
 
 function size(){
 	$(".wrapper-img").css("height",Math.ceil($(window).height()/4));
