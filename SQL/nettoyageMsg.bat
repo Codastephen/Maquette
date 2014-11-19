@@ -1,1 +1,1 @@
-mysql -u root --password=root -p maquette --execute="DELETE FROM message WHERE datefin < NOW()";
+mysql -u root --password=root --database=maquette --execute="DELETE FROM message WHERE datefin < NOW()";
