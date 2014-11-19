@@ -24,6 +24,19 @@ if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut
 	}
 	unset($_POST['message']);
 }
+$bdd = new connexionBDD();
+$reponse = $bdd->getAllMsg();
+$msgCurrent="";
+$msgOther="";
+while ($donnees = $reponse->fetch())
+{
+	if(date('Y-m-d H:i:s')<$donnees['datedebut'])
+		$msgOther .= "<p>".$donnees['message']."</p>";
+	else if( date('Y-m-d H:i:s')>$donnees['datefin'])
+		continue;
+	else
+		$msgCurrent .= "<p>".$donnees['message']."</p>";
+}
 
 ?>
 <?php ob_start(); ?>
@@ -32,6 +45,10 @@ if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut
 </div>
 
 <div class="row">
+	<p>Actuellement affiché</p>
+	<?php echo $msgCurrent ?>
+	<p>Programmé pour plus tard</p>
+	<?php echo $msgOther ?>
 	<div class="col-xs-6 col-xs-offset-3">
 		<form Action ="messagerie.php" method ="post" role="form" act>
 			<div class="form-group">
