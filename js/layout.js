@@ -5,7 +5,17 @@ $(document).ready(function(){
 			$("#alertbox").fadeOut();
 		}, 5000);
 	}
-	$("#myModal").modal();
+	var $_GET = {};
+
+	document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+		function decode(s) {
+			return decodeURIComponent(s.split("+").join(" "));
+		}
+
+		$_GET[decode(arguments[1])] = decode(arguments[2]);
+	});
+	if($_GET['helper']==0)
+		$("#myModal").modal();
 });
 
 $(window).resize(function(){
