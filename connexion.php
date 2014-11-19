@@ -24,7 +24,8 @@ if(isset($_POST['type'])){
 		$type = "ACTION";
 		if($_POST['type']=="newvisitor"){
 			$conn = new connexionBDD();
-			$conn->ajouterClient($cli);
+			$cli = $conn->ajouterClient($cli);
+			$_SESSION['client']=serialize($cli);
 			$type = "ARRIVEE";
 		}else if($_POST['type']=="reconexion"){
 			$type = "RECONNEXION";
@@ -44,8 +45,6 @@ if(isset($_POST['type'])){
 
 		// // Fermeture du fichier 
 		// fclose ($fp);
-		
-		$_SESSION['client'] = serialize($cli);
 		header('Location: listeContact.php?');
 	}
 }

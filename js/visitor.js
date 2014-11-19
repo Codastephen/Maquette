@@ -5,6 +5,7 @@ $(document).ready(function(){
 			$("#alertbox").fadeOut();
 		}, 5000);
 	}
+	$("#myModal").modal();
 });
 
 $(window).resize(function(){
