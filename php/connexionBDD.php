@@ -87,14 +87,8 @@ class ConnexionBDD
 
 	function GenerateKey($length = 4) {
 		$key = '';
-		$type = mt_rand(0,1);
 		for($i = 0; $i < $length; $i ++) {
-			if($type==0){
-				$key .= chr(mt_rand(65, 90));
-			}else{
-				$key .= chr(mt_rand(48, 57));
-			}
-			$type = mt_rand(0,1);
+			$key .= chr(mt_rand(48, 57));
 		}
 		return $key;
 	}
