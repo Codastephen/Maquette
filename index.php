@@ -4,7 +4,20 @@ $titre = "Accueil";
 require_once("autoload.php");
 session_start();
 
+$bdd = new connexionBDD();
+$reponse = $bdd->getAllMsg();
+$msg = "Messages du jour : ";
+$first = true;
+while ($donnees = $reponse->fetch())
+{
+	if(!$first)
+		$msg .= " - ";
+	$msg .= $donnees['message'] ;
+	$first = false;
+}
+
 ob_start(); ?>
+
 <div class="row">
 	<div class="col-sm-2 no-padding border-white" role="tabpanel">
 		<ul id="myTab" class="nav nav-stacked" role="tablist">
@@ -49,7 +62,7 @@ ob_start(); ?>
 	<div class="col-sm-10 borderer">
 		<div class="row">
 			<div class="col-xs-12 btn-primary text-center" style="height:40px;padding-top:10px">
-				<marquee scrolldelay="60" scrollamount="3">Ce texte va défiler de la droite vers la gauche</marquee>
+				<marquee scrolldelay="60" scrollamount="3"><?php echo $msg ?></marquee>
 			</div>
 		</div>
 		<div id="rowlogo" class="row" style="margin-top:50px">

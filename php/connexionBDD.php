@@ -93,5 +93,20 @@ class ConnexionBDD
 		return $key;
 	}
 
+	public function addMsg($msg){
+		$req = $this->bdd->prepare('INSERT INTO Message(user, message,datedebut,datefin) VALUES(:user, :msg, :debut,:fin)');
+		$data = $req->execute(array(
+			'user' => $msg->_user,
+			'msg' => $msg->_msg,
+			'debut' => $msg->_dateDebut,
+			'fin' => $msg->_dateFin
+			));
+		return $data;
+	}
+
+	public function getAllMsg(){
+		$reponse = $this->bdd->query('SELECT * FROM Message ORDER BY id');
+		return $reponse;
+	}
 }
 ?>
