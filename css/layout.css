@@ -138,3 +138,7 @@ button.big{
 .alert{
 	border-radius: 0;
 }
+
+.upperCase{
+	text-transform: uppercase
+}
