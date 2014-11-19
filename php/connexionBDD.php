@@ -51,6 +51,18 @@ class ConnexionBDD
 			));
 	}
 
+	public function retirerClientWithCode($code)
+	{
+		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$code.'"');
+		if($reponse->rowCount()==0)
+			return false;
+		$req = $this->bdd->prepare('DELETE FROM visiteur WHERE code = :code');
+		$req->execute(array(
+			'code' => $code
+			));
+		return true;
+	}
+
 	public function afficherClient()
 	{
 		$reponse = $this->bdd->query('SELECT Nom, Societe FROM visiteur ORDER BY Nom');
@@ -59,6 +71,13 @@ class ConnexionBDD
 
 	public function getClient($client){
 		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE nom ="'.$client->_nomprenom.'" AND societe="'.$client->_societe.'" ORDER BY Nom');
+		$data = $reponse->fetch();
+		$client = Client::withCodeAndHour($data['Nom'],$data['Societe'],$data['HeureA'],$data['code']);
+		return $client;
+	}
+
+	public function getClientCode($code){
+		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$code.'"');
 		$data = $reponse->fetch();
 		$client = Client::withCodeAndHour($data['Nom'],$data['Societe'],$data['HeureA'],$data['code']);
 		return $client;
