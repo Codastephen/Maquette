@@ -10,14 +10,16 @@ if(!isset($_SESSION['user'])){
 }
 $user = unserialize($_SESSION['user']);
 if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut']) && isset($_POST['heurefin'])){
-	if(empty($_POST['message'])){ 
+	if(empty($_POST['message']) && !isset($_SESSION['infomsg']) && !isset($_SESSION['infotype']) ){ 
 			//Erreurs dans les champs
 		$_SESSION['infomsg'] = "Erreur, champs incomplet";
 		$_SESSION['infotype'] = "danger";
 		header('Location: messagerie.php');
 		exit();
 	}
-	$msg = new Message($user->_id,$_POST['message'],$_POST['date']." ".$_POST['heuredebut'],$_POST['date']." ".$_POST['heurefin']);
+	$msg = new Message($user->_id,$_POST['message'],
+				date('Y-m-d H:i',strtotime($_POST['date']." ".$_POST['heuredebut'])),
+				date('Y-m-d H:i',strtotime($_POST['date']." ".$_POST['heurefin'])));
 	$bdd= new ConnexionBDD();
 	$bdd->addMsg($msg);
 	if($bdd){
@@ -43,14 +45,14 @@ while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
 	else
 		$msgCurrent .= "<tr><td>".$donnees['user_name']."</td><td>".$donnees['message']."</td><td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td></tr>";
 	if($donnees['user_id']==$user->_id)
-		$mymsg .= "<tr>
-						<td><input class='texted' type='text' value='".$donnees['message']."' readonly='true' ondblclick='this.className = \"form-control\";this.readOnly=\"\";' onblur='this.className = \"texted\";this.readOnly=\"true\";savedata(".$donnees['id'].",this.value);'></td>
-						<td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td>
-						<td>
-							<a class='btn btn-success' role='group'>Modifier</a>
-  							<a class='btn btn-danger' role='group'>Supprimer</a>
-						</td>
-					</tr>";
+		$mymsg .= "<tr id='tr".$donnees['id']."'>
+	<td>".$donnees['message']."</td>
+	<td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td>
+	<td>
+	<a class='btn btn-success' role='group' onclick='prepareModal(\"tr".$donnees['id']."\")'>Modifier</a>
+	<a class='btn btn-danger' role='group' onclick='prepareDelModal(\"".$donnees['id']."\")'>Supprimer</a>
+	</td>
+	</tr>";
 }
 $msgCurrent.="</table>";
 $msgOther.="</table>";
@@ -64,6 +66,61 @@ $mymsg.="</table>";
 	<title><?= $titre ?></title>
 </head>
 <body>
+	<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Supprimer un message</h4>
+				</div>
+				<div class="modal-body">
+					Etes-vous sur?
+					<input type="hidden" id="modaldeleteid" value="">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+					<button type="button" class="btn btn-danger" onclick="deletemessage()">Supprimer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Modifier un message</h4>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" id="modalid" value="">
+					<div class="row">
+						<div class="form-group col-xs-12">
+							<label for="message">Message :</label>
+							<input type="text" class="form-control" id="modalmessage" name ="message" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-xs-3">
+							<label for="date">Date d'affichage :</label>
+							<input class="inputdate" id="modaldate" name="date" style="min-width:100%" type="date" value="<?php echo date('d-m-Y'); ?>"/>
+						</div>
+						<div class="form-group col-xs-3 col-xs-offset-1">
+							<label for="heuredebut">Heure de début :</label>
+							<input class="inputdate" id="modaldebut" name="heuredebut" style="min-width:100%" type="time" value="<?php echo date('H:i'); ?>"/>
+						</div>
+						<div class="form-group col-xs-3 col-xs-offset-1">
+							<label for="heurefin">Heure de fin :</label>
+							<input class="inputdate" id="modalfin" name="heurefin" style="min-width:100%" type="time" value="<?php echo date('H:i'); ?>"/>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+					<button type="button" class="btn btn-primary" onclick="savedata()">Enregistrer</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="container-fluid">
 		<?php 
 		if(isset($_SESSION['infomsg']) && isset($_SESSION['infotype'])){
@@ -120,7 +177,7 @@ $mymsg.="</table>";
 							</div>
 							<div class="form-group col-xs-3">
 								<label for="date">Date d'affichage :</label>
-								<input class="inputdate" name="date" style="min-width:100%" type="date" value="<?php echo date('Y-m-d'); ?>"/>
+								<input class="inputdate" name="date" style="min-width:100%" type="date" value="<?php echo date('d-m-Y'); ?>"/>
 							</div>
 							<div class="form-group col-xs-2">
 								<label for="heuredebut">Heure de début :</label>
@@ -130,8 +187,6 @@ $mymsg.="</table>";
 								<label for="heurefin">Heure de fin :</label>
 								<input class="inputdate" name="heurefin" style="min-width:100%" type="time" value="<?php echo date('H:i'); ?>"/>
 							</div>
-
-							<input type="hidden" name="type" value="admin">
 						</div>
 						<div class="col-xs-12">
 							<div class="col-xs-4 col-xs-offset-4">

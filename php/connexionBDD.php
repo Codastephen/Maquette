@@ -104,17 +104,24 @@ class ConnexionBDD
 		return $data;
 	}
 
-	public function updateMsg($id,$value){
-		$req = $this->bdd->prepare('UPDATE Message SET message = :value WHERE id = :id');
+	public function updateMsg($id,$value,$debut,$fin){
+		$req = $this->bdd->prepare('UPDATE Message SET message = :value,datedebut =:debut, datefin = :fin WHERE id = :id');
 		$data = $req->execute(array(
 			'value' => $value,
-			'id' => $id
+			'id' => $id,
+			'debut' => $debut,
+			'fin' => $fin
 			));
 		return $this->bdd->query("SELECT message FROM Message WHERE id = ".$id);
 	}
 
 	public function getAllMsg(){
 		$reponse = $this->bdd->query("SELECT m.id as id,m.message as message,m.datedebut as datedebut,m.datefin as datefin,u.id as user_id,u.name as user_name FROM Message m,user u WHERE u.id = m.user ORDER BY m.id");
+		return $reponse;
+	}
+
+	public function deleteMsg($id){
+		$reponse = $this->bdd->query("DELETE FROM Message WHERE id=".$id);
 		return $reponse;
 	}
 

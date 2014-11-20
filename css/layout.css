@@ -141,5 +141,9 @@ button.big{
 	background-color: transparent;
     border-width: 0;
     box-shadow: none;
-	width:100%;
+	margin-left:5px;
+}
+
+.texted-big{
+	width:90%;
 }
