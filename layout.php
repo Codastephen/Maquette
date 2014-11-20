@@ -24,5 +24,6 @@
 	<script src="./js/layout.js"></script>
 	<script src="./js/menu.js"></script>
 	<script src="./js/table.js"></script>
+	<script src="./js/timer.js"></script>
 </body>
 </html>
