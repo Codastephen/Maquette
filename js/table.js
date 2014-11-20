@@ -16,13 +16,13 @@ function handlertable(item){
 	if(scrolling){
 		scrolling = false;
 	}else{
-	$("table.tablevisitor tr").removeClass("success");
-	item.addClass('success');
-	$("table.tablevisitor tr").find("a").hide();
-	item.find("a").show();
-	$("table.tablevisitor tr").find("button").hide();
-	item.find("button").show();
-}
+		$("table.tablevisitor tr").removeClass("success");
+		item.addClass('success');
+		$("table.tablevisitor tr").find("a").hide();
+		item.find("a").show();
+		$("table.tablevisitor tr").find("button").hide();
+		item.find("button").show();
+	}
 }
 function resetTable(){
 	$("table.tablevisitor tr").removeClass("success");
@@ -58,13 +58,6 @@ function savedata(){
 	var fin=$("#modalfin").val();
 	var datedebut = format + " " + debut;
 	var datefin = format + " " + fin;
-
-	if(msg == null || msg =="")
-		return;
-	if(datedebut.indexOf("j") >= 0 || datedebut.indexOf("m") >= 0 || datedebut.indexOf("a") >= 0 || datedebut.indexOf("h") >= 0)
-		return;
-	if(datefin.indexOf("j") >= 0 || datefin.indexOf("m") >= 0 || datefin.indexOf("a") >= 0 || datefin.indexOf("h") >= 0)
-		return;
 
 	var scriptUrl = "updateMsg.php";
 
@@ -103,10 +96,24 @@ function deletemessage(){
 }
 
 $('input[type="date"]').bind('keypress', function (event) {
-    var regex = new RegExp("^[0-9]+$");
-    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-    if (!regex.test(key)) {
-       event.preventDefault();
-       return false;
-    }
+	var regex = new RegExp("^[0-9]+$");
+	var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	if (!regex.test(key)) {
+		event.preventDefault();
+		return false;
+	}
 });
+
+function validateInputDateTime(box){
+	var state = true;
+	$(box+" input").each(function(i){
+		if($(this).val() == null || $(this).val() =="")
+			state = false;
+		if($(this).val().indexOf("j") >= 0 || $(this).val().indexOf("m") >= 0 || $(this).val().indexOf("a") >= 0 || $(this).val().indexOf("h") >= 0)
+			state = false;
+	})
+	if(!state)
+		$(box+" input").addClass("error");
+	return state;
+
+}

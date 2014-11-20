@@ -6,8 +6,8 @@
 
 function validateDate($date, $format = 'd-m-Y H:i')
 {
-    $d = DateTime::createFromFormat($format, $date);
-    return $d && $d->format($format) == $date;
+	$d = DateTime::createFromFormat($format, $date);
+	return $d && $d->format($format) == $date;
 }
 
 $titre = "Messagerie interne";
@@ -18,7 +18,6 @@ if(!isset($_SESSION['user'])){
 $user = unserialize($_SESSION['user']);
 if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut']) && isset($_POST['heurefin'])){
 	if(empty($_POST['message']) && !isset($_SESSION['infomsg']) && !isset($_SESSION['infotype']) ){ 
-			//Erreurs dans les champs
 		$_SESSION['infomsg'] = "Erreur, champs incomplet";
 		$_SESSION['infotype'] = "danger";
 		header('Location: messagerie.php');
@@ -116,20 +115,20 @@ $mymsg.="</table>";
 					<div class="row">
 						<div class="form-group col-xs-12">
 							<p><b>Sélectionner l'horaire d'affichage</b> - <i>Astuce : Double-cliquez pour une aide</i></p>
-							<div class="input-group">
+							<div id="modaldivdate" class="input-group">
 								<span class="input-group-addon">Le</span>
-								<input required class="inputdate form-control" id="modaldate" style="min-width:60px" name="date" type="date"/>
+								<input required class="inputdate form-control" id="modaldate" style="min-width:60px" name="date" type="text" onfocus="this.className ='inputdate form-control' "/>
 								<span class="input-group-addon">de</span>
-								<input required class="inputdate form-control" id="modaldebut" style="min-width:110px" name="heuredebut" type="time"/>
+								<input required class="inputdate form-control" id="modaldebut" style="min-width:110px" name="heuredebut" type="text" onfocus="this.className ='inputdate form-control' "/>
 								<span class="input-group-addon">à</span>
-								<input required class="inputdate form-control" id="modalfin" style="min-width:110px" name="heurefin" type="time"/>
+								<input required class="inputdate form-control" id="modalfin" style="min-width:110px" name="heurefin" type="text" onfocus="this.className ='inputdate form-control' "/>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-					<button type="button" class="btn btn-primary" onclick="savedata()">Enregistrer</button>
+					<button type="button" class="btn btn-primary" onclick="if(validateInputDateTime('#modaldivdate')){savedata()}else{return false;}">Enregistrer</button>
 				</div>
 			</div>
 		</div>
@@ -190,22 +189,23 @@ $mymsg.="</table>";
 							</div>
 							<div class="form-group col-xs-7">
 								<p><b>Sélectionner l'horaire d'affichage</b> - <i>Astuce : Double-cliquez pour une aide</i></p>
-								<div class="input-group">
+								<div id="divDate" class="input-group">
 									<span class="input-group-addon">Le</span>
-									<input id="newdate" required class="inputdate form-control" style="min-width:150px" name="date" type="text"/>
+									<input id="newdate" required class="inputdate form-control" style="min-width:150px" name="date" type="text" onfocus="this.className ='inputdate form-control' "/>
 									<span class="input-group-addon">de</span>
-									<input id="newtimedebut" required class="inputdate form-control" style="min-width:100px" name="heuredebut"type="text"/>
+									<input id="newtimedebut" required class="inputdate form-control" style="min-width:100px" name="heuredebut"type="text" onfocus="this.className ='inputdate form-control' "/>
 									<span class="input-group-addon">à</span>
-									<input id="newtimefin" required class="inputdate form-control" style="min-width:100px" name="heurefin" type="text"/>
+									<input id="newtimefin" required class="inputdate form-control" style="min-width:100px" name="heurefin" type="text" onfocus="this.className ='inputdate form-control' "/>
 								</div>
 							</div>
-						</div>
-						<div class="col-xs-12">
-							<div class="col-xs-4 col-xs-offset-4">
-								<button type='submit' class='btn btn-success btn-lg ' style="width:100%">Valider</button>
+
+							<div class="col-xs-12">
+								<div class="col-xs-4 col-xs-offset-4">
+									<button type='submit' class='btn btn-success btn-lg ' style="width:100%" onclick="return validateInputDateTime('#divDate');">Valider</button>
+								</div>
 							</div>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 				<div class="tab-content">
 					<br/>
@@ -227,8 +227,9 @@ $mymsg.="</table>";
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- <script src="./js/jquery.mobile-1.4.5.min.js"></script> -->
 	<script src="./js/bootstrap.js"></script>

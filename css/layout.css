@@ -148,3 +148,9 @@ button.big{
 .input-group .form-control{
 	z-index: 0;
 }
+
+input.error{
+	outline: none;
+	border-color: #d43f3a;
+    box-shadow: 0 0 10px #d43f3a;
+}
