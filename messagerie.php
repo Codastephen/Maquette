@@ -5,8 +5,6 @@
 
 $titre = "Messagerie interne";
 if(!isset($_SESSION['user'])){
-	$_SESSION['infomsg'] = "Erreur, user incorrect";
-	$_SESSION['infotype'] = "danger";
 	header('Location: connexionmessagerie.php');
 	exit();
 }
@@ -33,19 +31,30 @@ if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut
 }
 $bdd = new connexionBDD();
 $reponse = $bdd->getAllMsg();
-$msgCurrent='<table class="table table-striped"><col width="60%"><col width="40%">';
-$msgOther='<table class="table table-striped"><col width="60%"><col width="40%">';
-while ($donnees = $reponse->fetch())
+$msgCurrent='<table class="table table-striped"><col width="20%"><col width="50%"><col width="30%">';
+$msgOther='<table class="table table-striped"><col width="20%"><col width="50%"><col width="30%">';
+$mymsg='<table class="table table-striped"><col width="50%"><col width="30%"><col width="20%">';
+while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
 {
 	if(date('Y-m-d H:i:s')<$donnees['datedebut'])
-		$msgOther .= "<tr><td>".$donnees['message']."</td><td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td></tr>";
+		$msgOther .= "<tr><td>".$donnees['user_name']."</td><td>".$donnees['message']."</td><td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td></tr>";
 	else if( date('Y-m-d H:i:s')>$donnees['datefin'])
 		continue;
 	else
-		$msgCurrent .= "<tr><td>".$donnees['message']."</td><td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td></tr>";
+		$msgCurrent .= "<tr><td>".$donnees['user_name']."</td><td>".$donnees['message']."</td><td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td></tr>";
+	if($donnees['user_id']==$user->_id)
+		$mymsg .= "<tr>
+						<td><input class='texted' type='text' value='".$donnees['message']."' readonly='true' ondblclick='this.className = \"form-control\";this.readOnly=\"\";' onblur='this.className = \"texted\";this.readOnly=\"true\";savedata(".$donnees['id'].",this.value);'></td>
+						<td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td>
+						<td>
+							<a class='btn btn-success' role='group'>Modifier</a>
+  							<a class='btn btn-danger' role='group'>Supprimer</a>
+						</td>
+					</tr>";
 }
 $msgCurrent.="</table>";
 $msgOther.="</table>";
+$mymsg.="</table>";
 ?>
 
 <!DOCTYPE html>
@@ -72,17 +81,25 @@ $msgOther.="</table>";
 				<ul id="myTab" class="nav nav-stacked" role="tablist">
 					<li role="presentation" class="active">
 						<a href="#listcurrent" aria-controls="list" role="tab" data-toggle="tab">
-							<div class="col-xs-12 wrapper-img-admin text-center active">
+							<div class="col-xs-12 wrapper-img-user text-center active">
 								<img src="./img/people_white.PNG" class="img-responsive">
-								<h3>Messages en cours <?php echo $user->_id ?></h3>
+								<h3>Messages en cours</h3>
 							</div>
 						</a>
 					</li>
 					<li role="presentation">
 						<a href="#listnext" aria-controls="log" role="tab" data-toggle="tab">
-							<div class="col-xs-12 wrapper-img-admin text-center">
+							<div class="col-xs-12 wrapper-img-user text-center">
 								<img src="./img/people_white.PNG" class="img-responsive">
 								<h3>Messages pour plus tard</h3>
+							</div>
+						</a>
+					</li>
+					<li role="presentation">
+						<a href="#mymsg" aria-controls="list" role="tab" data-toggle="tab">
+							<div class="col-xs-12 wrapper-img-user text-center">
+								<img src="./img/people_white.PNG" class="img-responsive">
+								<h3>Gestion de vos messages</h3>
 							</div>
 						</a>
 					</li>
@@ -133,6 +150,11 @@ $msgOther.="</table>";
 					<div role="tabpanel" class="tab-pane fade" id="listnext">
 						<div class="tableresize" style="overflow-y:auto">
 							<?php echo $msgOther ?>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane fade" id="mymsg">
+						<div class="tableresize" style="overflow-y:auto">
+							<?php echo $mymsg ?>
 						</div>
 					</div>
 				</div>

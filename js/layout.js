@@ -16,7 +16,7 @@ $(document).ready(function(){
 	});
 	if($_GET['helper']==0)
 		$("#myModal").modal();
-
+	
 	repeatEvery(getMsg, 60 * 1000);
 });
 
@@ -46,6 +46,7 @@ function repeatEvery(func, interval) {
 function size(){
 	$(".wrapper-img").css("height",Math.ceil($(window).height()/4));
 	$(".wrapper-img-admin").css("height",Math.ceil($(window).height()/2));
+	$(".wrapper-img-user").css("height",Math.ceil($(window).height()/3));
 	$(".top").css("height",Math.ceil($(window).height()/4));
 	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
 }

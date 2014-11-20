@@ -35,3 +35,16 @@ function showValidate(){
 	$(this).next().fadeIn();
 	$(this).fadeOut();
 }
+
+function savedata(idmsg,valuemsg){
+	var result = null;
+	var scriptUrl = "updateMsg.php";
+
+	$.ajax({
+		url: scriptUrl,
+		data: { id: idmsg, value : valuemsg},
+		type: 'post',
+		dataType: 'html',
+		async: false
+	});
+}
