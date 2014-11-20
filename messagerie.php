@@ -114,7 +114,7 @@ $mymsg.="</table>";
 					</div>
 					<div class="row">
 						<div class="form-group col-xs-12">
-							<p><b>Sélectionner l'horaire d'affichage</b> - <i>Astuce : Double-cliquez pour une aide</i></p>
+							<p><b>Sélectionner l'horaire d'affichage</b></p>
 							<div id="modaldivdate" class="input-group">
 								<span class="input-group-addon">Le</span>
 								<input required class="inputdate form-control" id="modaldate" style="min-width:60px" name="date" type="text" onfocus="this.className ='inputdate form-control' "/>
@@ -128,7 +128,7 @@ $mymsg.="</table>";
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-					<button type="button" class="btn btn-primary" onclick="if(validateInputDateTime('#modaldivdate')){savedata()}else{return false;}">Enregistrer</button>
+					<button type="button" class="btn btn-success" onclick="if(validateInputDateTime('#modaldivdate')){savedata()}else{return false;}">Enregistrer</button>
 				</div>
 			</div>
 		</div>
@@ -188,7 +188,7 @@ $mymsg.="</table>";
 								<input type="text" class="form-control" id="message" name ="message" placeholder="Votre message" required>
 							</div>
 							<div class="form-group col-xs-7">
-								<p><b>Sélectionner l'horaire d'affichage</b> - <i>Astuce : Double-cliquez pour une aide</i></p>
+								<p><b>Sélectionner l'horaire d'affichage</b></p>
 								<div id="divDate" class="input-group">
 									<span class="input-group-addon">Le</span>
 									<input id="newdate" required class="inputdate form-control" style="min-width:150px" name="date" type="text" onfocus="this.className ='inputdate form-control' "/>
