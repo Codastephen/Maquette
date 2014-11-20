@@ -64,8 +64,8 @@ ob_start(); ?>
 			</div>
 			<div class="col-xs-2 ">
 				<a href="#aide" aria-controls="signal" role="tab" data-toggle="tab">
-					<div class="col-xs-12 wrapper-img text-center">
-						<img src="./img/people_white.PNG" class="img-responsive">
+					<div class="col-xs-8 wrapper-img text-center">
+						<img src="./img/help_white.PNG" class="img-responsive">
 						<h3>Aide</h3>
 					</div>
 				</a>
