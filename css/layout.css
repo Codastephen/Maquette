@@ -144,3 +144,7 @@ button.big{
 .texted-big{
 	width:90%;
 }
+
+.input-group .form-control{
+	z-index: 0;
+}
