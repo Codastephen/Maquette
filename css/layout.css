@@ -97,9 +97,6 @@ img + h3{
 .btn-hidden{
 	display:none;
 }
-tr{
-	height: 70px;
-}
 
 .table > thead > tr > td.no-padding, .table > tbody > tr > td.no-padding{
 	padding: 0 0;

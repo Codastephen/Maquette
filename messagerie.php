@@ -3,6 +3,13 @@
 	session_start();
 } 
 
+
+function validateDate($date, $format = 'd-m-Y H:i')
+{
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) == $date;
+}
+
 $titre = "Messagerie interne";
 if(!isset($_SESSION['user'])){
 	header('Location: connexionmessagerie.php');
@@ -17,9 +24,16 @@ if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut
 		header('Location: messagerie.php');
 		exit();
 	}
+	if(!validateDate($_POST['date']." ".$_POST['heuredebut']) || !validateDate($_POST['date']." ".$_POST['heurefin']) ){
+		$_SESSION['infomsg'] = "Erreur dans les dates";
+		$_SESSION['infotype'] = "danger";
+		header('Location: messagerie.php');
+		exit();
+	}
+
 	$msg = new Message($user->_id,$_POST['message'],
-				date('Y-m-d H:i',strtotime($_POST['date']." ".$_POST['heuredebut'])),
-				date('Y-m-d H:i',strtotime($_POST['date']." ".$_POST['heurefin'])));
+		date('Y-m-d H:i',strtotime($_POST['date']." ".$_POST['heuredebut'])),
+		date('Y-m-d H:i',strtotime($_POST['date']." ".$_POST['heurefin'])));
 	$bdd= new ConnexionBDD();
 	$bdd->addMsg($msg);
 	if($bdd){
@@ -100,17 +114,16 @@ $mymsg.="</table>";
 						</div>
 					</div>
 					<div class="row">
-						<div class="form-group col-xs-3">
-							<label for="date">Date d'affichage :</label>
-							<input class="inputdate" id="modaldate" name="date" style="min-width:100%" type="date" value="<?php echo date('d-m-Y'); ?>"/>
-						</div>
-						<div class="form-group col-xs-3 col-xs-offset-1">
-							<label for="heuredebut">Heure de début :</label>
-							<input class="inputdate" id="modaldebut" name="heuredebut" style="min-width:100%" type="time" value="<?php echo date('H:i'); ?>"/>
-						</div>
-						<div class="form-group col-xs-3 col-xs-offset-1">
-							<label for="heurefin">Heure de fin :</label>
-							<input class="inputdate" id="modalfin" name="heurefin" style="min-width:100%" type="time" value="<?php echo date('H:i'); ?>"/>
+						<div class="form-group col-xs-12">
+							<p><b>Sélectionner l'horaire d'affichage</b> - <i>Astuce : Double-cliquez pour une aide</i></p>
+							<div class="input-group">
+								<span class="input-group-addon">Le</span>
+								<input required class="inputdate form-control" id="modaldate" style="min-width:60px" name="date" type="date"/>
+								<span class="input-group-addon">de</span>
+								<input required class="inputdate form-control" id="modaldebut" style="min-width:110px" name="heuredebut" type="time"/>
+								<span class="input-group-addon">à</span>
+								<input required class="inputdate form-control" id="modalfin" style="min-width:110px" name="heurefin" type="time"/>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -169,23 +182,22 @@ $mymsg.="</table>";
 							<img src="./img/designal.png" class="img-responsive"/>
 						</a>
 					</div>
-					<div class="col-xs-12">
+					<div class="col-xs-12" style="margin-top:10px">
 						<form Action ="messagerie.php" method ="post" role="form" act>
 							<div class="form-group col-xs-5">
-								<label for="message">Message :</label>
-								<input type="text" class="form-control" id="message" name ="message" required>
+								<p><b>Rentrez ici votre message</b></p>
+								<input type="text" class="form-control" id="message" name ="message" placeholder="Votre message" required>
 							</div>
-							<div class="form-group col-xs-3">
-								<label for="date">Date d'affichage :</label>
-								<input class="inputdate" name="date" style="min-width:100%" type="date" value="<?php echo date('d-m-Y'); ?>"/>
-							</div>
-							<div class="form-group col-xs-2">
-								<label for="heuredebut">Heure de début :</label>
-								<input class="inputdate" name="heuredebut" style="min-width:100%" type="time" value="<?php echo date('H:i'); ?>"/>
-							</div>
-							<div class="form-group col-xs-2">
-								<label for="heurefin">Heure de fin :</label>
-								<input class="inputdate" name="heurefin" style="min-width:100%" type="time" value="<?php echo date('H:i'); ?>"/>
+							<div class="form-group col-xs-7">
+								<p><b>Sélectionner l'horaire d'affichage</b> - <i>Astuce : Double-cliquez pour une aide</i></p>
+								<div class="input-group">
+									<span class="input-group-addon">Le</span>
+									<input id="newdate" required class="inputdate form-control" style="min-width:150px" name="date" type="text"/>
+									<span class="input-group-addon">de</span>
+									<input id="newtimedebut" required class="inputdate form-control" style="min-width:100px" name="heuredebut"type="text"/>
+									<span class="input-group-addon">à</span>
+									<input id="newtimefin" required class="inputdate form-control" style="min-width:100px" name="heurefin" type="text"/>
+								</div>
 							</div>
 						</div>
 						<div class="col-xs-12">
@@ -223,5 +235,7 @@ $mymsg.="</table>";
 	<script src="./js/layout.js"></script>
 	<script src="./js/menu.js"></script>
 	<script src="./js/table.js"></script>
+	<script src="js/input.js"></script>
+	<script src="js/mask.js"></script>
 </body>
 </html>

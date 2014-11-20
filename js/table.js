@@ -50,12 +50,21 @@ function savedata(){
 	var id=$("#modalid").val();
 	var msg=$("#modalmessage").val();
 	var date=$("#modaldate").val();
-	datetab = date.split("-");
+	
+	var datetab = date.split("-");
 	var format = datetab[2]+"-"+datetab[1]+"-"+datetab[0];
+
 	var debut=$("#modaldebut").val();
 	var fin=$("#modalfin").val();
 	var datedebut = format + " " + debut;
 	var datefin = format + " " + fin;
+
+	if(msg == null || msg =="")
+		return;
+	if(datedebut.indexOf("j") >= 0 || datedebut.indexOf("m") >= 0 || datedebut.indexOf("a") >= 0 || datedebut.indexOf("h") >= 0)
+		return;
+	if(datefin.indexOf("j") >= 0 || datefin.indexOf("m") >= 0 || datefin.indexOf("a") >= 0 || datefin.indexOf("h") >= 0)
+		return;
 
 	var scriptUrl = "updateMsg.php";
 
@@ -92,3 +101,12 @@ function deletemessage(){
 		}
 	});
 }
+
+$('input[type="date"]').bind('keypress', function (event) {
+    var regex = new RegExp("^[0-9]+$");
+    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+       event.preventDefault();
+       return false;
+    }
+});
