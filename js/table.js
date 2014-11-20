@@ -45,6 +45,12 @@ function savedata(idmsg,valuemsg){
 		data: { id: idmsg, value : valuemsg},
 		type: 'post',
 		dataType: 'html',
-		async: false
+		async: false,
+		success: function(data){
+			alert('Message bien mis à jour');
+		},
+		error:function(data){
+			alert('Erreur');
+		}
 	});
 }
