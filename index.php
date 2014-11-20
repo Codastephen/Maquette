@@ -53,13 +53,29 @@ ob_start(); ?>
 			<!-- <div id="defilor" class="col-xs-12 text-center marquee">
 			</div> -->
 		</div>
+				
+		
 		<div id="rowlogo" class="row" style="margin-top:50px">
 			<div class="col-xs-8 col-xs-offset-2">
 				<a href="index.php">
-					<img src="./img/designal.png" class="img-responsive"/>
+					<img src="./img/designal.png" class="img-responsive"/>								
+				</a>	
+		
+			</div>
+			<div class="col-xs-2 ">
+				<a href="#aide" aria-controls="signal" role="tab" data-toggle="tab">
+					<div class="col-xs-12 wrapper-img text-center">
+						<img src="./img/people_white.PNG" class="img-responsive">
+						<h3>Aide</h3>
+					</div>
 				</a>
 			</div>
 		</div>
+
+
+		
+		
+		
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade" id="home">
 				<?php include 'home.php';?>

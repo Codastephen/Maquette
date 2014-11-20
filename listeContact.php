@@ -35,7 +35,7 @@ $client = unserialize($_SESSION['client']);
 			</div>
 		</div>
 		<div class="row">
-			<p>Connecté en tant que <b><?php echo  $client->_nomprenom ?></b> de la société <b><?php echo $client->_societe ?></b> arrivé à <i><?php echo $client->_hArrive?></i> avec le code <?php echo $client->_code ?></p>
+			<p>Connecté en tant que <b><?php echo  $client->_nomprenom ?></b>  arrivé à <i><?php echo $client->_hArrive?></i> avec le code <?php echo $client->_code ?></p>
 			<div class="col-sm-6">
 				<div class="block-update-card status">
 					<div class="v-status present"></div>
