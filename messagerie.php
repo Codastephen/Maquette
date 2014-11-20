@@ -27,8 +27,8 @@ if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut
 }
 $bdd = new connexionBDD();
 $reponse = $bdd->getAllMsg();
-$msgCurrent='<table class="table table-striped"><col width="150"><col width="80">';
-$msgOther='<table class="table table-striped"><col width="150"><col width="80">';
+$msgCurrent='<table class="table table-striped"><col width="60%"><col width="40%">';
+$msgOther='<table class="table table-striped"><col width="60%"><col width="40%">';
 while ($donnees = $reponse->fetch())
 {
 	if(date('Y-m-d H:i:s')<$donnees['datedebut'])
