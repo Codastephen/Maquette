@@ -108,5 +108,28 @@ class ConnexionBDD
 		$reponse = $this->bdd->query('SELECT * FROM Message ORDER BY id');
 		return $reponse;
 	}
+
+	public function addUser($username){
+		$reponse = $this->bdd->query('SELECT * FROM user WHERE name ="'.$username.'"');
+		if($reponse->rowCount()>1)
+			return false;
+		else if($reponse->rowCount()==1){
+			$data = $reponse->fetch();
+			return new User($data['id'],$data['name']);
+		}else{
+			$req = $this->bdd->prepare('INSERT INTO User(name) VALUES(:name)');
+			$data = $req->execute(array(
+				'name' => $username
+				));
+			$reponse = $this->bdd->query('SELECT * FROM user WHERE name ="'.$username.'"');
+			if($reponse->rowCount()!=1)
+				return false;
+			else{
+				$data = $reponse->fetch();
+				return new User($data['id'],$data['name']);
+			}
+		}
+	}
+
 }
 ?>

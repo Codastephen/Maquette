@@ -4,7 +4,13 @@
 } 
 
 $titre = "Messagerie interne";
-
+if(!isset($_SESSION['user'])){
+	$_SESSION['infomsg'] = "Erreur, user incorrect";
+	$_SESSION['infotype'] = "danger";
+	header('Location: connexionmessagerie.php');
+	exit();
+}
+$user = unserialize($_SESSION['user']);
 if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut']) && isset($_POST['heurefin'])){
 	if(empty($_POST['message'])){ 
 			//Erreurs dans les champs
@@ -13,7 +19,7 @@ if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut
 		header('Location: messagerie.php');
 		exit();
 	}
-	$msg = new Message(0,$_POST['message'],$_POST['date']." ".$_POST['heuredebut'],$_POST['date']." ".$_POST['heurefin']);
+	$msg = new Message($user->_id,$_POST['message'],$_POST['date']." ".$_POST['heuredebut'],$_POST['date']." ".$_POST['heurefin']);
 	$bdd= new ConnexionBDD();
 	$bdd->addMsg($msg);
 	if($bdd){
@@ -40,7 +46,6 @@ while ($donnees = $reponse->fetch())
 }
 $msgCurrent.="</table>";
 $msgOther.="</table>";
-
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +58,7 @@ $msgOther.="</table>";
 	<div class="container-fluid">
 		<?php 
 		if(isset($_SESSION['infomsg']) && isset($_SESSION['infotype'])){
-			echo '<div class="row"><div id="alertbox" class="alert alert-'.$_SESSION['infotype'].' alert-dismissible fade in col-xs-10 col-xs-offset-2" role="alert">
+			echo '<div class="row"><div id="alertbox" class="alert alert-'.$_SESSION['infotype'].' alert-dismissible fade in col-xs-12" role="alert">
 			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>'
 			.$_SESSION['infomsg'].'</div>
 			</div>';
@@ -61,6 +66,7 @@ $msgOther.="</table>";
 			unset($_SESSION['infotype']);
 		}	
 		?>
+
 		<div class="row">
 			<div class="col-sm-2 no-padding border-white" role="tabpanel">
 				<ul id="myTab" class="nav nav-stacked" role="tablist">
@@ -68,7 +74,7 @@ $msgOther.="</table>";
 						<a href="#listcurrent" aria-controls="list" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img-admin text-center active">
 								<img src="./img/people_white.PNG" class="img-responsive">
-								<h3>Messages en cours</h3>
+								<h3>Messages en cours <?php echo $user->_id ?></h3>
 							</div>
 						</a>
 					</li>
