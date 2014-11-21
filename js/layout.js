@@ -30,3 +30,10 @@ function size(){
 	$(".top").css("height",Math.ceil($(window).height()/4));
 	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
 }
+
+$("#helper").on("touchend",function (e) {
+  if($(this).css("height")=="50px")
+  	$(this).css("height","250px");
+  else
+  	$(this).css("height","50px");
+});

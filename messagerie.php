@@ -109,7 +109,7 @@ $mymsg.="</table>";
 					<div class="row">
 						<div class="form-group col-xs-12">
 							<label for="message">Message :</label>
-							<input type="text" class="form-control" id="modalmessage" name ="message" required>
+							<input type="text" class="form-control" id="modalmessage" name ="message" maxlength="100" required>
 						</div>
 					</div>
 					<div class="row">
@@ -185,7 +185,7 @@ $mymsg.="</table>";
 						<form Action ="messagerie.php" method ="post" role="form" act>
 							<div class="form-group col-xs-5">
 								<p><b>Rentrez ici votre message</b></p>
-								<input type="text" class="form-control" id="message" name ="message" placeholder="Votre message" required>
+								<input type="text" maxlength="70" class="form-control" id="message" name ="message" placeholder="Votre message" required>
 							</div>
 							<div class="form-group col-xs-7">
 								<p><b>Sélectionner l'horaire d'affichage</b></p>

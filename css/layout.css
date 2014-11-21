@@ -132,12 +132,13 @@ button.big{
 	color:white;
 	height:50px;
 	padding-top:15px;
+	width:1600px;
 }
 
 .texted{
 	background-color: transparent;
-    border-width: 0;
-    box-shadow: none;
+	border-width: 0;
+	box-shadow: none;
 	margin-left:5px;
 }
 
@@ -152,5 +153,32 @@ button.big{
 input.error{
 	outline: none;
 	border-color: #d43f3a;
-    box-shadow: 0 0 10px #d43f3a;
+	box-shadow: 0 0 10px #d43f3a;
+}
+#helper{
+	position:absolute;
+	color:#2c3e50;
+	bottom:0;
+	right:0;
+	width:250px;
+	height:50px;
+	background-color:white;
+	border-top-left-radius:4px;
+	border-top: 1px solid #2c3e50;
+	border-left: 1px solid #2c3e50;
+	transition:0.5s ease;
+	padding-top:15px;
+	overflow:hidden;
+}
+
+#content{
+	margin-top:50px;
+}
+
+#helperA{
+	color:#2c3e50;
+}
+
+#helperA:hover{
+	text-decoration:none;
 }

@@ -48,47 +48,72 @@ ob_start(); ?>
 	</div>
 	<div class="col-sm-10 borderer">
 		<div class="row">
-			<marquee id="defilor" direction="left" width="100%" scrolldelay="80" scrollamount="3" scrolldelay="0">
-			</marquee>
-			<!-- <div id="defilor" class="col-xs-12 text-center marquee">
-			</div> -->
-		</div>
+			<!-- <div id="defilor2" class="col-xs-12">
+				<div class="marquee">
+					<ul>
+						<li>
+							<div class="imgs">
+								<p>toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu tititoto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi</p>
+							</div>
+						</li>
+						<li>
+							<div class="imgs">
+																
+								<p>toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu tititoto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi toto tutu titi</p>
+
+							</div>
+						</li>
+					</ul>
+				</div>
 				
-		
-		<div id="rowlogo" class="row" style="margin-top:50px">
-			<div class="col-xs-8 col-xs-offset-2">
-				<a href="index.php">
-					<img src="./img/designal.png" class="img-responsive"/>								
-				</a>	
-		
-			</div>
-			<div class="col-xs-2 ">
-				<a href="#aide" aria-controls="signal" role="tab" data-toggle="tab">
-					<div class="col-xs-8 wrapper-img text-center">
-						<img src="./img/help_white.PNG" class="img-responsive">
-						<h3>Aide</h3>
-					</div>
-				</a>
-			</div>
+			</div> -->
+			<marquee id="defilor" direction="left" scrolldelay="80" scrollamount="5" scrolldelay="0">
+		</marquee>
+			<!-- <div id="defilor" class="col-xs-12 text-center marquee">
+		</div> -->
+	</div>
+
+
+	<div id="rowlogo" class="row" style="margin-top:50px">
+		<div class="col-xs-8 col-xs-offset-2">
+			<a href="index.php">
+				<img src="./img/designal.png" class="img-responsive"/>								
+			</a>	
+
 		</div>
+	</div>
 
-
-		
-		
-		
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane fade" id="home">
-				<?php include 'home.php';?>
-			</div>
-			<div role="tabpanel" class="tab-pane fade" id="reconnexion">
-				<?php include 'connexion.php';?>
-			</div>
-			<div role="tabpanel" class="tab-pane fade" id="leave">
-				<?php include 'deconnexion.php';?>
-			</div>
-			<div role="tabpanel" class="tab-pane fade" id="map">
-				<?php include 'plan.php';?>
-			</div>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane fade" id="home">
+			<?php include 'home.php';?>
+		</div>
+		<div role="tabpanel" class="tab-pane fade" id="reconnexion">
+			<?php include 'connexion.php';?>
+		</div>
+		<div role="tabpanel" class="tab-pane fade" id="leave">
+			<?php include 'deconnexion.php';?>
+		</div>
+		<div role="tabpanel" class="tab-pane fade" id="map">
+			<?php include 'plan.php';?>
+		</div>
+	</div>
+</div>
+<div id="helper" class="text-center">
+	<div class="row">
+		<div class="col-xs-12">
+			<p>Besoin d'aide?</p>
+		</div>
+	</div>
+	<div class="row">
+		<div id="content" class="col-xs-12">
+			<a id="helperA" href="#home">
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-4">
+						<img src="./img/help_black.PNG" class="img-responsive">
+					</div>
+				</div>
+				<h3>Appel à l'aide</h3>
+			</a>
 		</div>
 	</div>
 </div>
