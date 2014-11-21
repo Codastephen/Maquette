@@ -10,11 +10,8 @@ while ($donnees = $reponse->fetch())
 {
 	if(date('Y-m-d H:i:s')<$donnees['datedebut'] || date('Y-m-d H:i:s')>$donnees['datefin'])
 		continue;
-
-	if(!$first)
-		$msg.=" - ";
 	$msg .= $donnees['message'];
-	$first = false;
+	$msg .= "<span style='display:inline-block;width:50px'></span>";
 }
 echo $msg."</p>";
 ?>

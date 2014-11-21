@@ -191,11 +191,11 @@ $mymsg.="</table>";
 								<p><b>Sélectionner l'horaire d'affichage</b></p>
 								<div id="divDate" class="input-group">
 									<span class="input-group-addon">Le</span>
-									<input id="newdate" required class="inputdate form-control" style="min-width:150px" name="date" type="text" onfocus="this.className ='inputdate form-control' "/>
+									<input id="newdate" required class="inputdate form-control" value="<?php echo date('d-m-Y')?>" style="min-width:150px" name="date" type="text" onfocus="this.className ='inputdate form-control' "/>
 									<span class="input-group-addon">de</span>
-									<input id="newtimedebut" required class="inputdate form-control" style="min-width:100px" name="heuredebut"type="text" onfocus="this.className ='inputdate form-control' "/>
+									<input id="newtimedebut" required class="inputdate form-control" value="<?php echo date('H:i')?>" style="min-width:100px" name="heuredebut"type="text" onfocus="this.className ='inputdate form-control' "/>
 									<span class="input-group-addon">à</span>
-									<input id="newtimefin" required class="inputdate form-control" style="min-width:100px" name="heurefin" type="text" onfocus="this.className ='inputdate form-control' "/>
+									<input id="newtimefin" required class="inputdate form-control" value="<?php echo date('H:i')?>" style="min-width:100px" name="heurefin" type="text" onfocus="this.className ='inputdate form-control' "/>
 								</div>
 							</div>
 
