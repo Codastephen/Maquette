@@ -4,7 +4,7 @@ session_start();
 
 $bdd = new connexionBDD();
 $reponse = $bdd->getAllMsg();
-$msg="<p>";
+$msg="<span>";
 $first=true;
 while ($donnees = $reponse->fetch())
 {
@@ -13,5 +13,5 @@ while ($donnees = $reponse->fetch())
 	$msg .= $donnees['message'];
 	$msg .= "<span style='display:inline-block;width:30px'></span>";
 }
-echo $msg."</p>";
+echo $msg."</span>";
 ?>

@@ -25,5 +25,7 @@
 	<script src="./js/menu.js"></script>
 	<script src="./js/table.js"></script>
 	<script src="./js/timer.js"></script>
+	<script type='text/javascript' src='//cdn.jsdelivr.net/jquery.marquee/1.3.1/jquery.marquee.min.js'></script>
+	<script> </script>
 </body>
 </html>

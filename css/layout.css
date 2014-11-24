@@ -132,7 +132,7 @@ button.big{
 	color:white;
 	height:50px;
 	padding-top:15px;
-	width:1600px;
+	overflow: hidden;
 }
 
 .texted{
@@ -181,4 +181,11 @@ input.error{
 
 #helperA:hover{
 	text-decoration:none;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background: #ccc;
 }

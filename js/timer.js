@@ -1,5 +1,6 @@
 $(document).ready(function(){	
 	repeatEvery(getMsg, 60 * 1000);
+
 });
 
 function repeatEvery(func, interval) {
@@ -33,5 +34,5 @@ function getMsg()
 		} 
 	});
 	$("#defilor").html(result);
-	$("#defilor").click();
+	$('#defilor').marquee();
 }
