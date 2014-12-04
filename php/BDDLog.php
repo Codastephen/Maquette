@@ -37,7 +37,7 @@ class BDDLog
 		}
 		
 		
-		$reponse = $bdd->query('SELECT * FROM log ORDER BY log.date');
+		$reponse = $bdd->query('SELECT * FROM log ORDER BY log.date DESC');
 		return $reponse;
 	}	
 }

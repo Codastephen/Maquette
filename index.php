@@ -67,7 +67,7 @@ ob_start(); ?>
 				<?php include 'home.php';?>
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="reconnexion">
-				<?php include 'connexion.php';?>
+				<?php include 'reconnexion.php' ?>
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="leave">
 				<?php include 'deconnexion.php';?>
@@ -96,8 +96,9 @@ ob_start(); ?>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<?php $contenu = ob_get_clean(); ?>
+<?php $contenu = ob_get_clean(); ?>
 
 
-	<?php require 'layout.php'; ?>
+<?php require 'layout.php'; ?>
