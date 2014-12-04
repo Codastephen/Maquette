@@ -15,7 +15,7 @@ $(document).ready(function(){
 		$_GET[decode(arguments[1])] = decode(arguments[2]);
 	});
 	if($_GET['helper']==0){
-		//$("#myModal").modal();
+		$("#myModal").modal();
 	}
 	
 });
