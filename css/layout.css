@@ -67,11 +67,15 @@ img + h3{
 	border-bottom: solid 1px white;
 }
 
-.wrapper-img-admin,.wrapper-img,.wrapper-img-user{
+.wrapper-img-admin,.wrapper-img,.wrapper-img-user,.wrapper-img-danger{
 	background-color:#18bc9c;
 	color:white;
 	border-top: solid 1px #18bc9c;
 	border-bottom: solid 1px #18bc9c;
+}
+
+.wrapper-img-danger{
+	background-color:red;
 }
 
 
@@ -188,4 +192,16 @@ input.error{
   overflow: hidden;
   border: 1px solid #ccc;
   background: #ccc;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus{
+	z-index: 0;
+}
+
+ul.padded > li >a{
+	border-radius : 0px;
+	padding-top:10px;
+	padding-bottom: 10px;
+	padding-right : 5px;
+	padding-left : 5px;
 }

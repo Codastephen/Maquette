@@ -19,11 +19,12 @@ class ConnexionBDD
 	public function ajouterClient($client)
 	{
 		$req = $this->bdd->prepare('INSERT INTO visiteur(nom, societe,heureA,code) VALUES(:nom, :societe, :heureA,:code)');
+		$client->_code = $this->GenerateKey();
 		$data = $req->execute(array(
 			'nom' => $client->_nomprenom,
 			'societe' => $client->_societe,
 			'heureA' => date('Y-m-d H:i:s',$client->_hArrive),
-			'code' => $this->GenerateKey()
+			'code' => $client->_code
 			));
 		if($data){
 			return $this->getClient($client);
@@ -44,10 +45,9 @@ class ConnexionBDD
 
 	public function retirerClient($client)
 	{
-		$req = $this->bdd->prepare('DELETE FROM visiteur WHERE nom = :nom AND societe = :societe ');
+		$req = $this->bdd->prepare('DELETE FROM visiteur WHERE code = :code');
 		$req->execute(array(
-			'nom' => $client->_nomprenom,
-			'societe' => $client->_societe,
+			'code' => $client->_code
 			));
 	}
 
@@ -70,7 +70,7 @@ class ConnexionBDD
 	}
 
 	public function getClient($client){
-		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE nom ="'.$client->_nomprenom.'" AND societe="'.$client->_societe.'" ORDER BY Nom');
+		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$client->_code.'" ORDER BY Nom');
 		$data = $reponse->fetch();
 		$client = Client::withCodeAndHour($data['Nom'],$data['Societe'],$data['HeureA'],$data['code']);
 		return $client;

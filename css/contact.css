@@ -1,6 +1,5 @@
 .block-update-card {
   height: 100%;
-  width:100%;
   float: left;
   margin-top: 0;
   padding: 0;
@@ -110,11 +109,6 @@ Creating a block for social media buttons
 .music-card {
   background-color: green;
 }
-
-.block-update-card + .block-update-card{
-  margin-top:10px;
-}
-
 .glyphicon-earphone,.glyphicon-comment{
   font-size : 1.5em;
 }

@@ -14,8 +14,9 @@ $(document).ready(function(){
 
 		$_GET[decode(arguments[1])] = decode(arguments[2]);
 	});
-	if($_GET['helper']==0)
-		$("#myModal").modal();
+	if($_GET['helper']==0){
+		//$("#myModal").modal();
+	}
 	
 });
 
@@ -30,11 +31,12 @@ function size(){
 	$(".top").css("height",Math.ceil($(window).height()/4));
 	$("#defilor").css("width",$("#defilor-container").css("width"));
 	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
+	$("#listing").css("height",$(window).height()-(20 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
 }
 
 $("#helper").on("touchend",function (e) {
-  if($(this).css("height")=="50px")
-  	$(this).css("height","250px");
-  else
-  	$(this).css("height","50px");
+	if($(this).css("height")=="50px")
+		$(this).css("height","250px");
+	else
+		$(this).css("height","50px");
 });
