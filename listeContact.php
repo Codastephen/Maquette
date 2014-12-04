@@ -26,7 +26,7 @@ $client = unserialize($_SESSION['client']);
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-2 no-padding border-white">
+	<div class="col-sm-2 no-padding">
 		<div class="text-center">
 			<a class="btn btn-lg btn-danger" href="index.php" style="width:100%;height:100px;padding-top:30px">
 				Retour à l'accueil
@@ -35,11 +35,10 @@ $client = unserialize($_SESSION['client']);
 		<p style="margin-left:5px">
 			<blockquote>
                 <p><?php echo  $client->_nomprenom ?></p>
-                <small><cite title="Source Title"><?php echo date('H:i d/m/Y',strtotime($client->_hArrive))?>  <i class="glyphicon glyphicon-calendar"></i></cite></small>
+                <small><i class="glyphicon glyphicon-calendar"></i> <?php echo date('H:i d/m/Y',strtotime($client->_hArrive))?></small>
+            	<small><i class="glyphicon glyphicon-flag"></i> Code : <?php echo $client->_code ?></small>
             </blockquote>
-			Bienvenue<br/>
-			<b><?php echo  $client->_nomprenom ?></b> <?php echo $client->_code ?><br/>
-			arrivé à <i><?php echo $client->_hArrive?></i>
+            
 		</p>
 		<ul class="nav nav-pills nav-stacked padded" role="tablist">
 			<li role="presentation" class="active">
