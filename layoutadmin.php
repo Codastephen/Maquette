@@ -47,7 +47,19 @@
 				</div>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active" id="list">
-						<?php echo $liste ?>
+						<div class="row text-center">
+							<h1>Interface d'administration</h1>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-6 col-xs-offset-3">
+								<div class="tableresize" style="overflow-y:auto">
+									<table class="table tablevisitor table-striped">
+										<?php echo $liste ?>
+									</table>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="log">
 						<div class="tableresize" style="overflow-y:auto">

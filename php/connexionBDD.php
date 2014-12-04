@@ -65,7 +65,7 @@ class ConnexionBDD
 
 	public function afficherClient()
 	{
-		$reponse = $this->bdd->query('SELECT Nom, Societe FROM visiteur ORDER BY Nom');
+		$reponse = $this->bdd->query('SELECT Nom, Societe, code FROM visiteur ORDER BY Nom');
 		return $reponse;
 	}
 
