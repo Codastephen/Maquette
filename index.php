@@ -32,7 +32,7 @@ ob_start(); ?>
 				<a href="#leave" aria-controls="depart" role="tab" data-toggle="tab">
 					<div class="col-xs-12 wrapper-img text-center">
 						<img src="./img/leave.png" class="img-responsive">
-						<h3>Partir</h3>
+						<h3>Départ</h3>
 					</div>
 				</a>
 			</li>
