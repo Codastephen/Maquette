@@ -15,7 +15,7 @@ ob_start(); ?>
 			<li role="presentation">
 				<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
 					<div class="col-xs-12 wrapper-img text-center">
-						<img src="./img/people_white.PNG" class="img-responsive">
+						<img src="./img/home.png" class="img-responsive">
 						<h3>Accueil</h3>
 					</div>
 				</a>
@@ -23,7 +23,7 @@ ob_start(); ?>
 			<li role="presentation">
 				<a href="#reconnexion" aria-controls="signal" role="tab" data-toggle="tab">
 					<div class="col-xs-12 wrapper-img text-center">
-						<img src="./img/people_white.PNG" class="img-responsive">
+						<img src="./img/id.png" class="img-responsive">
 						<h3>Déjà sur place</h3>
 					</div>
 				</a>
@@ -31,7 +31,7 @@ ob_start(); ?>
 			<li role="presentation">
 				<a href="#leave" aria-controls="depart" role="tab" data-toggle="tab">
 					<div class="col-xs-12 wrapper-img text-center">
-						<img src="./img/depart-logo.PNG" class="img-responsive">
+						<img src="./img/leave.png" class="img-responsive">
 						<h3>Partir</h3>
 					</div>
 				</a>
@@ -39,7 +39,7 @@ ob_start(); ?>
 			<li role="presentation">
 				<a href="#map" aria-controls="map" role="tab" data-toggle="tab">
 					<div class="col-xs-12 wrapper-img text-center">
-						<img src="./img/map-logo.PNG" class="img-responsive">
+						<img src="./img/office.png" class="img-responsive">
 						<h3>Plan du site</h3>
 					</div>
 				</a>
@@ -92,7 +92,7 @@ ob_start(); ?>
 				<a id="helperA" href="#home">
 					<div class="row">
 						<div class="col-xs-4 col-xs-offset-4">
-							<img src="./img/help_black.PNG" class="img-responsive">
+							<img src="./img/bell-black.png" class="img-responsive">
 						</div>
 					</div>
 					<h3>Appel à l'aide</h3>

@@ -30,8 +30,8 @@ $(window).resize(function(){
 
 function size(){
 	$(".wrapper-img").css("height",Math.ceil($(window).height()/4));
-	$(".wrapper-img-admin").css("height",Math.ceil($(window).height()/2));
-	$(".wrapper-img-user").css("height",Math.ceil($(window).height()/3));
+	$(".wrapper-img-admin").css("height",Math.ceil($(window).height()/3));
+	$(".wrapper-img-user").css("height",Math.ceil($(window).height()/4));
 	$(".top").css("height",Math.ceil($(window).height()/4));
 	$("#defilor").css("width",$("#defilor-container").css("width"));
 	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));

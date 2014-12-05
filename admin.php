@@ -4,6 +4,10 @@ require_once('autoload.php');
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
+if(isset($_GET['deco']) && $_GET['deco']){
+	unset($_SESSION['user']);
+	unset($_SESSION['admin']);
+}
 if(!$_SESSION['admin']){
 	header('Location:connexionadmin.php');
 }

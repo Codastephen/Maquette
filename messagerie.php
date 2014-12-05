@@ -11,6 +11,10 @@ function validateDate($date, $format = 'd-m-Y H:i')
 }
 
 $titre = "Messagerie interne";
+if(isset($_GET['deco']) && $_GET['deco']){
+	unset($_SESSION['user']);
+	unset($_SESSION['admin']);
+}
 if(!isset($_SESSION['user'])){
 	header('Location: connexionmessagerie.php');
 	exit();
@@ -151,7 +155,7 @@ $mymsg.="</table>";
 					<li role="presentation" class="active">
 						<a href="#listcurrent" aria-controls="list" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img-user text-center active">
-								<img src="./img/people_white.PNG" class="img-responsive">
+								<img src="./img/msgopen.png" class="img-responsive">
 								<h3>Messages en cours</h3>
 							</div>
 						</a>
@@ -159,16 +163,24 @@ $mymsg.="</table>";
 					<li role="presentation">
 						<a href="#listnext" aria-controls="log" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img-user text-center">
-								<img src="./img/people_white.PNG" class="img-responsive">
-								<h3>Messages pour plus tard</h3>
+								<img src="./img/msgclosed.png" class="img-responsive">
+								<h3>Messages prévus</h3>
 							</div>
 						</a>
 					</li>
 					<li role="presentation">
 						<a href="#mymsg" aria-controls="list" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img-user text-center">
-								<img src="./img/people_white.PNG" class="img-responsive">
-								<h3>Gestion de vos messages</h3>
+								<img src="./img/id.png" class="img-responsive">
+								<h3>Vos messages</h3>
+							</div>
+						</a>
+					</li>
+					<li role="presentation">
+						<a href="messagerie.php?deco=true">
+							<div class="col-xs-12 wrapper-img-user danger text-center">
+								<img src="./img/leave.png" class="img-responsive">
+								<h3>Déconnexion</h3>
 							</div>
 						</a>
 					</li>

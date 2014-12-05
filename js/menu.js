@@ -7,17 +7,21 @@ $(document).ready(function(){
 });
 
 $('#myTab a').on("click",function (e) {
-  e.preventDefault()
-  $(this).tab('show');
-  setUrlBar($(this).attr('href'));
-  handlerlink($(this));
+	if($(this).attr('href').indexOf("#")==0){
+		e.preventDefault();
+		$(this).tab('show');
+		setUrlBar($(this).attr('href'));
+		handlerlink($(this));
+	}
 })
 
 $('#myTab a').on("touchend",function (e) {
-  e.preventDefault()
-  $(this).tab('show');
-  setUrlBar($(this).attr('href'));
-  handlerlink($(this));
+	if($(this).attr('href').indexOf("#")==0){
+		e.preventDefault();
+		$(this).tab('show');
+		setUrlBar($(this).attr('href'));
+		handlerlink($(this));
+	}
 })
 
 function setUrlBar(href){

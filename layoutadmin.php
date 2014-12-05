@@ -22,7 +22,7 @@
 					<li role="presentation" class="active">
 						<a href="#list" aria-controls="list" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img-admin text-center active">
-								<img src="./img/people_white.PNG" class="img-responsive">
+								<img src="./img/id.png" class="img-responsive">
 								<h3>Liste des visiteurs</h3>
 							</div>
 						</a>
@@ -30,8 +30,16 @@
 					<li role="presentation">
 						<a href="#log" aria-controls="log" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img-admin text-center">
-								<img src="./img/people_white.PNG" class="img-responsive">
+								<img src="./img/log.png" class="img-responsive">
 								<h3>Log</h3>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="admin.php?deco=true">
+							<div class="col-xs-12 wrapper-img-admin danger text-center">
+								<img src="./img/leave.png" class="img-responsive">
+								<h3>Déconnexion</h3>
 							</div>
 						</a>
 					</li>
