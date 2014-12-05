@@ -35,12 +35,11 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 			$conn = new connexionBDD();
 			$cli = $conn->ajouterClient($cli);
 			$type = "ARRIVEE";
-			$helper=0;
 		}
 		$log = new BDDLog();
 		$log->ajouterLigne($type,$cli);
 		$_SESSION['client']=serialize($cli);
-		header('Location: listeContact.php?helper='.$helper);
+		header('Location: listeContact.php');
 	}
 }
 function verifAdmin(){

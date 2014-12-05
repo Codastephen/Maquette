@@ -14,7 +14,11 @@ $(document).ready(function(){
 
 		$_GET[decode(arguments[1])] = decode(arguments[2]);
 	});
-	if($_GET['helper']==0){
+
+	var index = window.location.pathname.lastIndexOf("/") + 1;
+	var filename = window.location.pathname.substr(index);
+
+	if(filename == 'listeContact.php'){
 		$("#myModal").modal();
 	}
 	
