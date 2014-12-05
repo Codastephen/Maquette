@@ -11,6 +11,7 @@ if(!isset($_SESSION['client'])){
 	exit();
 }
 $client = unserialize($_SESSION['client']);
+unset($_SESSION['client']);
 ?>
 <?php ob_start(); ?>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -1,5 +1,11 @@
 $(document).ready(function(){	
-	repeatEvery(getMsg, 60 * 1000);
+	var index = window.location.pathname.lastIndexOf("/") + 1;
+	var filename = window.location.pathname.substr(index);
+
+	if(filename == 'index.php'){
+		repeatEvery(getMsg, 60 * 1000);
+	}
+	
 
 });
 
