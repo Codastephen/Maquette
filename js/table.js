@@ -112,8 +112,19 @@ function validateInputDateTime(box){
 		if($(this).val().indexOf("j") >= 0 || $(this).val().indexOf("m") >= 0 || $(this).val().indexOf("a") >= 0 || $(this).val().indexOf("h") >= 0)
 			state = false;
 	})
-	if(!state)
+	var stt = new Date("January 1, 2001 " + $(box+" input.debut").val());
+	stt = stt.getTime();
+	var ett = new Date("January 1, 2001 " + $(box+" input.fin").val());
+	ett = ett.getTime();
+	if(stt>=ett)
+		state=false;
+	if(!state){
 		$(box+" input").addClass("error");
+		setTimeout(function(){
+			$(box+" input").removeClass("error");
+		},5000);
+	}
+		
 	return state;
 
 }
