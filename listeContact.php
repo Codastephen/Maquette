@@ -11,7 +11,6 @@ if(!isset($_SESSION['client'])){
 	exit();
 }
 $client = unserialize($_SESSION['client']);
-unset($_SESSION['client']);
 ?>
 <?php ob_start(); ?>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -87,7 +86,7 @@ unset($_SESSION['client']);
 				<div class="row">
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 1</h4>
@@ -103,7 +102,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -119,7 +118,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -137,7 +136,7 @@ unset($_SESSION['client']);
 				<div class="row">
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 1</h4>
@@ -153,7 +152,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -169,7 +168,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -187,7 +186,7 @@ unset($_SESSION['client']);
 				<div class="row">
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 1</h4>
@@ -203,7 +202,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -219,7 +218,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -237,7 +236,7 @@ unset($_SESSION['client']);
 				<div class="row">
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 1</h4>
@@ -253,7 +252,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -269,7 +268,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -287,7 +286,7 @@ unset($_SESSION['client']);
 				<div class="row">
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 1</h4>
@@ -303,7 +302,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -319,7 +318,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -337,7 +336,7 @@ unset($_SESSION['client']);
 				<div class="row">
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 1</h4>
@@ -353,7 +352,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -369,7 +368,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -387,7 +386,7 @@ unset($_SESSION['client']);
 				<div class="row">
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 1</h4>
@@ -403,7 +402,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
@@ -419,7 +418,7 @@ unset($_SESSION['client']);
 					</div>
 					<div class="block-update-card status col-sm-4">
 						<div class="v-status present"></div>
-						<img class="media-object update-card-MDimentions pull-left" src="./img/people_black.png" alt="...">
+						<img class="media-object update-card-MDimentions pull-left" src="./img/id-black.png" alt="...">
 						<div class="update-card-body">
 							<div class="col-sm-8">
 								<h4>Informatique 2</h4>
