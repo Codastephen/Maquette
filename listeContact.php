@@ -4,7 +4,12 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 require_once("autoload.php");
-
+if(!isset($_SESSION['client'])){
+	$_SESSION['infomsg'] = "Erreur, vous n'êtes pas identifié et ne pouvez accéder à cette page";
+	$_SESSION['infotype'] = "danger";
+	header('Location: index.php');
+	exit();
+}
 $client = unserialize($_SESSION['client']);
 ?>
 <?php ob_start(); ?>
@@ -34,11 +39,11 @@ $client = unserialize($_SESSION['client']);
 		</div>
 		<p style="margin-left:5px">
 			<blockquote>
-                <p><?php echo  $client->_nomprenom ?></p>
-                <small><i class="glyphicon glyphicon-calendar"></i> <?php echo date('H:i d/m/Y',strtotime($client->_hArrive))?></small>
-            	<small><i class="glyphicon glyphicon-flag"></i> Code : <?php echo $client->_code ?></small>
-            </blockquote>
-            
+				<p><?php echo  $client->_nomprenom ?></p>
+				<small><i class="glyphicon glyphicon-calendar"></i> <?php echo date('H:i d/m/Y',strtotime($client->_hArrive))?></small>
+				<small><i class="glyphicon glyphicon-flag"></i> Code : <?php echo $client->_code ?></small>
+			</blockquote>
+
 		</p>
 		<ul class="nav nav-pills nav-stacked padded" role="tablist">
 			<li role="presentation" class="active">

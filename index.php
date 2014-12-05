@@ -4,6 +4,10 @@ $titre = "Accueil";
 require_once("autoload.php");
 session_start();
 
+if(isset($_SESSION['client'])){
+	unset($_SESSION['client']);
+}
+	
 ob_start(); ?>
 <div class="row">
 	<div class="col-sm-2 no-padding border-white" role="tabpanel">
