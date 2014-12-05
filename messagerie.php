@@ -195,7 +195,7 @@ $mymsg.="</table>";
 									<span class="input-group-addon">de</span>
 									<input id="newtimedebut" required class="inputdate form-control" value="<?php echo date('H:i')?>" style="min-width:100px" name="heuredebut"type="text" onfocus="this.className ='inputdate form-control' "/>
 									<span class="input-group-addon">à</span>
-									<input id="newtimefin" required class="inputdate form-control" value="<?php echo date('H:i')?>" style="min-width:100px" name="heurefin" type="text" onfocus="this.className ='inputdate form-control' "/>
+									<input id="newtimefin" required class="inputdate form-control" value="<?php echo date('H:i',strtotime(date('H:i').' + 10 minutes'))?>" style="min-width:100px" name="heurefin" type="text" onfocus="this.className ='inputdate form-control' "/>
 								</div>
 							</div>
 
