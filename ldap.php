@@ -53,6 +53,7 @@ if (!$bindServerLDAP || ldap_errno($conn)!=0){
 	header("Location: connexionmessagerie.php");
 	exit();
 }
+
 ldap_close($conn);
 
 $_SESSION['infomsg'] = "Vous êtes bien connecté";

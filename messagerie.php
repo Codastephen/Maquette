@@ -156,7 +156,7 @@ $mymsg.="</table>";
 						<a href="#listcurrent" aria-controls="list" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img-user text-center active">
 								<img src="./img/msgopen.png" class="img-responsive">
-								<h3>Messages en cours</h3>
+								<h3 style="font-size:24px">Messages en cours</h3>
 							</div>
 						</a>
 					</li>

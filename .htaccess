@@ -1,0 +1,10 @@
+DirectoryIndex index.php
+
+# On suit les liens symboliques 
+Options +FollowSymlinks 
+# Activation du mod rewrite d'Apache 
+RewriteEngine On
+# Réécriture de index.html vers index.php 
+RewriteRule ^messagerie$ /Maquette/messagerie.php [L]
+# Réécriture de index.html vers index.php 
+RewriteRule ^admin$ /Maquette/admin.php [L]
