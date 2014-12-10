@@ -5,6 +5,7 @@ Options +FollowSymlinks
 # Activation du mod rewrite d'Apache 
 RewriteEngine On
 # Réécriture de index.html vers index.php 
-RewriteRule ^messagerie$ /Maquette/messagerie.php [L]
+RewriteRule ^messagerie$ messagerie.php [L]
+RewriteRule ^msg$ messagerie.php [L]
 # Réécriture de index.html vers index.php 
-RewriteRule ^admin$ /Maquette/admin.php [L]
+RewriteRule ^admin$ admin.php [L]
