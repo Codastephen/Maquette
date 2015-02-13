@@ -11,3 +11,6 @@ require_once 'autoload.php';
 if(!isset($_SESSION['liste']))
     $_SESSION['liste'] = new ListeClient();
 ?>
+<?php
+    header('X-Frame-Options: GOFORIT'); 
+?>

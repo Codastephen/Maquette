@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
 		<h1 class="text-center">Déjà sur place?</h1>
-		<p class="text-center"><i>Rentrez votre code dans le champ ci-dessous pour vous reconnecter :</i></p>
+		<p class="text-center"><i>Entrez votre code dans le champ ci-dessous pour vous reconnecter :</i></p>
 		<form Action ='connexion.php' method ='post' role='form' act>
 			<input type='hidden' id='type' name='type' value='reco'>
 			<div class="row">
@@ -12,7 +12,7 @@
 			<br/>
 			<div class="row">
 				<div class="col-xs-4 col-xs-offset-4">
-					<button type='submit' class='btn btn-primary btn-lg ' style="width:100%">Se reconnecter</button>
+					<button type='submit' class='btn btn-primary btn-lg ' style="width:100%">Me reconnecter</button>
 				</div>
 			</div>
 		</form>

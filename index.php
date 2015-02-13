@@ -40,7 +40,7 @@ ob_start(); ?>
 				<a href="#map" aria-controls="map" role="tab" data-toggle="tab">
 					<div class="col-xs-12 wrapper-img text-center">
 						<img src="./img/office.png" class="img-responsive">
-						<h3>Plan du site</h3>
+						<h3>Plan et numéros utiles</h3>
 					</div>
 				</a>
 			</li>
@@ -81,7 +81,7 @@ ob_start(); ?>
 			</div>
 		</div>
 	</div>
-	<div id="helper" class="text-center">
+	<!--<div id="helper" class="text-center">
 		<div class="row">
 			<div class="col-xs-12">
 				<p>Besoin d'aide?</p>
@@ -99,7 +99,7 @@ ob_start(); ?>
 				</a>
 			</div>
 		</div>
-	</div>
+	</div>-->
 </div>
 
 <?php $contenu = ob_get_clean(); ?>

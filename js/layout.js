@@ -38,9 +38,9 @@ function size(){
 	$("#listing").css("height",$(window).height()-(20 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
 }
 
-$("#helper").on("touchend",function (e) {
+/*$("#helper").on("click",function (e) {
 	if($(this).css("height")=="50px")
 		$(this).css("height","250px");
 	else
 		$(this).css("height","50px");
-});
+});*/
