@@ -30,12 +30,14 @@ $(window).resize(function(){
 
 function size(){
 	$(".wrapper-img").css("height",Math.ceil($(window).height()/4));
-	$(".wrapper-img-admin").css("height",Math.ceil($(window).height()/3));
+	$(".wrapper-img-admin").css("height",Math.ceil($(window).height()/4));
 	$(".wrapper-img-user").css("height",Math.ceil($(window).height()/4));
 	$(".top").css("height",Math.ceil($(window).height()/4));
 	$("#defilor").css("width",$("#defilor-container").css("width"));
 	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
 	$("#listing").css("height",$(window).height()-(20 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
+	$("#frameMap").attr("height",$(window).height()-(70 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
+	$("#frameMap").parent().css("height",$(window).height()-(70 + parseInt($('#rowlogo').css('margin-top'), 10) + $('#rowlogo').outerHeight()));
 }
 
 /*$("#helper").on("click",function (e) {

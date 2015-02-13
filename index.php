@@ -36,8 +36,13 @@ ob_start(); ?>
 					</div>
 				</a>
 			</li>
+			<script type="text/javascript">
+				function reloadMap(){
+					$("#frameMap").attr("src","https://www.google.com/maps/d/embed?mid=z_9Z8qcyca8M.kmf_NMfHVoMc");
+				}
+			</script>
 			<li role="presentation">
-				<a href="#map" aria-controls="map" role="tab" data-toggle="tab">
+				<a href="#map" aria-controls="map" role="tab" data-toggle="tab" onclick="reloadMap()">
 					<div class="col-xs-12 wrapper-img text-center">
 						<img src="./img/office.png" class="img-responsive">
 						<h3>Plan et numéros utiles</h3>

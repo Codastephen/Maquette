@@ -7,6 +7,7 @@ class Visiteur
 	var $_hArrive;
 	var $_hDepart;
 	var $_code;
+	var $_visite;
 
 	
 	function __construct($nomprenom, $societe)
@@ -18,12 +19,14 @@ class Visiteur
 		$this->_code = null;
 	}
 
-	public static function withCodeAndHour($id,$nomprenom,$societe,$arrive,$code)
+	public static function withCodeAndHour($id,$nomprenom,$societe,$arrive,$code,$visite)
 	{
 		$instance = new self($nomprenom,$societe);
 		$instance->_id = $id;
 		$instance->_hArrive = $arrive;
 		$instance->_code = $code;
+		$instance->_visite = $visite;
+		
 		return $instance;
 	}
 

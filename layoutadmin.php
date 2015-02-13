@@ -28,6 +28,14 @@
 						</a>
 					</li>
 					<li role="presentation">
+						<a href="#visite" aria-controls="visite" role="tab" data-toggle="tab">
+							<div class="col-xs-12 wrapper-img-admin text-center">
+								<img src="./img/id.png" class="img-responsive">
+								<h3>Liste des visites</h3>
+							</div>
+						</a>
+					</li>
+					<li role="presentation">
 						<a href="#log" aria-controls="log" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img-admin text-center">
 								<img src="./img/log.png" class="img-responsive">
@@ -54,19 +62,63 @@
 					</div>
 				</div>
 				<div class="tab-content">
+					<div class="row text-center">
+						<h1>Interface d'administration</h1>
+					</div>
 					<div role="tabpanel" class="tab-pane fade in active" id="list">
-						<div class="row text-center">
-							<h1>Interface d'administration</h1>
-						</div>
+						
 
 						<div class="row">
-							<div class="col-xs-6 col-xs-offset-3">
+							<div class="text-center">
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-primary active" onclick="filterTable('present')">
+										<input type="radio" name="options" id="option1" autocomplete="off" checked ><i class="fa fa-taxi"></i> Présent sur les lieux
+									</label>
+									<label class="btn btn-primary" onclick="filterTable('nonpresent')">
+										<input type="radio" name="options" id="option2" autocomplete="off"><i class="fa fa-bed"></i> Non-présent
+									</label>
+									<label class="btn btn-primary" onclick="filterTable('all')">
+										<input type="radio" name="options" id="option3" autocomplete="off" ><i class="fa fa-cutlery"></i> Tous
+									</label>
+								</div>
 								<div class="tableresize" style="overflow-y:auto">
-									<table class="table tablevisitor table-striped">
+									<table id="tableVisiteur" class="table tablevisitor table-striped">
+										<thead>
+											<th>Code</th>
+											<th>Nom</th>
+											<th>Société</th>
+										</thead>
 										<?php echo $liste ?>
 									</table>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane fade text-center" id="visite">
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-primary active" onclick="filterTableVisite('present')">
+								<input type="radio" name="options" id="option1" autocomplete="off" checked ><i class="fa fa-taxi"></i> Présent sur les lieux
+							</label>
+							<label class="btn btn-primary" onclick="filterTableVisite('nonpresent')">
+								<input type="radio" name="options" id="option2" autocomplete="off"><i class="fa fa-bed"></i> Non-présent
+							</label>
+							<label class="btn btn-primary" onclick="filterTableVisite('all')">
+								<input type="radio" name="options" id="option3" autocomplete="off" ><i class="fa fa-cutlery"></i> Tous
+							</label>
+						</div>
+						<div class="tableresize" style="overflow-y:auto">
+							<table id="tableVisite" class="table table-striped">
+								<thead>
+									<th class="text-center">Code</th>
+									<th class="text-center">Nom</th>
+									<th class="text-center">Société</th>
+									<th class="text-center">Jour d'arrivée</th>
+									<th class="text-center">Jour de départ</th>
+									<th class="text-center">Personne contactée</th>
+									<th class="text-center">Heure du contact</th>
+								</thead>
+								<?php echo $listevisite ?>
+							</table>
 						</div>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="log">
@@ -85,5 +137,63 @@
 	<script src="./js/layout.js"></script>
 	<script src="./js/menu.js"></script>
 	<script src="./js/table.js"></script>
+	<script type="text/javascript">
+	$("#tableVisiteur tbody tr").each(function(){
+		if($(this).find('td.code').html()==0)
+			$(this).hide();
+	});
+
+	function filterTable(text){
+		$("#tableVisiteur tbody tr").each(function(){
+			$(this).hide();
+		});
+		if(text=="present"){
+			$("#tableVisiteur tbody tr").each(function(){
+				if($(this).find('td.code').html()!=0)
+					$(this).show();
+			});
+		}
+		if(text=="nonpresent"){
+			$("#tableVisiteur tbody tr").each(function(){
+				if($(this).find('td.code').html()==0)
+					$(this).show();
+			});
+		}
+		if(text=="all"){
+			$("#tableVisiteur tbody tr").each(function(){
+				$(this).show();
+			});
+		}
+	}
+	</script>
+	<script type="text/javascript">
+	$("#tableVisite tbody tr").each(function(){
+		if($(this).find('td.code').html()==0)
+			$(this).hide();
+	});
+
+	function filterTableVisite(text){
+		$("#tableVisite tbody tr").each(function(){
+			$(this).hide();
+		});
+		if(text=="present"){
+			$("#tableVisite tbody tr").each(function(){
+				if($(this).find('td.code').html()!=0)
+					$(this).show();
+			});
+		}
+		if(text=="nonpresent"){
+			$("#tableVisite tbody tr").each(function(){
+				if($(this).find('td.code').html()==0)
+					$(this).show();
+			});
+		}
+		if(text=="all"){
+			$("#tableVisite tbody tr").each(function(){
+				$(this).show();
+			});
+		}
+	}
+	</script>
 </body>
 </html>

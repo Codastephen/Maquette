@@ -15,7 +15,7 @@ $visiteur = unserialize($_SESSION['visiteur']);
 <?php ob_start(); ?>
 <script type="text/javascript">
 function showLync(){
-	window.external.callLync(<?php echo "'".$visiteur->_nomprenom."','".$visiteur->_societe."','".$visiteur->_code."','".$visiteur->_id."'" ?>)
+	window.external.callLync(<?php echo "'".$visiteur->_nomprenom."','".$visiteur->_societe."','".$visiteur->_code."','".$visiteur->_id."','".$visiteur->_visite."'" ?>)
 }
 </script>
 <div class="row">

@@ -37,11 +37,13 @@ class ConnexionBDD
 				'id' => $id_vis,
 				'heureA' => date('Y-m-d H:i:s',$visiteur->_hArrive),
 				));
+			$idVisite = $this->bdd->lastInsertId();
 			$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = :code WHERE Id_visiteur = :id');
 			$req->execute(array(
 				'id' => $id_vis,
-				'code' => $this->bdd->lastInsertId()
+				'code' => $idVisite
 				));
+			$visiteur->_visite =  $idVisite;
 			BDDLog::ajouterLigne("ARRIVEE",$visiteur);
 			return $visiteur;
 		}else{
@@ -61,10 +63,12 @@ class ConnexionBDD
 					'heureA' => date('Y-m-d H:i:s',$visiteur->_hArrive),
 					));
 				$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = :code WHERE Id_visiteur = :id');
+				$idVisite = $this->bdd->lastInsertId();
 				$req->execute(array(
 					'id' => $newVisiteur->_id,
-					'code' => $this->bdd->lastInsertId()
+					'code' => $idVisite
 					));
+				$newVisiteur->_visite =  $idVisite;
 				BDDLog::ajouterLigne("ARRIVEE",$newVisiteur);
 				return $newVisiteur;
 			}else{
@@ -111,7 +115,13 @@ class ConnexionBDD
 
 	public function afficherVisiteur()
 	{
-		$reponse = $this->bdd->query('SELECT Nom, Societe, code FROM visiteur ORDER BY Code,Nom');
+		$reponse = $this->bdd->query('SELECT v.Nom AS Nom, v.Societe AS Societe, v.code AS code FROM visiteur v ORDER BY v.Code,v.Nom ASC');
+		return $reponse;
+	}
+
+	public function afficherVisite()
+	{
+		$reponse = $this->bdd->query('SELECT v.Nom AS Nom, v.Societe AS Societe, v.code AS code, vi.HeureA AS HeureA,vi.HeureD AS HeureD, contact.Heure AS HeureContact,contact.Nom_user AS NomContact FROM visiteur v,visite vi LEFT JOIN contact on vi.Id = contact.Id_visite WHERE v.Id_visiteur = vi.Id_visiteur  ORDER BY v.Code,v.Nom ASC');
 		return $reponse;
 	}
 
@@ -193,11 +203,11 @@ class ConnexionBDD
 		}
 	}
 
-	public function addContact($visiteur,$nom){
+	public function addContact($visite,$nom){
 		$user = $this->addUser($nom);
-		$req = $this->bdd->prepare('INSERT INTO Contact(Id_visiteur,Nom_user,heure) VALUES(:visiteur,:nom,:heure)');
+		$req = $this->bdd->prepare('INSERT INTO Contact(Id_visite,Nom_user,heure) VALUES(:visite,:nom,:heure)');
 		$data = $req->execute(array(
-			'visiteur' => $visiteur,
+			'visite' => $visite,
 			'nom' => $user->_nom,
 			'heure' => date('Y-m-d H:i:s',time())
 			));
