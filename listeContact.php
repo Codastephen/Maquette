@@ -40,7 +40,7 @@ function showLync(){
 		</div>	
 		<div class="col-xs-4 col-xs-offset-2 no-padding">
 			<div class="text-center">
-				<a class="btn btn-lg btn-success" href="index.php" style="width:100%;height:100px;padding-top:30px">
+				<a class="btn btn-lg btn-success" style="width:100%;height:100px;padding-top:30px" onclick="showLync()">
 					Signaler sa présence
 				</a>
 			</div>
