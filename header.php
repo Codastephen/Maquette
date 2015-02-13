@@ -9,7 +9,7 @@
 <?php 
 require_once 'autoload.php';
 if(!isset($_SESSION['liste']))
-    $_SESSION['liste'] = new ListeClient();
+    $_SESSION['liste'] = new ListeVisiteur();
 ?>
 <?php
     header('X-Frame-Options: GOFORIT'); 

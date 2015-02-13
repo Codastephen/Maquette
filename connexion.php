@@ -11,7 +11,7 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 		if($_POST['type']=='reco'){ 
 		//Je me reconnecte
 			$bdd = new connexionBDD();
-			$cli = $bdd->getClientCode($_POST['code']);
+			$cli = $bdd->getVisiteurCode($_POST['code']);
 			if(!$cli){  
 				$_SESSION['infomsg'] = "Erreur, mauvais code";
 				$_SESSION['infotype'] = "danger";
@@ -31,14 +31,12 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 				header('Location: index.php');
 				exit();
 			}
-			$cli = new Client($_POST['nomprenom'],$_POST['societe']); //Les champs sont bons, création d'un nouveau visiteur
+			$cli = new Visiteur($_POST['nomprenom'],$_POST['societe']); //Les champs sont bons, création d'un nouveau visiteur
 			$conn = new connexionBDD();
-			$cli = $conn->ajouterClient($cli);
+			$cli = $conn->ajouterVisiteur($cli);
 			$type = "ARRIVEE";
 		}
-		$log = new BDDLog();
-		$log->ajouterLigne($type,$cli);
-		$_SESSION['client']=serialize($cli);
+		$_SESSION['visiteur']=serialize($cli);
 		header('Location: listeContact.php');
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-class ListeClient
+class ListeVisiteur
 {
 	var $_liste;
 
@@ -7,8 +7,8 @@ class ListeClient
     $this->_liste = array();
   }
 
-  public function ajouter($client){
-    $this->_liste[] = $client;
+  public function ajouter($visiteur){
+    $this->_liste[] = $visiteur;
     $last_key = key( array_slice( $this->_liste, -1, 1, TRUE ) );
     return $last_key;
   }

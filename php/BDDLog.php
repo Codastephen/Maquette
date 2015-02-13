@@ -5,7 +5,7 @@ class BDDLog
 	
 	var $host = 'localhost';
 
-	public function ajouterLigne($action,$visiteur)
+	public static function ajouterLigne($action,$visiteur)
 	{
 		
 		try
@@ -17,11 +17,10 @@ class BDDLog
 			die('Erreur : ' . $e->getMessage());
 		}
 		
-		$req = $bdd->prepare('INSERT INTO log(action, visiteur_nomprenom,visiteur_societe) VALUES(:action, :np, :s)');
+		$req = $bdd->prepare('INSERT INTO log(action, Id_visiteur) VALUES(:action, :id)');
 		$req->execute(array(
 			'action' => $action,
-			'np' => $visiteur->_nomprenom,
-			's' => $visiteur->_societe	
+			'id' => $visiteur->_id,
 			));
 	}
 
@@ -37,7 +36,7 @@ class BDDLog
 		}
 		
 		
-		$reponse = $bdd->query('SELECT * FROM log ORDER BY log.date DESC');
+		$reponse = $bdd->query('SELECT l.date AS date, l.action AS action, v.nom AS nom, v.societe AS societe, v.code AS code FROM log l, visiteur v WHERE l.Id_visiteur=v.Id_visiteur ORDER BY l.date DESC');
 		return $reponse;
 	}	
 }

@@ -4,8 +4,8 @@ $titre = "Accueil";
 require_once("autoload.php");
 session_start();
 
-if(isset($_SESSION['client'])){
-	unset($_SESSION['client']);
+if(isset($_SESSION['visiteur'])){
+	unset($_SESSION['visiteur']);
 }
 	
 ob_start(); ?>

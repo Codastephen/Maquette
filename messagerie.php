@@ -34,7 +34,7 @@ if(isset($_POST['message']) && isset($_POST['date']) && isset($_POST['heuredebut
 		exit();
 	}
 
-	$msg = new Message($user->_id,$_POST['message'],
+	$msg = new Message($user->_nom,$_POST['message'],
 		date('Y-m-d H:i',strtotime($_POST['date']." ".$_POST['heuredebut'])),
 		date('Y-m-d H:i',strtotime($_POST['date']." ".$_POST['heurefin'])));
 	$bdd= new ConnexionBDD();
@@ -56,12 +56,12 @@ $mymsg='<table class="table table-striped"><col width="50%"><col width="30%"><co
 while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
 {
 	if(date('Y-m-d H:i:s')<$donnees['datedebut'])
-		$msgOther .= "<tr><td>".$donnees['user_name']."</td><td>".$donnees['message']."</td><td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td></tr>";
+		$msgOther .= "<tr><td>".$donnees['user_nom']."</td><td>".$donnees['message']."</td><td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td></tr>";
 	else if( date('Y-m-d H:i:s')>$donnees['datefin'])
 		continue;
 	else
-		$msgCurrent .= "<tr><td>".$donnees['user_name']."</td><td>".$donnees['message']."</td><td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td></tr>";
-	if($donnees['user_id']==$user->_id)
+		$msgCurrent .= "<tr><td>".$donnees['user_nom']."</td><td>".$donnees['message']."</td><td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td></tr>";
+	if($donnees['user_nom']==$user->_nom)
 		$mymsg .= "<tr id='tr".$donnees['id']."'>
 	<td>".$donnees['message']."</td>
 	<td>Le ".date('d-m-Y',strtotime($donnees['datedebut']))." de ".date('H:i',strtotime($donnees['datedebut']))." à ".date('H:i',strtotime($donnees['datefin']))."</td>

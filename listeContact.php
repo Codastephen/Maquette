@@ -4,18 +4,18 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 require_once("autoload.php");
-if(!isset($_SESSION['client'])){
+if(!isset($_SESSION['visiteur'])){
 	$_SESSION['infomsg'] = "Erreur, vous n'êtes pas identifié et ne pouvez accéder à cette page";
 	$_SESSION['infotype'] = "danger";
 	header('Location: index.php');
 	exit();
 }
-$client = unserialize($_SESSION['client']);
+$visiteur = unserialize($_SESSION['visiteur']);
 ?>
 <?php ob_start(); ?>
 <script type="text/javascript">
 function showLync(){
-	window.external.littleMe(<?php echo "'".$client->_nomprenom."','".$client->_societe."','".$client->_code."'" ?>)
+	window.external.littleMe(<?php echo "'".$visiteur->_nomprenom."','".$visiteur->_societe."','".$visiteur->_code."'" ?>)
 }
 </script>
 <div class="row">
@@ -28,7 +28,7 @@ function showLync(){
 			</div>
 		</div>
 		<p>Votre code est :</p>
-		<h1><?php echo $client->_code ?></h1><br/>
+		<h1><?php echo $visiteur->_code ?></h1><br/>
 		<p>Notez le bien!<br/>Il vous sera demandé lors de votre départ de notre établissement</p>
 		<br/><br/><br/><br/>
 		<div class="col-xs-4 col-xs-offset-1 no-padding">

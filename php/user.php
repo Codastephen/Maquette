@@ -1,14 +1,12 @@
 <?php
 class User
 {
-	var $_id;
-	var $_name;
+	var $_nom;
 
 	
-	function __construct($id, $name)
+	function __construct($nom)
 	{
-		$this->_id = $id;
-		$this->_name = $name;
+		$this->_nom = $nom;
 	}
 }
 ?>

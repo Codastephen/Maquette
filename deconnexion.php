@@ -7,16 +7,15 @@ if(isset($_POST['code'])){
 	$code = $_POST['code'];
 
 	$bdd = new ConnexionBDD();
-	$cli = $bdd->getClientCode($code);
-	$result = $bdd->retirerClientWithCode($code);
+	$cli = $bdd->getVisiteurCode($code);
+	$result = $bdd->retirerVisiteurWithCode($code);
 	
 	if(!$result){
-		$_SESSION['infomsg'] = "Le code n'éxiste pas";
+		$_SESSION['infomsg'] = "Le code n'éxiste pas".$result;
 		$_SESSION['infotype'] = "danger";
 		header("Location: index.php#leave");
 	}else{
-		$log = new BDDLog();
-		$log->ajouterLigne("DEPART",$cli);
+		BDDLog::ajouterLigne("DEPART",$cli);
 
 		if(isset($_POST['type']) && $_POST['type'] == 'admin'){
 			$_SESSION['infomsg'] = "Visiteur bien déconnecté";

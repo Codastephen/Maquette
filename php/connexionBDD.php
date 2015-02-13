@@ -16,73 +16,101 @@ class ConnexionBDD
 	}
 	
 
-	public function ajouterClient($client)
+	public function ajouterVisiteur($visiteur)
 	{
-		$req = $this->bdd->prepare('INSERT INTO visiteur(nom, societe,heureA,code) VALUES(:nom, :societe, :heureA,:code)');
-		$client->_code = $this->GenerateKey();
+		$req = $this->bdd->prepare('INSERT INTO visiteur(nom, societe,code) VALUES(:nom, :societe, :code)');
+		$visiteur->_code = $this->GenerateKey();
 		$data = $req->execute(array(
-			'nom' => $client->_nomprenom,
-			'societe' => $client->_societe,
-			'heureA' => date('Y-m-d H:i:s',$client->_hArrive),
-			'code' => $client->_code
+			'nom' => $visiteur->_nomprenom,
+			'societe' => $visiteur->_societe,
+			'code' => $visiteur->_code
 			));
 		if($data){
-			return $this->getClient($client);
-		}else{
+			$newVisiteur = $this->getVisiteur($visiteur);
+			$req = $this->bdd->prepare('INSERT INTO Visite(Id_visiteur, HeureA) VALUES(:id, :heureA)');
 			$data = $req->execute(array(
-				'nom' => $client->_nomprenom,
-				'societe' => $client->_societe,
-				'heureA' => date('Y-m-d H:i:s',$client->_hArrive),
-				'code' => $this->GenerateKey()
+				'id' => $newVisiteur->_id,
+				'heureA' => date('Y-m-d H:i:s',$visiteur->_hArrive),
+				));
+			BDDLog::ajouterLigne("ARRIVEE",$newVisiteur);
+			return $newVisiteur;
+		}else{
+			$req = $this->bdd->prepare('INSERT INTO visiteur(nom, societe,code) VALUES(:nom, :societe, :code)');
+			$visiteur->_code = $this->GenerateKey();
+			$data = $req->execute(array(
+				'nom' => $visiteur->_nomprenom,
+				'societe' => $visiteur->_societe,
+				'code' => $visiteur->_code
 				));
 			if($data){
-				return $this->getClient($client);
+				$newVisiteur = $this->getVisiteur($visiteur);
+				$req = $this->bdd->prepare('INSERT INTO Visite(Id_visiteur, HeureA) VALUES(:id, :heureA)');
+				$data = $req->execute(array(
+					'id' => $newVisiteur->_id,
+					'heureA' => date('Y-m-d H:i:s',$visiteur->_hArrive),
+					));
+				BDDLog::ajouterLigne("ARRIVEE",$newVisiteur);
+				return $newVisiteur;
 			}else{
 				die("Erreur fatale lors de l'insertion");
 			}
 		}
 	}
 
-	public function retirerClient($client)
+	public function retirerVisiteur($visiteur)
 	{
-		$req = $this->bdd->prepare('DELETE FROM visiteur WHERE code = :code');
+		$req = $this->bdd->prepare('UPDATE visite SET HeureD = :heureD WHERE Id_visiteur = :id');
 		$req->execute(array(
-			'code' => $client->_code
+			'id' => $visiteur->_id,
+			'heureD' => date('Y-m-d H:i:s',time())
 			));
+		$req = $this->bdd->prepare('UPDATE visiteur SET code = null WHERE Id_visiteur = :id');
+		$req->execute(array(
+			'id' => $visiteur->_id
+			));
+		BDDLog::ajouterLigne("DEPART",$visiteur);
 	}
 
-	public function retirerClientWithCode($code)
+	public function retirerVisiteurWithCode($code)
 	{
 		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$code.'"');
-		if($reponse->rowCount()==0)
+		if($reponse->rowCount()==0 || $reponse->rowCount()>1)
 			return false;
-		$req = $this->bdd->prepare('DELETE FROM visiteur WHERE code = :code');
+		foreach  ($reponse as $row) {
+			$toto= $row['Id_visiteur'];
+		}
+		$req = $this->bdd->prepare('UPDATE visite SET HeureD = :heureD WHERE Id_visiteur = :id');
 		$req->execute(array(
-			'code' => $code
+			'id' => $toto,
+			'heureD' => date('Y-m-d H:i:s',time())
 			));
-		return true;
-	}
-
-	public function afficherClient()
-	{
-		$reponse = $this->bdd->query('SELECT Nom, Societe, code FROM visiteur ORDER BY Nom');
+		$req = $this->bdd->prepare('UPDATE visiteur SET code = null WHERE Id_visiteur = :id');
+		$req->execute(array(
+			'id' => $toto
+			));
 		return $reponse;
 	}
 
-	public function getClient($client){
-		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$client->_code.'" ORDER BY Nom');
-		$data = $reponse->fetch();
-		$client = Client::withCodeAndHour($data['Nom'],$data['Societe'],$data['HeureA'],$data['code']);
-		return $client;
+	public function afficherVisiteur()
+	{
+		$reponse = $this->bdd->query('SELECT Nom, Societe, code FROM visiteur WHERE code >=0 ORDER BY Nom');
+		return $reponse;
 	}
 
-	public function getClientCode($code){
+	public function getVisiteur($visiteur){
+		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$visiteur->_code.'" ORDER BY Nom');
+		$data = $reponse->fetch();
+		$visiteur = Visiteur::withCodeAndHour($data['Id_visiteur'],$data['Nom'],$data['Societe'],$data['HeureA'],$data['code']);
+		return $visiteur;
+	}
+
+	public function getVisiteurCode($code){
 		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$code.'"');
 		if($reponse->rowCount()==0)
 			return false;
 		$data = $reponse->fetch();
-		$client = Client::withCodeAndHour($data['Nom'],$data['Societe'],$data['HeureA'],$data['code']);
-		return $client;
+		$visiteur = Visiteur::withCodeAndHour($data['Id_visiteur'],$data['Nom'],$data['Societe'],$data['HeureA'],$data['code']);
+		return $visiteur;
 	}
 
 	function GenerateKey($length = 4) {
@@ -94,7 +122,7 @@ class ConnexionBDD
 	}
 
 	public function addMsg($msg){
-		$req = $this->bdd->prepare('INSERT INTO Message(user, message,datedebut,datefin) VALUES(:user, :msg, :debut,:fin)');
+		$req = $this->bdd->prepare('INSERT INTO Message(nom, contenu,datedebut,datefin) VALUES(:user, :msg, :debut,:fin)');
 		$data = $req->execute(array(
 			'user' => $msg->_user,
 			'msg' => $msg->_msg,
@@ -116,33 +144,33 @@ class ConnexionBDD
 	}
 
 	public function getAllMsg(){
-		$reponse = $this->bdd->query("SELECT m.id as id,m.message as message,m.datedebut as datedebut,m.datefin as datefin,u.id as user_id,u.name as user_name FROM Message m,user u WHERE u.id = m.user ORDER BY m.id");
+		$reponse = $this->bdd->query("SELECT m.Id_message as id,m.contenu as message,m.datedebut as datedebut,m.datefin as datefin,u.nom as user_nom FROM Message m,user u WHERE u.nom = m.nom ORDER BY m.Id_message");
 		return $reponse;
 	}
 
 	public function deleteMsg($id){
-		$reponse = $this->bdd->query("DELETE FROM Message WHERE id=".$id);
+		$reponse = $this->bdd->query("DELETE FROM Message WHERE Id_message=".$id);
 		return $reponse;
 	}
 
-	public function addUser($username){
-		$reponse = $this->bdd->query('SELECT * FROM user WHERE name ="'.$username.'"');
+	public function addUser($nom){
+		$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'"');
 		if($reponse->rowCount()>1)
 			return false;
 		else if($reponse->rowCount()==1){
 			$data = $reponse->fetch();
-			return new User($data['id'],$data['name']);
+			return new User($data['nom']);
 		}else{
-			$req = $this->bdd->prepare('INSERT INTO User(name) VALUES(:name)');
+			$req = $this->bdd->prepare('INSERT INTO User(nom) VALUES(:nom)');
 			$data = $req->execute(array(
-				'name' => $username
+				'nom' => $nom
 				));
-			$reponse = $this->bdd->query('SELECT * FROM user WHERE name ="'.$username.'"');
+			$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'"');
 			if($reponse->rowCount()!=1)
 				return false;
 			else{
 				$data = $reponse->fetch();
-				return new User($data['id'],$data['name']);
+				return new User($data['nom']);
 			}
 		}
 	}

@@ -14,14 +14,14 @@ if(!$_SESSION['admin']){
 $conn = new BDDLog();
 $reponse = $conn->afficherLog();
 $log = "";
-while ($donnees = $reponse->fetch())
+while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
 {
-	$log .= $donnees['date']." ".$donnees['action']." ".$donnees['visiteur_nomprenom']." ".$donnees['visiteur_societe']."<br/>";
+	$log .= $donnees['date']." ".$donnees['action']." ".$donnees['nom']." ".$donnees['societe']."<br/>";
 }
 
 ob_start(); 
 $conn = new connexionBDD();
-$reponse = $conn->afficherClient();
+$reponse = $conn->afficherVisiteur();
 
 while ($donnees = $reponse->fetch())
 {
