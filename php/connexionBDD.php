@@ -111,7 +111,7 @@ class ConnexionBDD
 
 	public function afficherVisiteur()
 	{
-		$reponse = $this->bdd->query('SELECT Nom, Societe, code FROM visiteur WHERE code >=0 ORDER BY Nom');
+		$reponse = $this->bdd->query('SELECT Nom, Societe, code FROM visiteur ORDER BY Code,Nom');
 		return $reponse;
 	}
 
