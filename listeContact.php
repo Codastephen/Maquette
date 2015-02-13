@@ -15,7 +15,7 @@ $visiteur = unserialize($_SESSION['visiteur']);
 <?php ob_start(); ?>
 <script type="text/javascript">
 function showLync(){
-	window.external.littleMe(<?php echo "'".$visiteur->_nomprenom."','".$visiteur->_societe."','".$visiteur->_code."'" ?>)
+	window.external.callLync(<?php echo "'".$visiteur->_nomprenom."','".$visiteur->_societe."','".$visiteur->_code."','".$visiteur->_id."'" ?>)
 }
 </script>
 <div class="row">

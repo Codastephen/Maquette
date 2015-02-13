@@ -18,23 +18,34 @@ class ConnexionBDD
 
 	public function ajouterVisiteur($visiteur)
 	{
-		$req = $this->bdd->prepare('INSERT INTO visiteur(nom, societe,code) VALUES(:nom, :societe, :code)');
-		$visiteur->_code = $this->GenerateKey();
-		$data = $req->execute(array(
-			'nom' => $visiteur->_nomprenom,
-			'societe' => $visiteur->_societe,
-			'code' => $visiteur->_code
-			));
-		if($data){
-			$newVisiteur = $this->getVisiteur($visiteur);
+		$req = $this->bdd->query('SELECT * FROM visiteur where nom = "'.$visiteur->_nomprenom.'" AND societe = "'.$visiteur->_societe.'"');
+		$count=0;
+		foreach  ($req as $row) {
+			$count+=1;
+			$id_vis= $row['Id_visiteur'];
+		}
+		if($count>=1){
+			$visiteur->_code = $this->GenerateKey();
+			$visiteur->_id=$id_vis;
+			$req = $this->bdd->prepare('UPDATE visiteur SET code = :code WHERE Id_visiteur = :id');
+			$req->execute(array(
+				'id' => $id_vis,
+				'code' => $visiteur->_code
+				));
 			$req = $this->bdd->prepare('INSERT INTO Visite(Id_visiteur, HeureA) VALUES(:id, :heureA)');
 			$data = $req->execute(array(
-				'id' => $newVisiteur->_id,
+				'id' => $id_vis,
 				'heureA' => date('Y-m-d H:i:s',$visiteur->_hArrive),
 				));
-			BDDLog::ajouterLigne("ARRIVEE",$newVisiteur);
-			return $newVisiteur;
+			$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = :code WHERE Id_visiteur = :id');
+			$req->execute(array(
+				'id' => $id_vis,
+				'code' => $this->bdd->lastInsertId()
+				));
+			BDDLog::ajouterLigne("ARRIVEE",$visiteur);
+			return $visiteur;
 		}else{
+
 			$req = $this->bdd->prepare('INSERT INTO visiteur(nom, societe,code) VALUES(:nom, :societe, :code)');
 			$visiteur->_code = $this->GenerateKey();
 			$data = $req->execute(array(
@@ -48,6 +59,11 @@ class ConnexionBDD
 				$data = $req->execute(array(
 					'id' => $newVisiteur->_id,
 					'heureA' => date('Y-m-d H:i:s',$visiteur->_hArrive),
+					));
+				$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = :code WHERE Id_visiteur = :id');
+				$req->execute(array(
+					'id' => $newVisiteur->_id,
+					'code' => $this->bdd->lastInsertId()
 					));
 				BDDLog::ajouterLigne("ARRIVEE",$newVisiteur);
 				return $newVisiteur;
@@ -78,13 +94,15 @@ class ConnexionBDD
 			return false;
 		foreach  ($reponse as $row) {
 			$toto= $row['Id_visiteur'];
+			$id_vis = $row['Id_current_visite'];
 		}
-		$req = $this->bdd->prepare('UPDATE visite SET HeureD = :heureD WHERE Id_visiteur = :id');
+		$req = $this->bdd->prepare('UPDATE visite SET HeureD = :heureD WHERE Id_visiteur = :id AND Id = :idv');
 		$req->execute(array(
 			'id' => $toto,
+			'idv' => $id_vis,
 			'heureD' => date('Y-m-d H:i:s',time())
 			));
-		$req = $this->bdd->prepare('UPDATE visiteur SET code = null WHERE Id_visiteur = :id');
+		$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = null ,code = NULL WHERE Id_visiteur = :id');
 		$req->execute(array(
 			'id' => $toto
 			));
@@ -173,6 +191,16 @@ class ConnexionBDD
 				return new User($data['nom']);
 			}
 		}
+	}
+
+	public function addContact($visiteur,$nom){
+		$user = $this->addUser($nom);
+		$req = $this->bdd->prepare('INSERT INTO Contact(Id_visiteur,Nom_user,heure) VALUES(:visiteur,:nom,:heure)');
+		$data = $req->execute(array(
+			'visiteur' => $visiteur,
+			'nom' => $user->_nom,
+			'heure' => date('Y-m-d H:i:s',time())
+			));
 	}
 
 }

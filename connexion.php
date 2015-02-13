@@ -21,6 +21,7 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 				//Mon code de reconnexion est bon
 				$type = "RECONNEXION";
 				$helper=1;
+				BDDLog::ajouterLigne("RECONNEXION",$cli);
 			}			
 		}else { 
 			//Je me connecte
