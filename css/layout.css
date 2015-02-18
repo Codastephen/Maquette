@@ -36,7 +36,7 @@ table.tablevisitor tr:hover{
 	padding-right:0;
 }
 
-.wrapper-img,.wrapper-img > h3,.wrapper-img-admin,.wrapper-img-admin > h3,.wrapper-img-user,.wrapper-img-user > h3{
+.wrapper-img,.wrapper-img > h3{
 	padding-top:5%;
 	margin-bottom:0%;
 }
@@ -49,21 +49,21 @@ img + h3{
 	margin: 0 auto;
 }
 
-.wrapper-img-admin.active, .wrapper-img.active,.wrapper-img-user.active{
+.wrapper-img.active{
 	background-color:#334d5c;
 	color:white;
 	border-top: solid 1px white;
 	border-bottom: solid 1px white;
 }
 
-.wrapper-img-admin,.wrapper-img,.wrapper-img-user{
+.wrapper-img{
 	background-color:#18bc9c;
 	color:white;
 	border-top: solid 1px #18bc9c;
 	border-bottom: solid 1px #18bc9c;
 }
 
-.wrapper-img-user.danger,.wrapper-img-admin.danger{
+.wrapper-img.danger{
 	background-color:#d9534f;
 }
 

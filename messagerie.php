@@ -154,7 +154,7 @@ $mymsg.="</table>";
 				<ul id="myTab" class="nav nav-stacked" role="tablist">
 					<li role="presentation" class="active">
 						<a href="#listcurrent" aria-controls="list" role="tab" data-toggle="tab">
-							<div class="col-xs-12 wrapper-img-user text-center active">
+							<div class="col-xs-12 wrapper-img text-center active">
 								<img src="./img/msgopen.png" class="img-responsive">
 								<h3 style="font-size:24px">Messages en cours</h3>
 							</div>
@@ -162,7 +162,7 @@ $mymsg.="</table>";
 					</li>
 					<li role="presentation">
 						<a href="#listnext" aria-controls="log" role="tab" data-toggle="tab">
-							<div class="col-xs-12 wrapper-img-user text-center">
+							<div class="col-xs-12 wrapper-img text-center">
 								<img src="./img/msgclosed.png" class="img-responsive">
 								<h3>Messages prévus</h3>
 							</div>
@@ -170,7 +170,7 @@ $mymsg.="</table>";
 					</li>
 					<li role="presentation">
 						<a href="#mymsg" aria-controls="list" role="tab" data-toggle="tab">
-							<div class="col-xs-12 wrapper-img-user text-center">
+							<div class="col-xs-12 wrapper-img text-center">
 								<img src="./img/id.png" class="img-responsive">
 								<h3>Vos messages</h3>
 							</div>
@@ -178,7 +178,7 @@ $mymsg.="</table>";
 					</li>
 					<li role="presentation">
 						<a href="messagerie.php?deco=true">
-							<div class="col-xs-12 wrapper-img-user danger text-center">
+							<div class="col-xs-12 wrapper-img danger text-center">
 								<img src="./img/leave.png" class="img-responsive">
 								<h3>Déconnexion</h3>
 							</div>

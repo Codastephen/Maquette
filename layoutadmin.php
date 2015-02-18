@@ -21,7 +21,7 @@
 				<ul id="myTab" class="nav nav-stacked" role="tablist">
 					<li role="presentation" class="active">
 						<a href="#list" aria-controls="list" role="tab" data-toggle="tab">
-							<div class="col-xs-12 wrapper-img-admin text-center active">
+							<div class="col-xs-12 wrapper-img text-center active">
 								<img src="./img/id.png" class="img-responsive">
 								<h3>Liste des visiteurs</h3>
 							</div>
@@ -29,7 +29,7 @@
 					</li>
 					<li role="presentation">
 						<a href="#visite" aria-controls="visite" role="tab" data-toggle="tab">
-							<div class="col-xs-12 wrapper-img-admin text-center">
+							<div class="col-xs-12 wrapper-img text-center">
 								<img src="./img/id.png" class="img-responsive">
 								<h3>Liste des visites</h3>
 							</div>
@@ -37,7 +37,7 @@
 					</li>
 					<li role="presentation">
 						<a href="#log" aria-controls="log" role="tab" data-toggle="tab">
-							<div class="col-xs-12 wrapper-img-admin text-center">
+							<div class="col-xs-12 wrapper-img text-center">
 								<img src="./img/log.png" class="img-responsive">
 								<h3>Log</h3>
 							</div>
@@ -45,7 +45,7 @@
 					</li>
 					<li>
 						<a href="admin.php?deco=true">
-							<div class="col-xs-12 wrapper-img-admin danger text-center">
+							<div class="col-xs-12 wrapper-img danger text-center">
 								<img src="./img/leave.png" class="img-responsive">
 								<h3>Déconnexion</h3>
 							</div>

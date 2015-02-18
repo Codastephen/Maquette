@@ -1,10 +1,18 @@
 <?php
+/**
+ * Classe gérant l'accès en écriture/lecture dans les logs
+ */
 class BDDLog
 {
 	
 	
 	var $host = 'localhost';
 
+	/**
+	 * Ajouter une ligne dans les logs
+	 * @param  String $action   représente l'action faites par le visiteur
+	 * @param  Visiteur $visiteur représente le visiteur
+	 */
 	public static function ajouterLigne($action,$visiteur)
 	{
 		
@@ -24,6 +32,9 @@ class BDDLog
 			));
 	}
 
+	/**
+	 * Affiche les logs
+	 */
 	public function afficherLog()
 	{
 		try

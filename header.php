@@ -5,7 +5,6 @@
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/layout.css" rel="stylesheet">
-<link href="css/contact.css" rel="stylesheet">
 <?php 
 require_once 'autoload.php';
 if(!isset($_SESSION['liste']))

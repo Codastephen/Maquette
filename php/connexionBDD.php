@@ -1,9 +1,15 @@
 <?php
+/**
+ * Classe gérant tous les accès à la base de données (écriture, lecture, modification)
+ */
 class ConnexionBDD
 {
 
 	var $bdd = null;
 	
+	/**
+	 * Constructeur de l'accès à la BDD
+	 */
 	function __construct(){
 		try
 		{
@@ -16,6 +22,11 @@ class ConnexionBDD
 	}
 	
 
+	/**
+	 * Permet d'ajouter un visiteur dans la BDD
+	 * @param  Visiteur $visiteur représente le visiteur
+	 * @return Visiteur le visiteur avec son ID dans la BDD
+	 */
 	public function ajouterVisiteur($visiteur)
 	{
 		$req = $this->bdd->query('SELECT * FROM visiteur where nom = "'.$visiteur->_nomprenom.'" AND societe = "'.$visiteur->_societe.'"');
@@ -47,7 +58,6 @@ class ConnexionBDD
 			BDDLog::ajouterLigne("ARRIVEE",$visiteur);
 			return $visiteur;
 		}else{
-
 			$req = $this->bdd->prepare('INSERT INTO visiteur(nom, societe,code) VALUES(:nom, :societe, :code)');
 			$visiteur->_code = $this->GenerateKey();
 			$data = $req->execute(array(
@@ -75,20 +85,6 @@ class ConnexionBDD
 				die("Erreur fatale lors de l'insertion");
 			}
 		}
-	}
-
-	public function retirerVisiteur($visiteur)
-	{
-		$req = $this->bdd->prepare('UPDATE visite SET HeureD = :heureD WHERE Id_visiteur = :id');
-		$req->execute(array(
-			'id' => $visiteur->_id,
-			'heureD' => date('Y-m-d H:i:s',time())
-			));
-		$req = $this->bdd->prepare('UPDATE visiteur SET code = null WHERE Id_visiteur = :id');
-		$req->execute(array(
-			'id' => $visiteur->_id
-			));
-		BDDLog::ajouterLigne("DEPART",$visiteur);
 	}
 
 	public function retirerVisiteurWithCode($code)
