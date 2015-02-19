@@ -1,7 +1,9 @@
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
-		<h1 class="text-center">Déjà sur place?</h1>
-		<p class="text-center"><i>Entrez votre code dans le champ ci-dessous pour vous reconnecter :</i></p>
+		<br/>
+		<h1 class="text-center">Vous souhaitez recontacter un membre de notre entreprise?</h1>
+		<h4 class="text-center">Merci de ressaisir votre code à 4 chiffres pour accéder à l'espace contact</h4>
+		<br/><br/>
 		<form Action ='connexion.php' method ='post' role='form' act>
 			<input type='hidden' id='type' name='type' value='reco'>
 			<div class="row">

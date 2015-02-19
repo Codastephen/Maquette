@@ -33,9 +33,13 @@ if(isset($_POST['code'])){
 ?>
 
 <div class="row">
-	<div class="col-xs-10 col-xs-offset-1">
-		<h1 class="text-center">Voulez-vous vraiment partir?</h1>
-		<p class="text-center"><i>Entrez votre code dans le champ ci-dessous pour confirmer votre départ :</i></p>
+	<div class="col-xs-10 col-xs-offset-1 text-center">
+		<br/>
+		<h1>Merci d'être venu chez Designal Systems</h1>
+		<h2>Nous vous souhaitons un agréable retour</h2>
+		<br/>
+		<h4>Merci de saisir votre code à 4 chiffres pour confirmer votre départ</h4>
+		<br/>
 		<form Action ='deconnexion.php' method ='post' role='form' act>
 			<input type='hidden' id='type' name='type' value='visitor'>
 			<div class="row">

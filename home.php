@@ -1,6 +1,8 @@
 <div class="col-xs-10 col-xs-offset-1">
-	<h1 class="text-center">Nouvel arrivant</h1>
-	<p class="text-center"><i>Merci de bien vouloir renseigner les champs ci-dessous :</i></p>
+	<br/>
+	<h1 class="text-center">Bienvenue chez Designal Systems</h1>
+	<h4 class="text-center">Afin de mieux vous aider, merci de bien vouloir remplir les champs ci-dessous</h4>
+	<br/><br/>
 	<form Action ="connexion.php" method ="post" role="form" act>
 		<div class="form-group">
 			<label for="exampleInputPassword1">Société :</label>
