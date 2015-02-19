@@ -117,7 +117,7 @@ class ConnexionBDD
 
 	public function afficherVisite()
 	{
-		$reponse = $this->bdd->query('SELECT v.Nom AS Nom, v.Societe AS Societe, v.code AS code, vi.HeureA AS HeureA,vi.HeureD AS HeureD, contact.Heure AS HeureContact,contact.Nom_user AS NomContact FROM visiteur v,visite vi LEFT JOIN contact on vi.Id = contact.Id_visite WHERE v.Id_visiteur = vi.Id_visiteur  ORDER BY v.Code,v.Nom ASC');
+		$reponse = $this->bdd->query('SELECT v.Nom AS Nom, v.Societe AS Societe, v.code AS code, vi.HeureA AS HeureA,vi.HeureD AS HeureD, contact.Heure AS HeureContact,contact.Nom_user AS NomContact FROM visiteur v,visite vi LEFT JOIN contact on vi.Id = contact.Id_visite WHERE v.Id_visiteur = vi.Id_visiteur  ORDER BY v.Code,v.Nom,vi.HeureA DESC');
 		return $reponse;
 	}
 
