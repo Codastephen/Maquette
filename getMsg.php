@@ -4,7 +4,7 @@ session_start();
 
 $bdd = new connexionBDD();
 $reponse = $bdd->getAllMsg();
-$msg="<span>";
+$msg="<span class='defilor-text'>";
 $first=true;
 while ($donnees = $reponse->fetch())
 {

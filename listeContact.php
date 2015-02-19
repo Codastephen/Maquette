@@ -20,13 +20,14 @@ function showLync(){
 </script>
 <div class="row">
 	<div class="col-xs-10 text-center col-xs-offset-1">
-		<div id="rowlogo" class="row" style="margin-top:50px">
+		<div  class="row" style="margin-top:50px">
 			<div class="col-xs-8 col-xs-offset-2">
 				<a href="index.php">
 					<img src="./img/designal.png" class="img-responsive"/>								
 				</a>	
 			</div>
 		</div>
+		<h1>Bienvenue <?php echo $visiteur->_nomprenom ?></h1>	
 		<p>Votre code est :</p>
 		<h1><?php echo $visiteur->_code ?></h1><br/>
 		<p>Notez le bien!<br/>Il vous sera demandé lors de votre départ de notre établissement</p>

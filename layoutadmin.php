@@ -54,7 +54,7 @@
 				</ul>
 			</div>
 			<div class="col-sm-10 borderer">
-				<div id="rowlogo" class="row" style="margin-top:50px">
+				<div id="rowlogo2" class="row" style="margin-top:50px">
 					<div class="col-xs-8 col-xs-offset-2">
 						<a href="index.php">
 							<img src="./img/designal.png" class="img-responsive"/>

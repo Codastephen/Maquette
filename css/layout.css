@@ -127,6 +127,9 @@ button.big{
 	overflow: hidden;
 }
 
+.defilor-text{
+	font-size:50px;
+}
 .texted{
 	background-color: transparent;
 	border-width: 0;
@@ -146,6 +149,12 @@ input.error{
 	outline: none;
 	border-color: #d43f3a;
 	box-shadow: 0 0 10px #d43f3a;
+}
+#rowlogo{
+	position:absolute;
+	bottom:30px;
+	right:28%;
+	max-height:60px;
 }
 #helper{
 	position:absolute;

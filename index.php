@@ -56,18 +56,8 @@ ob_start(); ?>
 
 	</div>
 	<div class="col-sm-10 borderer">
-		<div id="defilor-container" class="row">
+		<div id="defilor-container" class="row" >
 			<div id="defilor" data-duration='30000'>
-			</div>
-		</div>
-
-
-		<div id="rowlogo" class="row" style="margin-top:50px">
-			<div class="col-xs-8 col-xs-offset-2">
-				<a href="index.php">
-					<img src="./img/designal.png" class="img-responsive"/>								
-				</a>	
-
 			</div>
 		</div>
 
@@ -85,7 +75,9 @@ ob_start(); ?>
 				<?php include 'plan.php';?>
 			</div>
 		</div>
+									
 	</div>
+<img id="rowlogo" src="./img/designal.png" class="img-responsive"/>	
 	<!--<div id="helper" class="text-center">
 		<div class="row">
 			<div class="col-xs-12">
