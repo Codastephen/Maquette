@@ -11,9 +11,16 @@
 		session_start();
 	}
 	if(isset($_POST['password']) && $_POST['password'] == 'tutu'){
-		echo '<script type="text/javascript">
-		window.print() ;
-		</script>';
+		echo '<script>if (navigator.appName == "Microsoft Internet Explorer")
+{ 
+     var PrintCommand = \'<object ID="PrintCommandObject" WIDTH=0 HEIGHT=0
+CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></object>\';
+     document.body.insertAdjacentHTML(\'beforeEnd\', PrintCommand); 
+     PrintCommandObject.ExecWB(6, -1); PrintCommandObject.outerHTML = ""; 
+} 
+else { 
+window.print();
+}</script> ';
 
 	}
 
@@ -29,8 +36,7 @@
 		echo "<tr>".($donnees['code']==$oldcode?"<td class='code' width='10%' style='opacity:0'> ".$donnees['code']." </td>":"<td class='code' width='10%'> ".$donnees['code']." </td>").
 		"<td width='15%'> ".($donnees['Nom']==$oldname?"":$donnees['Nom'])." </td>
 		<td width='15%'> ".($donnees['Societe']==$oldsociete?"":$donnees['Societe'])." </td>
-		<td width='15%'> ".date_format(date_create($donnees['HeureA']),"d/m/Y H:i:s")." </td>
-		<td width='15%'> ".($donnees['HeureD']!=0?date_format(date_create($donnees['HeureD']),"d/m/Y H:i:s"):"")." </td>";
+		<td width='15%'> ".date_format(date_create($donnees['HeureA']),"d/m/Y H:i:s")." </td>";
 		$mail = $donnees['NomContact'];
 		if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
 			list($name) = split("@",$mail);
@@ -60,7 +66,6 @@
 			<th class="text-center">Nom</th>
 			<th class="text-center">Société</th>
 			<th class="text-center">Jour d'arrivée</th>
-			<th class="text-center">Jour de départ</th>
 			<th class="text-center">Personne contactée</th>
 			<th class="text-center">Heure du contact</th>
 		</thead>

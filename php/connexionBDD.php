@@ -86,8 +86,9 @@ class ConnexionBDD
 				'code' => $visiteur->_code
 				));
 			if($data){
+
 				//On lui créé une visite
-				$newVisiteur = $this->getVisiteur($visiteur->_code);
+				$newVisiteur = ConnexionBDD::getVisiteur($visiteur->_code);
 				$req = $this->bdd->prepare('INSERT INTO Visite(Id_visiteur, HeureA) VALUES(:id, :heureA)');
 				$data = $req->execute(array(
 					'id' => $newVisiteur->_id,
@@ -129,6 +130,9 @@ class ConnexionBDD
 			FROM visiteur v
 			WHERE v.nom = "'.$visiteur->_nomprenom.'" AND v.societe = "'.$visiteur->_societe.'"');
 		$count=0;
+		$id_vis = null;
+		$code_vis = null;
+		$id_visite = null;
 		foreach  ($req as $row) {
 			$count+=1;
 			$id_vis= $row['Id_visiteur'];
@@ -207,7 +211,8 @@ class ConnexionBDD
 	 */
 	public function getAllVisite()
 	{
-		$reponse = $this->bdd->query('SELECT v.Nom AS Nom, 
+		$reponse = $this->bdd->query('SELECT v.Nom AS Nom,
+			v.Id_visiteur AS Id_visiteur,
 			v.Societe AS Societe, 
 			v.code AS code, 
 			vi.HeureA AS HeureA,
@@ -248,15 +253,14 @@ class ConnexionBDD
 		$reponse = $this->bdd->query('SELECT v.Id_visiteur AS Id_visiteur,
 		v.Nom AS Nom,
 		v.Societe AS Societe,
-		v.code AS code,
-		vi.HeureA AS HeureA,
-		vi.Id AS Id_visite
-		FROM visiteur v, visite vi
-		WHERE v.Id_current_visite = vi.Id AND code ="'.$code.'"');
-		if($reponse->rowCount()==0)
+		v.code AS code
+		FROM visiteur v
+		WHERE code ="'.$code.'"');
+		if($reponse->rowCount()>1 || $reponse->rowCount()==0)
 			return false;
 		$data = $reponse->fetch();
 		$visiteur = Visiteur::withCodeAndHour($data['Id_visiteur'],$data['Nom'],$data['Societe'],$data['HeureA'],$data['code'],$data['Id_visite']);
+						
 		return $visiteur;
 	}
 

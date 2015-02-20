@@ -47,7 +47,8 @@ $oldname = "";
 $oldsociete = "";
 while ($donnees = $reponse->fetch())
 {
-	echo "<tr>".($donnees['code']==$oldcode?"<td class='code' width='10%' style='opacity:0'> ".$donnees['code']." </td>":"<td class='code' width='10%'> ".$donnees['code']." </td>").
+	echo "<tr class='".$donnees['Id_visiteur']."'>";
+	echo ($donnees['code']==$oldcode?"<td class='code' width='10%' style='opacity:0'> ".$donnees['code']." </td>":"<td class='multiple code' width='10%'><span style='margin-right:20px' class='glyphicon glyphicon-minus-sign' onclick=\"HideTr(this,'".$donnees['Id_visiteur']."')\"></span>".$donnees['code']." </td>").
 	"<td width='15%'> ".($donnees['Nom']==$oldname?"":$donnees['Nom'])." </td>
 	<td width='15%'> ".($donnees['Societe']==$oldsociete?"":$donnees['Societe'])." </td>
 	<td width='15%'> ".date_format(date_create($donnees['HeureA']),"d/m/Y H:i:s")." </td>

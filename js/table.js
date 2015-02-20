@@ -124,7 +124,82 @@ function validateInputDateTime(box){
 			$(box+" input").removeClass("error");
 		},5000);
 	}
-		
+
 	return state;
 
+}
+
+function HideTr(obj,id){
+	if($(obj).hasClass("glyphicon-minus-sign")){
+		$("#tableVisite tr").each(function(){
+			if($(this).hasClass(id)){
+				if(!$(this).find("td").hasClass("multiple"))
+					$(this).fadeOut();
+			}
+			
+		});
+		$(obj).addClass("glyphicon-plus-sign");
+		$(obj).removeClass("glyphicon-minus-sign")
+	}else if($(obj).hasClass("glyphicon-plus-sign")){
+		$("#tableVisite tr").each(function(){
+			if($(this).hasClass(id)){
+				if(!$(this).find("td").hasClass("multiple"))
+					$(this).fadeIn();
+			}
+			
+		});
+		$(obj).removeClass("glyphicon-plus-sign");
+		$(obj).addClass("glyphicon-minus-sign");
+	}
+}
+
+function filterTableVisite(text){
+	$("#tableVisite tbody tr").each(function(){
+		if($(this).find("td.multiple > span").hasClass("glyphicon-plus-sign")){
+			$(this).find("td.multiple > span").addClass("glyphicon-minus-sign");
+			$(this).find("td.multiple > span").removeClass("glyphicon-plus-sign");
+		}
+		$(this).hide();
+	});
+	if(text=="present"){
+		$("#tableVisite tbody tr").each(function(){
+			if($(this).find('td.code').html()!=0)
+				$(this).show();
+		});
+	}
+	if(text=="nonpresent"){
+		$("#tableVisite tbody tr").each(function(){
+			if($(this).find('td.code').html()==0)
+				$(this).show();
+		});
+	}
+	if(text=="all"){
+		$("#tableVisite tbody tr").each(function(){
+			$(this).show();
+		});
+	}
+}
+
+
+function filterTable(text){
+	$("#tableVisiteur tbody tr").each(function(){
+		$(this).hide();
+	});
+	if(text=="present"){
+		$("#tableVisiteur tbody tr").each(function(){
+			if($(this).find('td.code').html()!=0)
+				$(this).show();
+		});
+	}
+	if(text=="nonpresent"){
+		$("#tableVisiteur tbody tr").each(function(){
+			if($(this).find('td.code').html()==0)
+				$(this).show();
+		});
+	}
+	if(text=="all"){
+		$("#tableVisiteur tbody tr").each(function(){
+			$(this).show();
+		});
+	}
 }

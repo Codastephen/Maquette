@@ -64,9 +64,6 @@
 						<h1>Interface d'administration</h1>
 					</div>
 					<div role="tabpanel" class="tab-pane fade in active" id="list">
-						
-
-						<div class="row">
 							<div class="text-center">
 								<div class="btn-group" data-toggle="buttons">
 									<label class="btn btn-primary active" onclick="filterTable('present')">
@@ -82,15 +79,14 @@
 								<div class="tableresize" style="overflow-y:auto">
 									<table id="tableVisiteur" class="table tablevisitor table-striped">
 										<thead>
-											<th>Code</th>
-											<th>Nom</th>
-											<th>Société</th>
+											<th class="text-center">Code</th>
+											<th class="text-center">Nom</th>
+											<th class="text-center">Société</th>
 										</thead>
 										<?php echo $liste ?>
 									</table>
 								</div>
 							</div>
-						</div>
 					</div>
 					<div role="tabpanel" class="tab-pane fade text-center" id="visite">
 						<div class="btn-group" data-toggle="buttons">
@@ -140,58 +136,12 @@
 		if($(this).find('td.code').html()==0)
 			$(this).hide();
 	});
-
-	function filterTable(text){
-		$("#tableVisiteur tbody tr").each(function(){
-			$(this).hide();
-		});
-		if(text=="present"){
-			$("#tableVisiteur tbody tr").each(function(){
-				if($(this).find('td.code').html()!=0)
-					$(this).show();
-			});
-		}
-		if(text=="nonpresent"){
-			$("#tableVisiteur tbody tr").each(function(){
-				if($(this).find('td.code').html()==0)
-					$(this).show();
-			});
-		}
-		if(text=="all"){
-			$("#tableVisiteur tbody tr").each(function(){
-				$(this).show();
-			});
-		}
-	}
 	</script>
 	<script type="text/javascript">
 	$("#tableVisite tbody tr").each(function(){
 		if($(this).find('td.code').html()==0)
 			$(this).hide();
 	});
-
-	function filterTableVisite(text){
-		$("#tableVisite tbody tr").each(function(){
-			$(this).hide();
-		});
-		if(text=="present"){
-			$("#tableVisite tbody tr").each(function(){
-				if($(this).find('td.code').html()!=0)
-					$(this).show();
-			});
-		}
-		if(text=="nonpresent"){
-			$("#tableVisite tbody tr").each(function(){
-				if($(this).find('td.code').html()==0)
-					$(this).show();
-			});
-		}
-		if(text=="all"){
-			$("#tableVisite tbody tr").each(function(){
-				$(this).show();
-			});
-		}
-	}
 	</script>
 </body>
 </html>
