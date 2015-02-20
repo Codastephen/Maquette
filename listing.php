@@ -11,17 +11,10 @@
 		session_start();
 	}
 	if(isset($_POST['password']) && $_POST['password'] == 'tutu'){
-		echo '<script>if (navigator.appName == "Microsoft Internet Explorer")
-{ 
-     var PrintCommand = \'<object ID="PrintCommandObject" WIDTH=0 HEIGHT=0
-CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></object>\';
-     document.body.insertAdjacentHTML(\'beforeEnd\', PrintCommand); 
-     PrintCommandObject.ExecWB(6, -1); PrintCommandObject.outerHTML = ""; 
-} 
-else { 
-window.print();
-}</script> ';
+		echo '<script>window.print();</script> ';
 
+	}else{
+		header("Location: cerfil.php");
 	}
 
 	$conn = new connexionBDD();
@@ -59,7 +52,7 @@ window.print();
 	}
 	$listevisite = ob_get_clean();
 	?>
-
+	<h1 class="text-center">Liste des visiteurs encore à l'intérieur des batiments</h1>
 	<table id="tableVisite" class="table table-striped">
 		<thead>
 			<th class="text-center">Code</th>
