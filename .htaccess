@@ -9,3 +9,4 @@ RewriteRule ^messagerie$ messagerie.php [L]
 RewriteRule ^msg$ messagerie.php [L]
 # Réécriture de index.html vers index.php 
 RewriteRule ^admin$ admin.php [L]
+RewriteRule ^alert$ listing.php [L]
