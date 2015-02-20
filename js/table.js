@@ -4,11 +4,11 @@ $('div.tableresize').bind('scroll', function() {
 	scrolling = true;
 })
 
-$("table.tablevisitor tr").on("click",function(){
+$("table.tablevisitor tbody tr").on("click",function(){
 	handlertable($(this));
 })
 
-$("table.tablevisitor tr").on("touchend",function(){
+$("table.tablevisitor tbody tr").on("touchend",function(){
 	handlertable($(this));
 })
 
