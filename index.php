@@ -7,7 +7,7 @@ session_start();
 if(isset($_SESSION['visiteur'])){
 	unset($_SESSION['visiteur']);
 }
-	
+
 ob_start(); ?>
 <div class="row">
 	<div class="col-sm-2 no-padding border-white" role="tabpanel">
@@ -37,9 +37,9 @@ ob_start(); ?>
 				</a>
 			</li>
 			<script type="text/javascript">
-				function reloadMap(){
-					$("#frameMap").attr("src","https://www.google.com/maps/d/embed?mid=z_9Z8qcyca8M.kmf_NMfHVoMc");
-				}
+			function reloadMap(){
+				$("#frameMap").attr("src","https://www.google.com/maps/d/embed?mid=z_9Z8qcyca8M.kmf_NMfHVoMc");
+			}
 			</script>
 			<li role="presentation">
 				<a href="#map" aria-controls="map" role="tab" data-toggle="tab" onclick="reloadMap()">
@@ -57,7 +57,7 @@ ob_start(); ?>
 	</div>
 	<div class="col-sm-10 borderer">
 		<div id="defilor-container" class="row" >
-			<div id="defilor" data-duration='30000'>
+			<div id="defilor" data-duration='15000'>
 			</div>
 		</div>
 
@@ -75,28 +75,11 @@ ob_start(); ?>
 				<?php include 'plan.php';?>
 			</div>
 		</div>
-									
+
 	</div>
-<img id="rowlogo" src="./img/designal.png" class="img-responsive"/>	
-	<!--<div id="helper" class="text-center">
-		<div class="row">
-			<div class="col-xs-12">
-				<p>Besoin d'aide?</p>
-			</div>
-		</div>
-		<div class="row">
-			<div id="content" class="col-xs-12">
-				<a id="helperA" href="#home">
-					<div class="row">
-						<div class="col-xs-4 col-xs-offset-4">
-							<img src="./img/bell-black.png" class="img-responsive">
-						</div>
-					</div>
-					<h3>Appel à l'aide</h3>
-				</a>
-			</div>
-		</div>
-	</div>-->
+	<a href="./printSecurity.php">
+		<img id="rowlogo" src="./img/designal.png" class="img-responsive"/>	
+	</a>
 </div>
 
 <?php $contenu = ob_get_clean(); ?>

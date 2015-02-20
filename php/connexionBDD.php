@@ -29,35 +29,55 @@ class ConnexionBDD
 	 */
 	public function ajouterVisiteur($visiteur)
 	{
-		$req = $this->bdd->query('SELECT * FROM visiteur where nom = "'.$visiteur->_nomprenom.'" AND societe = "'.$visiteur->_societe.'"');
-		$count=0;
-		foreach  ($req as $row) {
-			$count+=1;
-			$id_vis= $row['Id_visiteur'];
-		}
-		if($count>=1){
-			$visiteur->_code = $this->GenerateKey();
-			$visiteur->_id=$id_vis;
-			$req = $this->bdd->prepare('UPDATE visiteur SET code = :code WHERE Id_visiteur = :id');
-			$req->execute(array(
-				'id' => $id_vis,
-				'code' => $visiteur->_code
-				));
-			$req = $this->bdd->prepare('INSERT INTO Visite(Id_visiteur, HeureA) VALUES(:id, :heureA)');
-			$data = $req->execute(array(
-				'id' => $id_vis,
-				'heureA' => date('Y-m-d H:i:s',$visiteur->_hArrive),
-				));
-			$idVisite = $this->bdd->lastInsertId();
-			$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = :code WHERE Id_visiteur = :id');
-			$req->execute(array(
-				'id' => $id_vis,
-				'code' => $idVisite
-				));
-			$visiteur->_visite =  $idVisite;
-			BDDLog::ajouterLigne("ARRIVEE",$visiteur);
+		$infoVisiteur = connexionBDD::IsVisiteurExistant($visiteur);
+		if($infoVisiteur['id'] != null){
+			//Le visiteur existe déjà ici
+			$visiteur->_id=$infoVisiteur['id'];
+			//Si le visiteur n'a pas de code, il est donc parti, il faut lui en générer un nouveau
+			if($infoVisiteur['code'] == null){
+
+				$visiteur->_code = $this->GenerateKey();
+				$req = $this->bdd->prepare('UPDATE visiteur SET code = :code WHERE Id_visiteur = :id');
+				$data = $req->execute(array(
+					'id' => $visiteur->_id,
+					'code' => $visiteur->_code
+					));
+				if($data){
+					//Comme il est parti, il lui faut une nouvelle visite
+					$req = $this->bdd->prepare('INSERT INTO Visite(Id_visiteur, HeureA) VALUES(:id, :heureA)');
+					$data = $data = $req->execute(array(
+						'id' => $visiteur->_id,
+						'heureA' => date('Y-m-d H:i:s',$visiteur->_hArrive),
+						));
+					if($data){
+						//On met à jour le visiteur pour qu'il connaisse l'id de sa visite actuelle
+						$idVisite = $this->bdd->lastInsertId();
+						$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = :code WHERE Id_visiteur = :id');
+						$data = $req->execute(array(
+							'id' => $visiteur->_id,
+							'code' => $idVisite
+							));
+						if($data){
+							$visiteur->_visite =  $idVisite;
+							BDDLog::ajouterLigne("ARRIVEE",$visiteur);
+						}else{
+							die("Erreur fatale lors de la MAJ du visiteur. Impossible de mettre à jour la visite actuelle.");
+						}
+					}else{
+						die("Erreur fatale lors de la création d'une visite.");
+					}
+				}else{
+					die("Erreur fatale lors de la MAJ du visiteur. Impossible de mettre à jour le code du visiteur.");
+				}
+			}
+			else{
+				$visiteur->_code = $infoVisiteur['code'];
+				$visiteur->_visite = $infoVisiteur['id_visite'];
+			}
+
 			return $visiteur;
 		}else{
+			//Le visiteur n'existe pas
 			$req = $this->bdd->prepare('INSERT INTO visiteur(nom, societe,code) VALUES(:nom, :societe, :code)');
 			$visiteur->_code = $this->GenerateKey();
 			$data = $req->execute(array(
@@ -66,77 +86,184 @@ class ConnexionBDD
 				'code' => $visiteur->_code
 				));
 			if($data){
-				$newVisiteur = $this->getVisiteur($visiteur);
+				//On lui créé une visite
+				$newVisiteur = $this->getVisiteur($visiteur->_code);
 				$req = $this->bdd->prepare('INSERT INTO Visite(Id_visiteur, HeureA) VALUES(:id, :heureA)');
 				$data = $req->execute(array(
 					'id' => $newVisiteur->_id,
 					'heureA' => date('Y-m-d H:i:s',$visiteur->_hArrive),
 					));
-				$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = :code WHERE Id_visiteur = :id');
-				$idVisite = $this->bdd->lastInsertId();
-				$req->execute(array(
-					'id' => $newVisiteur->_id,
-					'code' => $idVisite
-					));
-				$newVisiteur->_visite =  $idVisite;
-				BDDLog::ajouterLigne("ARRIVEE",$newVisiteur);
-				return $newVisiteur;
+				if($data){
+					//On MAJ le visiteur pour qu'il connaisse l'id de sa visite actuelle
+					$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = :code WHERE Id_visiteur = :id');
+					$idVisite = $this->bdd->lastInsertId();
+					$data = $req->execute(array(
+						'id' => $newVisiteur->_id,
+						'code' => $idVisite
+						));
+					if($data){
+						$newVisiteur->_visite =  $idVisite;
+						BDDLog::ajouterLigne("ARRIVEE",$newVisiteur);
+						return $newVisiteur;
+					}else{
+						die("Erreur fatale lors de la MAJ du visiteur. Impossible de mettre à jour la visite actuelle.");
+					}
+				}else{
+					die("Erreur fatale lors de la création d'une visite.");
+				}
 			}else{
-				die("Erreur fatale lors de l'insertion");
+				die("Erreur fatale lors de la création d'un visiteur.");
 			}
 		}
 	}
 
-	public function retirerVisiteurWithCode($code)
+	/**
+	 * Vérifie si le visiteur existe dans la base
+	 * @param User $visiteur Objet représentant le visiteur
+	 */
+	private function IsVisiteurExistant($visiteur){
+
+		$req = $this->bdd->query('SELECT v.Id_visiteur AS Id_visiteur,
+			v.code AS code,
+			v.Id_current_visite as Id_visite 
+			FROM visiteur v
+			WHERE v.nom = "'.$visiteur->_nomprenom.'" AND v.societe = "'.$visiteur->_societe.'"');
+		$count=0;
+		foreach  ($req as $row) {
+			$count+=1;
+			$id_vis= $row['Id_visiteur'];
+			$code_vis = $row['code'];
+			$id_visite = $row['Id_visite'];
+		}
+		($count > 1)? $id_vis=null:'';
+		$result = array('id'=>$id_vis,'code' => $code_vis,'id_visite' => $id_visite);
+		return $result;
+	}
+
+	/**
+	 * Retire un visiteur dans la base de données
+	 * @param  int $code code du visiteur
+	 */
+	public function retirerVisiteur($code)
 	{
+		$infoVisiteur = ConnexionBDD::IsCodeExistant($code);
+		if($infoVisiteur['id'] == null)
+			die("Impossible de trouver le visiteur dans la base de données.");
+		else{
+			$req = $this->bdd->prepare('UPDATE visite SET HeureD = :heureD WHERE Id_visiteur = :id AND Id = :idv');
+			$data = $req->execute(array(
+				'id' => $infoVisiteur['id'],
+				'idv' => $infoVisiteur['id_visite'],
+				'heureD' => date('Y-m-d H:i:s',time())
+				));
+			if($data){
+				$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = null ,code = NULL WHERE Id_visiteur = :id');
+				$data = $req->execute(array(
+					'id' => $infoVisiteur['id']
+					));
+				return true;
+				if(!$data){
+					die("Erreur fatale lors de la mise à jour du visiteur. Impossible de mettre à NULL la visite actuelle.");
+				}
+			}else{
+				die("Erreur fatale dans la mise à jour de la visite. Impossible de mettre une date de fin.");
+			}
+		}
+	}
+
+	/**
+	 * Vérifie si le code existe dans la base
+	 * @param int $code Code représentant le visiteur
+	 */
+	private function IsCodeExistant($code){
+
 		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$code.'"');
 		if($reponse->rowCount()==0 || $reponse->rowCount()>1)
-			return false;
+			$id_vis = null;
+		$id_visite = null;
 		foreach  ($reponse as $row) {
-			$toto= $row['Id_visiteur'];
-			$id_vis = $row['Id_current_visite'];
+			$id_vis= $row['Id_visiteur'];
+			$id_visite = $row['Id_current_visite'];
 		}
-		$req = $this->bdd->prepare('UPDATE visite SET HeureD = :heureD WHERE Id_visiteur = :id AND Id = :idv');
-		$req->execute(array(
-			'id' => $toto,
-			'idv' => $id_vis,
-			'heureD' => date('Y-m-d H:i:s',time())
-			));
-		$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = null ,code = NULL WHERE Id_visiteur = :id');
-		$req->execute(array(
-			'id' => $toto
-			));
-		return $reponse;
+		$result = array('id'=>$id_vis,'id_visite' => $id_visite);
+		return $result;
 	}
 
-	public function afficherVisiteur()
+	/**
+	 * Retourne tous les visiteurs
+	 */
+	public function getAllVisiteur()
 	{
-		$reponse = $this->bdd->query('SELECT v.Nom AS Nom, v.Societe AS Societe, v.code AS code FROM visiteur v ORDER BY v.Code,v.Nom ASC');
+		$reponse = $this->bdd->query('SELECT v.Nom AS Nom, 
+			v.Societe AS Societe, 
+			v.code AS code 
+			FROM visiteur v 
+			ORDER BY v.Code,v.Nom ASC');
 		return $reponse;
 	}
 
-	public function afficherVisite()
+	/**
+	 * Retourne toutes les visites
+	 */
+	public function getAllVisite()
 	{
-		$reponse = $this->bdd->query('SELECT v.Nom AS Nom, v.Societe AS Societe, v.code AS code, vi.HeureA AS HeureA,vi.HeureD AS HeureD, contact.Heure AS HeureContact,contact.Nom_user AS NomContact FROM visiteur v,visite vi LEFT JOIN contact on vi.Id = contact.Id_visite WHERE v.Id_visiteur = vi.Id_visiteur  ORDER BY v.Code,v.Nom,vi.HeureA DESC');
+		$reponse = $this->bdd->query('SELECT v.Nom AS Nom, 
+			v.Societe AS Societe, 
+			v.code AS code, 
+			vi.HeureA AS HeureA,
+			vi.HeureD AS HeureD, 
+			contact.Heure AS HeureContact,
+			contact.Nom_user AS NomContact 
+			FROM visiteur v,visite vi LEFT JOIN contact on vi.Id = contact.Id_visite 
+			WHERE v.Id_visiteur = vi.Id_visiteur  
+			ORDER BY v.Code,v.Nom,vi.HeureA DESC');
 		return $reponse;
 	}
 
-	public function getVisiteur($visiteur){
-		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$visiteur->_code.'" ORDER BY Nom');
-		$data = $reponse->fetch();
-		$visiteur = Visiteur::withCodeAndHour($data['Id_visiteur'],$data['Nom'],$data['Societe'],$data['HeureA'],$data['code']);
-		return $visiteur;
+	/**
+	 * Retourne toutes les visites non terminées
+	 */
+	public function getAllVisiteSecurity()
+	{
+		$reponse = $this->bdd->query('SELECT v.Nom AS Nom, 
+			v.Societe AS Societe, 
+			v.code AS code, 
+			vi.HeureA AS HeureA,
+			vi.HeureD AS HeureD, 
+			contact.Heure AS HeureContact,
+			contact.Nom_user AS NomContact 
+			FROM visiteur v,visite vi LEFT JOIN contact on vi.Id = contact.Id_visite 
+			WHERE v.Id_visiteur = vi.Id_visiteur 
+			AND vi.HeureD =\'0000-00-00 00:00\' 
+			ORDER BY v.Code,v.Nom,vi.HeureA DESC');
+		return $reponse;
 	}
 
-	public function getVisiteurCode($code){
-		$reponse = $this->bdd->query('SELECT * FROM visiteur WHERE code ="'.$code.'"');
+	/**
+	 * Retourne un visiteur à partir de son code
+	 * @param  int $code code du visiteur
+	 * @return User       visiteur créé
+	 */
+	public function getVisiteur($code){
+		$reponse = $this->bdd->query('SELECT v.Id_visiteur AS Id_visiteur,
+		v.Nom AS Nom,
+		v.Societe AS Societe,
+		v.code AS code,
+		vi.HeureA AS HeureA,
+		vi.Id AS Id_visite
+		FROM visiteur v, visite vi
+		WHERE v.Id_current_visite = vi.Id AND code ="'.$code.'"');
 		if($reponse->rowCount()==0)
 			return false;
 		$data = $reponse->fetch();
-		$visiteur = Visiteur::withCodeAndHour($data['Id_visiteur'],$data['Nom'],$data['Societe'],$data['HeureA'],$data['code']);
+		$visiteur = Visiteur::withCodeAndHour($data['Id_visiteur'],$data['Nom'],$data['Societe'],$data['HeureA'],$data['code'],$data['Id_visite']);
 		return $visiteur;
 	}
 
+	/**
+	 * Génère une clé pour le visiteur
+	 * @param integer $length taille de la clé à générer
+	 */
 	function GenerateKey($length = 4) {
 		$key = '';
 		for($i = 0; $i < $length; $i ++) {
@@ -145,6 +272,10 @@ class ConnexionBDD
 		return $key;
 	}
 
+	/**
+	 * Ajoute un message dans la base
+	 * @param Message $msg message a ajouter
+	 */
 	public function addMsg($msg){
 		$req = $this->bdd->prepare('INSERT INTO Message(nom, contenu,datedebut,datefin) VALUES(:user, :msg, :debut,:fin)');
 		$data = $req->execute(array(
@@ -156,6 +287,14 @@ class ConnexionBDD
 		return $data;
 	}
 
+	/**
+	 * Met à jour un message
+	 * @param  [type] $id    [description]
+	 * @param  [type] $value [description]
+	 * @param  [type] $debut [description]
+	 * @param  [type] $fin   [description]
+	 * @return [type]        [description]
+	 */
 	public function updateMsg($id,$value,$debut,$fin){
 		$req = $this->bdd->prepare('UPDATE Message SET message = :value,datedebut =:debut, datefin = :fin WHERE id = :id');
 		$data = $req->execute(array(
@@ -167,20 +306,40 @@ class ConnexionBDD
 		return $this->bdd->query("SELECT message FROM Message WHERE id = ".$id);
 	}
 
+	/**
+	 * Retourne tous les messages
+	 * @return [type] [description]
+	 */
 	public function getAllMsg(){
-		$reponse = $this->bdd->query("SELECT m.Id_message as id,m.contenu as message,m.datedebut as datedebut,m.datefin as datefin,u.nom as user_nom FROM Message m,user u WHERE u.nom = m.nom ORDER BY m.Id_message");
+		$reponse = $this->bdd->query("SELECT m.Id_message as id,
+			m.contenu as message,
+			m.datedebut as datedebut,
+			m.datefin as datefin,
+			u.nom as user_nom 
+			FROM Message m,user u 
+			WHERE u.nom = m.nom 
+			ORDER BY m.Id_message");
 		return $reponse;
 	}
 
+	/**
+	 * Supprime un message par son ID
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
 	public function deleteMsg($id){
 		$reponse = $this->bdd->query("DELETE FROM Message WHERE Id_message=".$id);
 		return $reponse;
 	}
 
+	/**
+	 * Ajoute un utilisateur interne à l'entreprise
+	 * @param String $nom nom de l'utilisateur
+	 */
 	public function addUser($nom){
 		$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'"');
 		if($reponse->rowCount()>1)
-			return false;
+			die("Impossible d'ajouter l'utilisateur dans la base. Trop d'utilisateurs ont déjà le même nom");
 		else if($reponse->rowCount()==1){
 			$data = $reponse->fetch();
 			return new User($data['nom']);
@@ -189,16 +348,25 @@ class ConnexionBDD
 			$data = $req->execute(array(
 				'nom' => $nom
 				));
-			$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'"');
-			if($reponse->rowCount()!=1)
-				return false;
-			else{
-				$data = $reponse->fetch();
-				return new User($data['nom']);
+			if($data){
+				$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'"');
+				if($reponse->rowCount()!=1)
+					die("Impossible de récupérer l'utilisateur dans la base. Trop d'utilisateurs ont déjà le même nom");
+				else{
+					$data = $reponse->fetch();
+					return new User($data['nom']);
+				}
+			}else{
+				die("Erreur fatale lors de l'insertion d'un user");
 			}
 		}
 	}
 
+	/**
+	 * Ajoute un contact lync dans la base
+	 * @param int $visite ID de la visite
+	 * @param nom $nom    adresse mail de l'utilisateur concerné
+	 */
 	public function addContact($visite,$nom){
 		$user = $this->addUser($nom);
 		$req = $this->bdd->prepare('INSERT INTO Contact(Id_visite,Nom_user,heure) VALUES(:visite,:nom,:heure)');
@@ -207,6 +375,9 @@ class ConnexionBDD
 			'nom' => $user->_nom,
 			'heure' => date('Y-m-d H:i:s',time())
 			));
+		if(!$data){
+			die("Erreur fatale lors de l'insertion.Impossible d'ajouter un contact.");
+		}
 	}
 
 }

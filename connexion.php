@@ -11,7 +11,7 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 		if($_POST['type']=='reco'){ 
 		//Je me reconnecte
 			$bdd = new connexionBDD();
-			$cli = $bdd->getVisiteurCode($_POST['code']);
+			$cli = $bdd->getVisiteur($_POST['code']);
 			if(!$cli){  
 				$_SESSION['infomsg'] = "Erreur, mauvais code";
 				$_SESSION['infotype'] = "danger";

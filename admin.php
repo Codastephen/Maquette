@@ -19,7 +19,7 @@ while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
 	$log .= $donnees['date']." ".$donnees['action']." ".$donnees['nom']." ".$donnees['societe']."<br/>";
 }
 $conn = new connexionBDD();
-$reponse = $conn->afficherVisiteur();
+$reponse = $conn->getAllVisiteur();
 ob_start(); 
 
 while ($donnees = $reponse->fetch())
@@ -39,7 +39,7 @@ while ($donnees = $reponse->fetch())
 }
 $liste = ob_get_clean();
 $conn = new connexionBDD();
-$reponse = $conn->afficherVisite();
+$reponse = $conn->getAllVisite();
 ob_start(); 
 
 $oldcode="";

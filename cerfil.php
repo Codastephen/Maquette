@@ -1,21 +1,21 @@
-<?php $titre = "Admin" ?>
+<?php $titre =" cerfil"?>
 <?php require_once("autoload.php"); ?>
 <?php if (session_status() == PHP_SESSION_NONE) {
     session_start();
 } ?>
 <?php ob_start(); ?>
-<div class="row text-center">
-	<h1>Qui êtes-vous?</h1>
+<br/><br/><br/>
+<div class="col-xs-10 col-xs-offset-1 text-center">
+	<h1>Pour recevoir la liste des personnes présentes sur les lieux, merci de saisir le mot de passe</h1>
 </div>
 
 <div class="row">
 	<div class="col-xs-6 col-xs-offset-3">
-		<form Action ="connexion.php" method ="post" role="form" act>
+		<form Action ="listing.php" method ="post" role="form" act>
 			<div class="form-group">
-				<label for="password">Password :</label>
+				<label for="password">Mot de passe :</label>
 				<input type="password" class="form-control" id="password" name ="password" required>
 			</div>
-			<input type="hidden" name="type" value="admin">
 
 			<button type="submit" class="btn btn-success btn-lg">Valider</button>
 		</form>

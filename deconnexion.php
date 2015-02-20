@@ -7,8 +7,8 @@ if(isset($_POST['code'])){
 	$code = $_POST['code'];
 
 	$bdd = new ConnexionBDD();
-	$cli = $bdd->getVisiteurCode($code);
-	$result = $bdd->retirerVisiteurWithCode($code);
+	$cli = $bdd->getVisiteur($code);
+	$result = $bdd->retirerVisiteur($code);
 	
 	if(!$result){
 		$_SESSION['infomsg'] = "Le code n'éxiste pas".$result;
