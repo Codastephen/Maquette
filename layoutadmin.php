@@ -36,10 +36,10 @@
 						</a>
 					</li>
 					<li role="presentation">
-						<a href="#log" aria-controls="log" role="tab" data-toggle="tab">
+						<a href="#msg" aria-controls="msg" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img text-center">
 								<img src="./img/log.png" class="img-responsive">
-								<h3>Log</h3>
+								<h3>Messages</h3>
 							</div>
 						</a>
 					</li>
@@ -64,29 +64,29 @@
 						<h1>Interface d'administration</h1>
 					</div>
 					<div role="tabpanel" class="tab-pane fade in active" id="list">
-							<div class="text-center">
-								<div class="btn-group" data-toggle="buttons">
-									<label class="btn btn-primary active" onclick="filterTable('present')">
-										<input type="radio" name="options" id="option1" autocomplete="off" checked ><i class="fa fa-taxi"></i> Présent sur les lieux
-									</label>
-									<label class="btn btn-primary" onclick="filterTable('nonpresent')">
-										<input type="radio" name="options" id="option2" autocomplete="off"><i class="fa fa-bed"></i> Non-présent
-									</label>
-									<label class="btn btn-primary" onclick="filterTable('all')">
-										<input type="radio" name="options" id="option3" autocomplete="off" ><i class="fa fa-cutlery"></i> Tous
-									</label>
-								</div>
-								<div class="tableresize" style="overflow-y:auto">
-									<table id="tableVisiteur" class="table tablevisitor table-striped">
-										<thead>
-											<th class="text-center">Code</th>
-											<th class="text-center">Nom</th>
-											<th class="text-center">Société</th>
-										</thead>
-										<?php echo $liste ?>
-									</table>
-								</div>
+						<div class="text-center">
+							<div class="btn-group" data-toggle="buttons">
+								<label class="btn btn-primary active" onclick="filterTable('present')">
+									<input type="radio" name="options" id="option1" autocomplete="off" checked ><i class="fa fa-taxi"></i> Présent sur les lieux
+								</label>
+								<label class="btn btn-primary" onclick="filterTable('nonpresent')">
+									<input type="radio" name="options" id="option2" autocomplete="off"><i class="fa fa-bed"></i> Non-présent
+								</label>
+								<label class="btn btn-primary" onclick="filterTable('all')">
+									<input type="radio" name="options" id="option3" autocomplete="off" ><i class="fa fa-cutlery"></i> Tous
+								</label>
 							</div>
+							<div class="tableresize" style="overflow-y:auto">
+								<table id="tableVisiteur" class="table tablevisitor table-striped">
+									<thead>
+										<th class="text-center">Code</th>
+										<th class="text-center">Nom</th>
+										<th class="text-center">Société</th>
+									</thead>
+									<?php echo $liste ?>
+								</table>
+							</div>
+						</div>
 					</div>
 					<div role="tabpanel" class="tab-pane fade text-center" id="visite">
 						<div class="btn-group" data-toggle="buttons">
@@ -115,9 +115,19 @@
 							</table>
 						</div>
 					</div>
-					<div role="tabpanel" class="tab-pane fade" id="log">
+					<div role="tabpanel" class="tab-pane fade" id="msg">
 						<div class="tableresize" style="overflow-y:auto">
-							<?php echo $log ?>
+							<div class="tableresize" style="overflow-y:auto">
+								<table id="tableMessage" class="table table-striped">
+									<thead>
+										<th class="text-center">Nom</th>
+										<th class="text-center">Message</th>
+										<th class="text-center">Date de début</th>
+										<th class="text-center">Date de fin</th>
+									</thead>
+									<?php echo $msg ?>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -139,7 +149,7 @@
 	</script>
 	<script type="text/javascript">
 	$("#tableVisite tbody tr").each(function(){
-		if($(this).find('td.code').html()==0)
+		if($(this).hasClass('absent'))
 			$(this).hide();
 	});
 	</script>

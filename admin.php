@@ -11,14 +11,19 @@ if(isset($_GET['deco']) && $_GET['deco']){
 if(!$_SESSION['admin']){
 	header('Location:connexionadmin.php');
 }
-$conn = new BDDLog();
-$reponse = $conn->afficherLog();
-$log = "";
-while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC))
-{
-	$log .= $donnees['date']." ".$donnees['action']." ".$donnees['nom']." ".$donnees['societe']."<br/>";
-}
 $conn = new connexionBDD();
+$reponse = $conn->getAllMsg();
+$msg = "";
+while ($donnees = $reponse->fetch())
+{
+	$msg .= "<tr>";
+	$msg .= "<td class='text-center'>".$donnees['nom']."</td>";
+	$msg .= "<td class='text-center'>".$donnees['message']."</td>";
+	$msg .= "<td class='text-center'>".$donnees['datedebut']."</td>";
+	$msg .= "<td class='text-center'>".$donnees['datefin']."</td>";
+	$msg .= "</tr>";
+}
+
 $reponse = $conn->getAllVisiteur();
 ob_start(); 
 
@@ -42,14 +47,34 @@ $conn = new connexionBDD();
 $reponse = $conn->getAllVisite();
 ob_start(); 
 
-$oldcode="";
+$oldcode=0;
 $oldname = "";
 $oldsociete = "";
 while ($donnees = $reponse->fetch())
 {
-	echo "<tr class='".$donnees['Id_visiteur']."'>";
-	echo ($donnees['code']==$oldcode?"<td class='code' width='10%' style='opacity:0'> ".$donnees['code']." </td>":"<td class='multiple code' width='10%'><span style='margin-right:20px' class='glyphicon glyphicon-minus-sign' onclick=\"HideTr(this,'".$donnees['Id_visiteur']."')\"></span>".$donnees['code']." </td>").
-	"<td width='15%'> ".($donnees['Nom']==$oldname?"":$donnees['Nom'])." </td>
+	if($donnees['code']==""){
+		echo "<tr class='absent ".$donnees['Id_visiteur']."'>";
+		if($donnees['Nom']==$oldname && $donnees['Societe']==$oldsociete){
+			echo "<td class='code' width='10%' style='opacity:0'> ".$donnees['code']." </td>";
+		}
+		else{
+			echo "<td class='multiple code' width='10%'>
+			<span style='margin-right:20px' class='glyphicon glyphicon-minus-sign' onclick=\"HideTr(this,'".$donnees['Id_visiteur']."')\"></span>
+			</td>";
+		}
+
+	}else{
+		echo "<tr class='present ".$donnees['Id_visiteur']."'>";
+		if($donnees['code']!=$oldcode){
+			echo "<td class='multiple code' width='10%'>
+			<span style='margin-right:20px' class='glyphicon glyphicon-minus-sign' onclick=\"HideTr(this,'".$donnees['Id_visiteur']."')\"></span>".$donnees['code']."
+			</td>";
+		}else
+			echo "<td></td>";
+		
+	}
+
+	echo "<td width='15%'> ".($donnees['Nom']==$oldname?"":$donnees['Nom'])." </td>
 	<td width='15%'> ".($donnees['Societe']==$oldsociete?"":$donnees['Societe'])." </td>
 	<td width='15%'> ".date_format(date_create($donnees['HeureA']),"d/m/Y H:i:s")." </td>
 	<td width='15%'> ".($donnees['HeureD']!=0?date_format(date_create($donnees['HeureD']),"d/m/Y H:i:s"):"")." </td>";
@@ -58,7 +83,7 @@ while ($donnees = $reponse->fetch())
 		list($name) = split("@",$mail);
 		$mail = "<a href='sip:".$mail."'>".$name."</a>";
 	}
-		
+
 	echo"<td width='15%'> ".$mail." </td>
 	<td width='15%'> ".($donnees['HeureContact']!=0?date_format(date_create($donnees['HeureContact']),"H:i:s"):"")." </td>
 	<td class='no-padding' width='25%'>

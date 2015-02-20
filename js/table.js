@@ -163,13 +163,13 @@ function filterTableVisite(text){
 	});
 	if(text=="present"){
 		$("#tableVisite tbody tr").each(function(){
-			if($(this).find('td.code').html()!=0)
+			if($(this).hasClass('present'))
 				$(this).show();
 		});
 	}
 	if(text=="nonpresent"){
 		$("#tableVisite tbody tr").each(function(){
-			if($(this).find('td.code').html()==0)
+			if($(this).hasClass('absent'))
 				$(this).show();
 		});
 	}

@@ -319,9 +319,8 @@ class ConnexionBDD
 			m.contenu as message,
 			m.datedebut as datedebut,
 			m.datefin as datefin,
-			u.nom as user_nom 
-			FROM Message m,user u 
-			WHERE u.nom = m.nom 
+			m.nom as nom
+			FROM Message m
 			ORDER BY m.Id_message");
 		return $reponse;
 	}
