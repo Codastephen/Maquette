@@ -17,7 +17,7 @@ function size(){
 	$(".top").css("height",Math.ceil($(window).height()/4));
 	$("#defilor").css("height",Math.ceil($(window).height()/8));
 	$("#defilor").css("width",$("#defilor-container").css("width"));
-	$(".tableresize").css("height",$(window).height()-(120 + parseInt($('#rowlogo2').css('margin-top'), 10) + $('#rowlogo2').outerHeight()));
+	$(".tableresize").css("height",$(window).height()-(140 + parseInt($('#rowlogo2').css('margin-top'), 10) + $('#rowlogo2').outerHeight()));
 	$("#listing").css("height",$(window).height()-(20 + parseInt($('#rowlogo2').css('margin-top'), 10) + $('#rowlogo2').outerHeight()));
 	$("#frameMap").attr("height",$(window).height()-120);
 	$("#frameMap").parent().css("height",$(window).height()-120);

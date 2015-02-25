@@ -28,18 +28,18 @@
 						</a>
 					</li>
 					<li role="presentation">
-						<a href="#visite" aria-controls="visite" role="tab" data-toggle="tab">
-							<div class="col-xs-12 wrapper-img text-center">
-								<img src="./img/id.png" class="img-responsive">
-								<h3>Liste des visites</h3>
-							</div>
-						</a>
-					</li>
-					<li role="presentation">
 						<a href="#msg" aria-controls="msg" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img text-center">
 								<img src="./img/log.png" class="img-responsive">
 								<h3>Messages</h3>
+							</div>
+						</a>
+					</li>
+					<li role="presentation">
+						<a href="#serrefile" aria-controls="serrefile" role="tab" data-toggle="tab">
+							<div class="col-xs-12 wrapper-img text-center">
+								<img src="./img/id.png" class="img-responsive">
+								<h3>Serre-files</h3>
 							</div>
 						</a>
 					</li>
@@ -60,35 +60,10 @@
 					</div>
 				</div>
 				<div class="tab-content">
-					<div class="row text-center">
-						<h1>Interface d'administration</h1>
-					</div>
-					<div role="tabpanel" class="tab-pane fade in active" id="list">
-						<div class="text-center">
-							<div class="btn-group" data-toggle="buttons">
-								<label class="btn btn-primary active" onclick="filterTable('present')">
-									<input type="radio" name="options" id="option1" autocomplete="off" checked ><i class="fa fa-taxi"></i> Présent sur les lieux
-								</label>
-								<label class="btn btn-primary" onclick="filterTable('nonpresent')">
-									<input type="radio" name="options" id="option2" autocomplete="off"><i class="fa fa-bed"></i> Non-présent
-								</label>
-								<label class="btn btn-primary" onclick="filterTable('all')">
-									<input type="radio" name="options" id="option3" autocomplete="off" ><i class="fa fa-cutlery"></i> Tous
-								</label>
-							</div>
-							<div class="tableresize" style="overflow-y:auto">
-								<table id="tableVisiteur" class="table tablevisitor table-striped">
-									<thead>
-										<th class="text-center">Code</th>
-										<th class="text-center">Nom</th>
-										<th class="text-center">Société</th>
-									</thead>
-									<?php echo $liste ?>
-								</table>
-							</div>
+					<div role="tabpanel" class="tab-pane fade in active text-center" id="list">
+						<div class="row text-center">
+							<h1>Liste des visiteurs</h1>
 						</div>
-					</div>
-					<div role="tabpanel" class="tab-pane fade text-center" id="visite">
 						<div class="btn-group" data-toggle="buttons">
 							<label class="btn btn-primary active" onclick="filterTableVisite('present')">
 								<input type="radio" name="options" id="option1" autocomplete="off" checked ><i class="fa fa-taxi"></i> Présent sur les lieux
@@ -116,18 +91,45 @@
 						</div>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="msg">
+						<div class="row text-center">
+							<h1>Liste des messages</h1>
+						</div>
 						<div class="tableresize" style="overflow-y:auto">
+							<table id="tableMessage" class="table table-striped">
+								<thead>
+									<th class="text-center">Nom</th>
+									<th class="text-center">Message</th>
+									<th class="text-center">Date de début</th>
+									<th class="text-center">Date de fin</th>
+								</thead>
+								<?php echo $msg ?>
+							</table>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane fade text-center" id="serrefile">
+						<div class="row text-center">
+							<h1>Gestion des serre-files</h1>
+						</div>
+						<div class="col-xs-6">
+							<h3>Liste des serre-files</h3>
 							<div class="tableresize" style="overflow-y:auto">
-								<table id="tableMessage" class="table table-striped">
+								<table id="tableSerreFile" class="table table-striped">
 									<thead>
 										<th class="text-center">Nom</th>
-										<th class="text-center">Message</th>
-										<th class="text-center">Date de début</th>
-										<th class="text-center">Date de fin</th>
+										<th class="text-center">Statut</th>
+										<th class="text-center">Actions</th>
 									</thead>
-									<?php echo $msg ?>
+									<?php echo $serrefile ?>
 								</table>
 							</div>
+						</div>
+						<div class="col-xs-6">
+							<h3>Ajouter un serre-file</h3><br/>
+							<form action="addSerreFile.php" method ="post">
+								<label>Mail : </label><input type="hidden" name='type' value='admin'/>
+								<input type="mail" name='mail'/><br/><br/>
+								<input type="submit" class="btn btn-lg btn-success"/>
+							</form>
 						</div>
 					</div>
 				</div>

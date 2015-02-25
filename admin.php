@@ -24,25 +24,6 @@ while ($donnees = $reponse->fetch())
 	$msg .= "</tr>";
 }
 
-$reponse = $conn->getAllVisiteur();
-ob_start(); 
-
-while ($donnees = $reponse->fetch())
-{
-	echo "<tr>
-	<td class='code' width='15%'> ".$donnees['code']." </td>
-	<td width='30%'> ".$donnees['Nom']." </td>
-	<td width='30%'> ".$donnees['Societe']." </td>
-	<td class='no-padding' width='25%'>
-	<form Action ='deconnexion.php' method ='post'>
-	<input type='hidden' id='type' name='type' value='admin'>
-	<input type='hidden' id='code' name='code' value='".$donnees['code']."'>
-	<button type='submit' class='btn btn-danger pull-right big' style='display:none;width:100%'>Partir</a>
-	</form>
-	</td>
-	</tr>";
-}
-$liste = ob_get_clean();
 $conn = new connexionBDD();
 $reponse = $conn->getAllVisite();
 ob_start(); 
@@ -86,18 +67,33 @@ while ($donnees = $reponse->fetch())
 
 	echo"<td width='15%'> ".$mail." </td>
 	<td width='15%'> ".($donnees['HeureContact']!=0?date_format(date_create($donnees['HeureContact']),"H:i:s"):"")." </td>
-	<td class='no-padding' width='25%'>
-	<form Action ='deconnexion.php' method ='post'>
-	<input type='hidden' id='type' name='type' value='admin'>
-	<input type='hidden' id='code' name='code' value='".$donnees['code']."'>
-	<button type='submit' class='btn btn-danger pull-right big' style='display:none;width:100%'>Partir</a>
-	</form>
-	</td>
+
 	</tr>";
 	$oldcode = $donnees['code'];
 	$oldname = $donnees['Nom'];
 	$oldsociete = $donnees['Societe'];
 }
 $listevisite = ob_get_clean();
+
+$reponse = $conn->getAllSerreFile();
+ob_start(); 
+
+while ($donnees = $reponse->fetch())
+{
+	echo "<tr>
+	<td width='15%'> ".$donnees['nom']." </td>
+	<td width='30%'> ".$donnees['statut']." </td>
+	<td class='no-padding' width='25%'>
+	<form Action ='removeSerreFile.php' method ='post'>
+	<input type='hidden' id='type' name='type' value='admin'>
+	<input type='hidden' id='nom' name='nom' value='".$donnees['nom']."'>
+	<button type='submit' class='btn btn-danger pull-right big' style='width:100%'>Ne plus être serre file</a>
+	</form>
+	</td>
+	</tr>";
+}
+$serrefile = ob_get_clean();
+
+
 require 'layoutadmin.php'; 
 ?>

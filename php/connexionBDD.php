@@ -345,7 +345,7 @@ class ConnexionBDD
 			die("Impossible d'ajouter l'utilisateur dans la base. Trop d'utilisateurs ont déjà le même nom");
 		else if($reponse->rowCount()==1){
 			$data = $reponse->fetch();
-			return new User($data['nom']);
+			return new User($data['nom'],$data['statut']);
 		}else{
 			$req = $this->bdd->prepare('INSERT INTO User(nom) VALUES(:nom)');
 			$data = $req->execute(array(
@@ -357,12 +357,85 @@ class ConnexionBDD
 					die("Impossible de récupérer l'utilisateur dans la base. Trop d'utilisateurs ont déjà le même nom");
 				else{
 					$data = $reponse->fetch();
-					return new User($data['nom']);
+					return new User($data['nom'],$data['statut']);
 				}
 			}else{
 				die("Erreur fatale lors de l'insertion d'un user");
 			}
 		}
+	}
+
+	/**
+	 * Ajoute un utilisateur interne à l'entreprise Serre file
+	 * @param String $nom nom de l'utilisateur
+	 */
+	public function addSerreFile($nom){
+		$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'"');
+		if($reponse->rowCount()>1)
+			die("Impossible d'ajouter l'utilisateur serre file dans la base. Trop d'utilisateurs serre file ont déjà le même nom");
+		else if($reponse->rowCount()==1){
+			return ConnexionBDD::updateUser($nom,'SERREFILE');
+		}else{
+			$req = $this->bdd->prepare('INSERT INTO User(nom,statut) VALUES(:nom,"SERREFILE")');
+			$data = $req->execute(array(
+				'nom' => $nom
+				));
+			if($data){
+				$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'" AND statut = "SERREFILE"');
+				if($reponse->rowCount()!=1)
+					die("Impossible d'ajouter l'utilisateur serre file dans la base. Trop d'utilisateurs serre file ont déjà le même nom");
+				else{
+					$data = $reponse->fetch();
+					return new User($data['nom'],$data['statut']);
+				}
+			}else{
+				die("Erreur fatale lors de l'insertion d'un user serrefile");
+			}
+		}
+	}
+
+	/**
+	 * MAJ un utilisateur interne à l'entreprise Serre file
+	 * @param String $nom nom de l'utilisateur
+	 */
+	public function updateUser($nom,$statut){
+		$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'"');
+		if($reponse->rowCount()>1 )
+			die("Impossible de MAJ l'utilisateur dans la base. Trop d'utilisateurs ont déjà le même nom");
+		else if($reponse->rowCount()==1){
+			$req = $this->bdd->prepare('UPDATE User SET statut = :statut  WHERE  nom = :nom');
+			$data = $req->execute(array(
+				'nom' => $nom,
+				'statut' => $statut
+				));
+			if($data){
+				$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'" AND statut = "'.$statut.'"');
+				if($reponse->rowCount()!=1)
+					die("Impossible de MAJ l'utilisateur dans la base. Trop d'utilisateurs ont déjà le même nom");
+				else{
+					$data = $reponse->fetch();
+					return new User($data['nom'],$data['statut']);
+				}
+			}else{
+				die("Erreur fatale lors de la MAJ d'un user");
+			}
+		}else{
+			die("Impossible de MAJ l'utilisateur dans la base. L'utilisateur n'existe pas");
+			
+		}
+	}
+
+	/**
+	 * Retourne tous les users serre file
+	 * @return [type] [description]
+	 */
+	public function getAllSerreFile(){
+		$reponse = $this->bdd->query("SELECT u.nom AS nom,
+			u.statut AS statut
+			FROM user u
+			WHERE u.statut = 'SERREFILE'
+			ORDER BY u.nom");
+		return $reponse;
 	}
 
 	/**
