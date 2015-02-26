@@ -155,27 +155,28 @@ function HideTr(obj,id){
 
 function filterTableVisite(text){
 	$("#tableVisite tbody tr").each(function(){
-		if($(this).find("td.multiple > span").hasClass("glyphicon-plus-sign")){
-			$(this).find("td.multiple > span").addClass("glyphicon-minus-sign");
-			$(this).find("td.multiple > span").removeClass("glyphicon-plus-sign");
+		if($(this).find("td.multiple > span").hasClass("glyphicon-minus-sign")){
+			$(this).find("td.multiple > span").addClass("glyphicon-plus-sign");
+			$(this).find("td.multiple > span").removeClass("glyphicon-minus-sign");
 		}
 		$(this).hide();
 	});
 	if(text=="present"){
 		$("#tableVisite tbody tr").each(function(){
-			if($(this).hasClass('present'))
+			if($(this).hasClass('present') && $(this).find("td").hasClass("multiple"))
 				$(this).show();
 		});
 	}
 	if(text=="nonpresent"){
 		$("#tableVisite tbody tr").each(function(){
-			if($(this).hasClass('absent'))
+			if($(this).hasClass('absent') && $(this).find("td").hasClass("multiple"))
 				$(this).show();
 		});
 	}
 	if(text=="all"){
 		$("#tableVisite tbody tr").each(function(){
-			$(this).show();
+			if($(this).find("td").hasClass("multiple"))
+				$(this).show();
 		});
 	}
 }

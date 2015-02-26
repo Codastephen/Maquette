@@ -144,15 +144,12 @@
 	<script src="./js/menu.js"></script>
 	<script src="./js/table.js"></script>
 	<script type="text/javascript">
-	$("#tableVisiteur tbody tr").each(function(){
-		if($(this).find('td.code').html()==0)
-			$(this).hide();
-	});
-	</script>
-	<script type="text/javascript">
 	$("#tableVisite tbody tr").each(function(){
 		if($(this).hasClass('absent'))
 			$(this).hide();
+	});
+	$("#tableVisite tbody tr td.multiple").each(function(){
+		$(this).find("span").click();
 	});
 	</script>
 </body>
