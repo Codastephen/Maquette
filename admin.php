@@ -81,8 +81,7 @@ ob_start();
 while ($donnees = $reponse->fetch())
 {
 	echo "<tr>
-	<td width='15%'> ".$donnees['nom']." </td>
-	<td width='30%'> ".$donnees['statut']." </td>
+	<td width='75%'> ".$donnees['nom']." </td>
 	<td class='no-padding' width='25%'>
 	<form Action ='removeSerreFile.php' method ='post'>
 	<input type='hidden' id='type' name='type' value='admin'>

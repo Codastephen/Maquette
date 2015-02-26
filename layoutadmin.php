@@ -113,12 +113,8 @@
 						<div class="col-xs-6">
 							<h3>Liste des serre-files</h3>
 							<div class="tableresize" style="overflow-y:auto">
+								<br/>
 								<table id="tableSerreFile" class="table table-striped">
-									<thead>
-										<th class="text-center">Nom</th>
-										<th class="text-center">Statut</th>
-										<th class="text-center">Actions</th>
-									</thead>
 									<?php echo $serrefile ?>
 								</table>
 							</div>
@@ -126,8 +122,12 @@
 						<div class="col-xs-6">
 							<h3>Ajouter un serre-file</h3><br/>
 							<form action="addSerreFile.php" method ="post">
-								<label>Mail : </label><input type="hidden" name='type' value='admin'/>
-								<input type="mail" name='mail'/><br/><br/>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon2">Mail :</span>
+									<input type="text" class="form-control" aria-describedby="basic-addon2" name="mail">
+								</div>
+								<br/>
+								<input type="hidden" name='type' value='admin'/>
 								<input type="submit" class="btn btn-lg btn-success"/>
 							</form>
 						</div>
