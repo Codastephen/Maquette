@@ -16,7 +16,7 @@
      		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
      		$content = "Votre contact <b>".$d["Nom_visiteur"]."</b> de la société <b>".$d["Societe"]. "</b> n'a pas signalé son départ.";
      		$content .= "<br/><br/> Nous vous rappellons que pour des raisons de sécurité, il est obligatoire de signaler le départ de tous vos visiteurs lors de leurs venues dans les locaux.";
-     		$content .= "<br/>Merci de bien vouloir sensibiliser vos visiteurs à bien signaler leur départ sur la borne gràçe au code fourni.";
+     		$content .= "<br/>Merci de bien vouloir sensibiliser vos visiteurs à bien signaler leur départ sur la borne grâce au code fourni.";
      		$content .= "<br/><br/>";
      		$content .= "<br/>Votre visiteur est maintenant considéré comme ayant quitté les locaux.";
      		$content .= "<br/><br/><br/>";
