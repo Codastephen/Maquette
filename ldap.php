@@ -59,7 +59,7 @@ ldap_close($conn);
 $_SESSION['infomsg'] = "Vous êtes bien connecté";
 $_SESSION['infotype'] = "success";
 $bdd= new ConnexionBDD();
-$cli = $bdd->addUser($_POST['name']."grpalu.com");
+$cli = $bdd->addUser($_POST['name']);
 $_SESSION['user']=serialize($cli);
 header("Location: messagerie.php");
 exit()

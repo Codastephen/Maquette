@@ -21,6 +21,10 @@ class ConnexionBDD
 		}
 	}
 	
+	public function getAllForcedDisconnected(){
+		$this->bdd->query("UPDATE visite SET HeureD = NOW() WHERE HeureA < NOW() AND HeureD = '0000-00-00 00:00'");
+		$this->bdd->query("UPDATE visiteur SET Id_current_visite = NULL, code = null");
+	}
 
 	/**
 	 * Permet d'ajouter un visiteur dans la BDD
