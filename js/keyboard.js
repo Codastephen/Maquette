@@ -62,6 +62,8 @@ $('#keyboard_text li').click(function(){
     	id_input.val(html.substr(0, html.length - 1));
     	return false;
     }
+    if(id_input.attr("maxlength") == id_input.val().length)
+		return;
     if ($this.hasClass('symbol')) character = $('span:visible', $this).html();
     if ($this.hasClass('space')) character = ' ';
     id_input.val(id_input.val() + character);
@@ -77,6 +79,8 @@ $('#keyboard_number li').click(function(){
     	id_input.val(html.substr(0, html.length - 1));
     	return false;
     }
+    if(id_input.attr("maxlength") == id_input.val().length)
+		return;
     if ($this.hasClass('symbol')) character = $('span:visible', $this).html();
     if ($this.hasClass('space')) character = ' ';
     id_input.val(id_input.val() + character);

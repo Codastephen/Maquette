@@ -6,11 +6,11 @@
 	<form Action ="connexion.php" method ="post" role="form" act>
 		<div class="form-group">
 			<label for="exampleInputPassword1">Société :</label>
-			<input type="text" class="form-control" id="societe" name ="societe" placeholder="Entrer votre société" autocomplete="off" required>
+			<input maxlength="30" type="text" class="form-control" id="societe" name ="societe" placeholder="Entrer votre société" autocomplete="off" required>
 		</div>
 		<div class="form-group">
 			<label for="nomprenom">Nom et prénom :</label>
-			<input type="text" class="form-control" id="nomprenom" name ="nomprenom" placeholder="Entrer votre nom prénom" autocomplete="off" required>
+			<input maxlength="30" type="text" class="form-control" id="nomprenom" name ="nomprenom" placeholder="Entrer votre nom prénom" autocomplete="off" required>
 		</div>
 		<input type="hidden" name="type" value="newvisitor">
 
