@@ -15,7 +15,7 @@ $visiteur = unserialize($_SESSION['visiteur']);
 <?php ob_start(); ?>
 <script type="text/javascript">
 function showLync(){
-	window.external.callLync(<?php echo "'".$visiteur->_nomprenom."','".$visiteur->_societe."','".$visiteur->_code."','".$visiteur->_id."','".$visiteur->_visite."'" ?>)
+	window.external.callLync(<?php echo "'".addslashes($visiteur->_nomprenom)."','".addslashes($visiteur->_societe)."','".addslashes($visiteur->_code)."','".addslashes($visiteur->_id)."','".addslashes($visiteur->_visite)."'" ?>)
 }
 </script>
 <div class="row">
@@ -42,6 +42,7 @@ function showLync(){
 		<div class="col-xs-4 col-xs-offset-2 no-padding">
 			<div class="text-center">
 				<a class="btn btn-lg btn-success" style="width:100%;height:100px;padding-top:30px" onclick="showLync()">
+				<!--<a href="./liste.php" class="btn btn-lg btn-success" style="width:100%;height:100px;padding-top:30px">-->
 					Signaler sa présence
 				</a>
 			</div>

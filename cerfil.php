@@ -18,7 +18,9 @@
 			</div>
 
 			<button type="submit" class="btn btn-success btn-lg">Valider</button>
+			<button class="btn btn-warning btn-lg" onclick="window.location='./index.php'">Retour à l'accueil de la borne</button>
 		</form>
+
 	</div>
 </div>
 

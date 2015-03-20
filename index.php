@@ -63,6 +63,7 @@ ob_start(); ?>
 
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade" id="home">
+
 				<?php include 'home.php';?>
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="reconnexion">
@@ -77,7 +78,7 @@ ob_start(); ?>
 		</div>
 
 	</div>
-	<a href="./printSecurity.php">
+	<a id="bottom_logo" href="./cerfil.php">
 		<img id="rowlogo" src="./img/designal.png" class="img-responsive"/>	
 	</a>
 </div>

@@ -1,0 +1,76 @@
+#keyboard_text,#keyboard_number {
+    margin: 0;
+    padding: 10px;
+    padding-right :5px;
+    list-style: none;
+    position: absolute;
+    bottom : 0;
+    background-color: #555;
+    font-size : 20px;
+}
+#keyboard_text li,#keyboard_number li {
+    float: left;
+    margin: 0 5px 5px 0;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: #eee;
+    border: 1px solid #f9f9f9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+.firstitem {
+    clear: left;
+}
+#keyboard_text .delete ,#keyboard_number .delete{
+    width: 255px;
+}
+
+.lastitem {
+    margin-right: 0;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+
+#keyboard_text .space{
+    clear: left;
+    width: 645px;
+}
+.on {
+    display: none;
+}
+#keyboard_text li:hover,#keyboard_number li:hover {
+    border-color: #e5e5e5;
+    cursor: pointer;
+}
+
+#keyboard_text li:active,#keyboard_number li:active {
+    background-color : #5bc0de;
+    color : white;
+}
+#keyboard_text li.active,#keyboard_number li.active {
+    background-color : #5bc0de;
+    color : white;
+}
+
+
+#keyboard_number{
+    font-size: 20px;
+    line-height: 85px;
+}
+
+#keyboard_number .center{
+    margin-left:90px;
+}
+
+#keyboard_number .symbol{
+    height : 85px;
+    width : 85px;
+}
+
+#keyboard_number .delete{
+    height : 60px;
+    width : 265px;
+}

@@ -19,8 +19,11 @@ function size(){
 	$("#defilor").css("width",$("#defilor-container").css("width"));
 	$(".tableresize").css("height",$(window).height()-(140 + parseInt($('#rowlogo2').css('margin-top'), 10) + $('#rowlogo2').outerHeight()));
 	$("#listing").css("height",$(window).height()-(20 + parseInt($('#rowlogo2').css('margin-top'), 10) + $('#rowlogo2').outerHeight()));
-	$("#frameMap").attr("height",$(window).height()-120);
-	$("#frameMap").parent().css("height",$(window).height()-120);
+	var margin_top = 0;
+	if($("#frameMap").css("margin-top") != null)
+		margin_top = $("#frameMap").css("margin-top").split("px")[0]
+	$("#frameMap").attr("height",$(window).height()-Math.ceil($(window).height()/8)-margin_top);
+	$("#frameMap").parent().css("height",$(window).height()-Math.ceil($(window).height()/8));
 }
 
 /**

@@ -92,10 +92,10 @@ class ConnexionBDD
 			if($data){
 
 				//On lui créé une visite
-				$newVisiteur = ConnexionBDD::getVisiteur($visiteur->_code);
+				$visiteur->_id = $this->bdd->lastInsertId();
 				$req = $this->bdd->prepare('INSERT INTO Visite(Id_visiteur, HeureA) VALUES(:id, :heureA)');
 				$data = $req->execute(array(
-					'id' => $newVisiteur->_id,
+					'id' => $visiteur->_id,
 					'heureA' => date('Y-m-d H:i:s',$visiteur->_hArrive),
 					));
 				if($data){
@@ -103,13 +103,13 @@ class ConnexionBDD
 					$req = $this->bdd->prepare('UPDATE visiteur SET Id_current_visite = :code WHERE Id_visiteur = :id');
 					$idVisite = $this->bdd->lastInsertId();
 					$data = $req->execute(array(
-						'id' => $newVisiteur->_id,
+						'id' => $visiteur->_id,
 						'code' => $idVisite
 						));
 					if($data){
-						$newVisiteur->_visite =  $idVisite;
-						BDDLog::ajouterLigne("ARRIVEE",$newVisiteur);
-						return $newVisiteur;
+						$visiteur->_visite =  $idVisite;
+						BDDLog::ajouterLigne("ARRIVEE",$visiteur);
+						return $visiteur;
 					}else{
 						die("Erreur fatale lors de la MAJ du visiteur. Impossible de mettre à jour la visite actuelle.");
 					}
@@ -263,8 +263,9 @@ class ConnexionBDD
 		if($reponse->rowCount()>1 || $reponse->rowCount()==0)
 			return false;
 		$data = $reponse->fetch();
-		$visiteur = Visiteur::withCodeAndHour($data['Id_visiteur'],$data['Nom'],$data['Societe'],$data['HeureA'],$data['code'],$data['Id_visite']);
-						
+		$visiteur = new Visiteur($data['Nom'],$data['Societe']);
+		$visiteur->_id = $data['Id_visiteur'];
+		$visiteur->_code = $data['code'];				
 		return $visiteur;
 	}
 
