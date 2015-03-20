@@ -156,7 +156,7 @@ class ConnexionBDD
 	{
 		$infoVisiteur = ConnexionBDD::IsCodeExistant($code);
 		if($infoVisiteur['id'] == null)
-			die("Impossible de trouver le visiteur dans la base de données.");
+			return false;
 		else{
 			$req = $this->bdd->prepare('UPDATE visite SET HeureD = :heureD WHERE Id_visiteur = :id AND Id = :idv');
 			$data = $req->execute(array(
@@ -171,10 +171,10 @@ class ConnexionBDD
 					));
 				return true;
 				if(!$data){
-					die("Erreur fatale lors de la mise à jour du visiteur. Impossible de mettre à NULL la visite actuelle.");
+					return false;
 				}
 			}else{
-				die("Erreur fatale dans la mise à jour de la visite. Impossible de mettre une date de fin.");
+				return false;
 			}
 		}
 	}

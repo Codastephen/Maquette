@@ -7,7 +7,6 @@ if(isset($_POST['code'])){
 	$code = $_POST['code'];
 
 	$bdd = new ConnexionBDD();
-	$cli = $bdd->getVisiteur($code);
 	$result = $bdd->retirerVisiteur($code);
 	
 	if(!$result){
