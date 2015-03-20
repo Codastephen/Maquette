@@ -6,6 +6,7 @@ $(document).ready(function(){
 		}, 5000);
 	}
 	handlerUrl();
+	$("#myModal").modal();
 });
 
 $(window).resize(function(){
@@ -29,17 +30,17 @@ function size(){
 /**
  * Gère l'url du site pour afficher la bonne page
  */
-function handlerUrl(){
-	var $_GET = {};
+ function handlerUrl(){
+ 	var $_GET = {};
 
-	document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
-		function decode(s) {
-			return decodeURIComponent(s.split("+").join(" "));
-		}
+ 	document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+ 		function decode(s) {
+ 			return decodeURIComponent(s.split("+").join(" "));
+ 		}
 
-		$_GET[decode(arguments[1])] = decode(arguments[2]);
-	});
+ 		$_GET[decode(arguments[1])] = decode(arguments[2]);
+ 	});
 
-	var index = window.location.pathname.lastIndexOf("/") + 1;
-	var filename = window.location.pathname.substr(index);
-}
+ 	var index = window.location.pathname.lastIndexOf("/") + 1;
+ 	var filename = window.location.pathname.substr(index);
+ }
