@@ -6,7 +6,6 @@ $(document).ready(function(){
 		}, 5000);
 	}
 	handlerUrl();
-	$("#myModal").modal();
 });
 
 $(window).resize(function(){
