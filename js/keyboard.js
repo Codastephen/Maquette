@@ -11,7 +11,7 @@ $(document).ready(function(){
 id_input = $("societe");
 keyboard_type = "text"
 
-$("input").click(function(e){
+$("input.borne").click(function(e){
 	e.stopPropagation();
 	id_input = $(this);
 	keyboard_type=$(this).attr('type');
