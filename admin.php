@@ -61,7 +61,7 @@ while ($donnees = $reponse->fetch())
 	<td width='15%'> ".($donnees['HeureD']!=0?date_format(date_create($donnees['HeureD']),"d/m/Y H:i:s"):"")." </td>";
 	$mail = $donnees['NomContact'];
 	if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
-		list($name) = split("@",$mail);
+		list($name) = explode("@",$mail);
 		$mail = "<a href='sip:".$mail."'>".$name."</a>";
 	}
 

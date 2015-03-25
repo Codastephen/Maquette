@@ -56,6 +56,7 @@ if (!$bindServerLDAP || ldap_errno($conn)!=0){
 
 ldap_close($conn);
 
+
 $_SESSION['infomsg'] = "Vous êtes bien connecté";
 $_SESSION['infotype'] = "success";
 $bdd= new ConnexionBDD();
