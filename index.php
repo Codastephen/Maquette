@@ -32,7 +32,7 @@ function showTimeOutModal(){
 				<h1 class="modal-title text-center" id="myModalLabel">Votre présence a été signalée</h1>
 			</div>
 			<div class="modal-body text-center">
-				<h3>Designal Systems vous invite à patienter dans l'espace d'attente.</h3>
+				<h3>Nous vous invitons à patienter dans l'espace d'attente</h3>
 			</div>
 		</div>
 	</div>
@@ -45,7 +45,7 @@ function showTimeOutModal(){
 				<h1 class="modal-title text-center" id="myModalLabel">Vous avez été automatiquement déconnecté</h1>
 			</div>
 			<div class="modal-body text-center">
-				<h3>Designal Systems vous invite à patienter dans l'espace d'attente.</h3>
+				<h3>Nous vous invitons à patienter dans l'espace d'attente</h3>
 			</div>
 		</div>
 	</div>

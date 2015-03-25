@@ -10,7 +10,7 @@ if(isset($_POST['code'])){
 	$result = $bdd->retirerVisiteur($code);
 	
 	if(!$result){
-		$_SESSION['infomsg'] = "Le code n'éxiste pas".$result;
+		$_SESSION['infomsg'] = "Le code n'existe pas".$result;
 		$_SESSION['infotype'] = "danger";
 		header("Location: index.php#leave");
 	}else{
