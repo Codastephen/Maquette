@@ -10,11 +10,6 @@ if(isset($_POST['mid']) || isset($_POST['mmsg'])|| isset($_POST['mdatedebut'])||
 
 	$bdd = new connexionBDD();
 	$reponse = $bdd->updateMsg($idmsg,$newmsg,$newdebut,$newfin);
-	$msg="";
-	while ($donnees = $reponse->fetch())
-	{
-		$msg .= $donnees['message'];
-	}
 }
 
 ?>

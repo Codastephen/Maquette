@@ -42,7 +42,7 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 	}
 }
 function verifAdmin(){
-	if($_POST['password']=="toto"){ //Mon mdp est toto
+	if($_POST['password']=="4dmin"){ //Mon mdp est toto
 		$_SESSION['admin']=true;
 		$_SESSION['infomsg'] = "Bienvenue maitre admin";
 		$_SESSION['infotype'] = "success";

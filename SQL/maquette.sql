@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 27 Février 2015 à 09:45
+-- Généré le :  Jeu 26 Mars 2015 à 10:06
 -- Version du serveur :  5.6.20
 -- Version de PHP :  5.5.15
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `maquette`
 --
+CREATE DATABASE IF NOT EXISTS `maquette` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `maquette`;
 
 -- --------------------------------------------------------
 
@@ -26,12 +28,13 @@ SET time_zone = "+00:00";
 -- Structure de la table `contact`
 --
 
+DROP TABLE IF EXISTS `contact`;
 CREATE TABLE IF NOT EXISTS `contact` (
 `Id_contact` int(11) NOT NULL,
   `Id_visite` int(11) NOT NULL,
   `Nom_user` varchar(255) NOT NULL,
   `Heure` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 -- --------------------------------------------------------
 
@@ -39,12 +42,13 @@ CREATE TABLE IF NOT EXISTS `contact` (
 -- Structure de la table `log`
 --
 
+DROP TABLE IF EXISTS `log`;
 CREATE TABLE IF NOT EXISTS `log` (
 `Id_log` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `action` text NOT NULL,
   `Id_visiteur` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -52,13 +56,14 @@ CREATE TABLE IF NOT EXISTS `log` (
 -- Structure de la table `message`
 --
 
+DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
 `Id_message` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `contenu` text NOT NULL,
   `datedebut` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `datefin` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -66,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 -- Structure de la table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `nom` varchar(255) NOT NULL,
   `statut` varchar(50) NOT NULL DEFAULT 'MEMBRE'
@@ -77,12 +83,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Structure de la table `visite`
 --
 
+DROP TABLE IF EXISTS `visite`;
 CREATE TABLE IF NOT EXISTS `visite` (
 `Id` int(11) NOT NULL,
   `Id_visiteur` int(11) NOT NULL,
   `HeureA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `HeureD` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -90,13 +97,14 @@ CREATE TABLE IF NOT EXISTS `visite` (
 -- Structure de la table `visiteur`
 --
 
+DROP TABLE IF EXISTS `visiteur`;
 CREATE TABLE IF NOT EXISTS `visiteur` (
 `Id_visiteur` int(11) NOT NULL,
   `Nom` varchar(30) NOT NULL,
   `Societe` varchar(30) NOT NULL,
   `code` varchar(4) DEFAULT '',
   `Id_current_visite` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Index pour les tables exportées
@@ -146,27 +154,27 @@ ALTER TABLE `visiteur`
 -- AUTO_INCREMENT pour la table `contact`
 --
 ALTER TABLE `contact`
-MODIFY `Id_contact` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id_contact` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT pour la table `log`
 --
 ALTER TABLE `log`
-MODIFY `Id_log` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id_log` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-MODIFY `Id_message` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id_message` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `visite`
 --
 ALTER TABLE `visite`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `visiteur`
 --
 ALTER TABLE `visiteur`
-MODIFY `Id_visiteur` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id_visiteur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

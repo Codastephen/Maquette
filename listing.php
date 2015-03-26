@@ -10,7 +10,7 @@
 	if (session_status() == PHP_SESSION_NONE) {
 		session_start();
 	}
-	if(isset($_POST['password']) && $_POST['password'] == 'tutu'){
+	if(isset($_POST['password']) && $_POST['password'] == 'c3rfil'){
 		echo "<script>window.print()</script>";
 		$conn = new connexionBDD();
 		$reponse = $conn->getAllVisiteSecurity();

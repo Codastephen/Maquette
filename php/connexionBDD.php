@@ -305,14 +305,14 @@ class ConnexionBDD
 	 * @return [type]        [description]
 	 */
 	public function updateMsg($id,$value,$debut,$fin){
-		$req = $this->bdd->prepare('UPDATE Message SET message = :value,datedebut =:debut, datefin = :fin WHERE id = :id');
+		$req = $this->bdd->prepare('UPDATE Message SET contenu = :value,datedebut =:debut, datefin = :fin WHERE id_message = :id');
 		$data = $req->execute(array(
 			'value' => $value,
 			'id' => $id,
 			'debut' => $debut,
 			'fin' => $fin
 			));
-		return $this->bdd->query("SELECT message FROM Message WHERE id = ".$id);
+		return $this->bdd->query("SELECT contenu FROM Message WHERE id = ".$id);
 	}
 
 	/**
