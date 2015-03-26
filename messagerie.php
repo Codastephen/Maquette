@@ -189,9 +189,7 @@ $mymsg.="</table>";
 			<div class="col-sm-10 borderer">
 				<div class="row" style="margin-top:50px">
 					<div class="col-xs-8 col-xs-offset-2">
-						<a href="index.php">
-							<img src="./img/designal.png" class="img-responsive"/>
-						</a>
+						<img src="./img/designal.png" class="img-responsive"/>
 					</div>
 					<div class="col-xs-12" style="margin-top:10px">
 						<form Action ="messagerie.php" method ="post" role="form" act>

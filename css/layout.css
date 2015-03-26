@@ -51,12 +51,34 @@ img + h3{
 }
 
 .wrapper-img.active{
-	background-color:#334d5c;
+	/*background-color:#334d5c;
+	background-color:#555555;*/
+	background-color: rgb(44, 62, 80);
 	color:white;
+}
+.btn-success{
+	background-color:#005780;
+	border:1px solid #005780;
+}
+
+.btn-success:hover{
+	background-color:rgb(44, 62, 80);
+	border:1px solid rgb(44, 62, 80);
+}
+
+.btn-primary:hover{
+	background-color:#005780;
+	border:1px solid #005780;
+}
+
+.btn-primary{
+	background-color:rgb(44, 62, 80);
+	border:1px solid rgb(44, 62, 80);
 }
 
 .wrapper-img{
-	background-color:#18bc9c;
+	/*background-color:#18bc9c;*/
+	background-color: #005780;
 	color:white;
 }
 
@@ -111,12 +133,16 @@ button.big{
 .alert{
 	border-radius: 0;
 }
+.alert-success{
+background-color: #005780;
+border: 1px solid #005780;
+}
 
 .upperCase{
 	text-transform: uppercase
 }
 div.tab-pane.centered{
-	padding-top: 10%;
+	padding-top: 8%;
 }
 
 #defilor{

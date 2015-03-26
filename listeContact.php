@@ -22,9 +22,7 @@ function showLync(){
 	<div class="col-xs-10 text-center col-xs-offset-1">
 		<div  class="row" style="margin-top:50px">
 			<div class="col-xs-8 col-xs-offset-2">
-				<a href="index.php">
-					<img src="./img/designal.png" class="img-responsive"/>								
-				</a>	
+				<img src="./img/designal.png" class="img-responsive"/>								
 			</div>
 		</div>
 		<h1>Bienvenue <?php echo $visiteur->_nomprenom ?></h1>	
