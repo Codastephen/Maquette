@@ -106,7 +106,9 @@ function handlerlink(item){
 	var splited = window.location.hash;
     if (splited == "#map"){
     	$("#bottom_logo").hide();
+    	$("#defilor-container").hide();
     }else{
     	$("#bottom_logo").show();
+    	$("#defilor-container").show();
     }
 }

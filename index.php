@@ -103,14 +103,13 @@ function showTimeOutModal(){
 		</div>
 
 		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane fade" id="home">
-
+			<div role="tabpanel" class="tab-pane fade centered" id="home">
 				<?php include 'home.php';?>
 			</div>
-			<div role="tabpanel" class="tab-pane fade" id="reconnexion">
+			<div role="tabpanel" class="tab-pane fade centered" id="reconnexion">
 				<?php include 'reconnexion.php' ?>
 			</div>
-			<div role="tabpanel" class="tab-pane fade" id="leave">
+			<div role="tabpanel" class="tab-pane fade centered" id="leave">
 				<?php include 'deconnexion.php';?>
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="map">

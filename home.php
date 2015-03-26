@@ -1,6 +1,6 @@
 <div class="col-xs-10 col-xs-offset-1">
 	<br/>
-	<h1 class="text-center">Bienvenue chez Designal Systems</h1>
+	<h1 class="text-center">Bienvenue</h1>
 	<h4 class="text-center">Afin de mieux vous aider, merci de bien vouloir remplir les champs ci-dessous</h4>
 	<br/><br/>
 	<form Action ="connexion.php" method ="post" role="form" act>

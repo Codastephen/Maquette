@@ -53,15 +53,11 @@ img + h3{
 .wrapper-img.active{
 	background-color:#334d5c;
 	color:white;
-	border-top: solid 1px white;
-	border-bottom: solid 1px white;
 }
 
 .wrapper-img{
 	background-color:#18bc9c;
 	color:white;
-	border-top: solid 1px #18bc9c;
-	border-bottom: solid 1px #18bc9c;
 }
 
 .wrapper-img.danger{
@@ -119,17 +115,19 @@ button.big{
 .upperCase{
 	text-transform: uppercase
 }
+div.tab-pane.centered{
+	padding-top: 10%;
+}
 
 #defilor{
-	background-color : #334d5c;
-	color:white;
-	height:50px;
+	color:#334d5c;
+	height:100px;
 	padding-top:15px;
 	overflow: hidden;
 }
 
 .defilor-text{
-	font-size:50px;
+	font-size:70px;
 }
 .texted{
 	background-color: transparent;
