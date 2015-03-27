@@ -24,6 +24,10 @@ function showTimeOutModal(){
 		$("#myModal_timeout").modal('hide');
 	}, 20000);
 }
+
+function cleanInput(){
+	$("input").val("");
+}
 </script>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 	<div class="modal-dialog">
