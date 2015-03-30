@@ -27,7 +27,9 @@ function showTimeOutModal(){
 
 function cleanInput(){
 	$("input").val("");
-	
+	$("#keyboard_text").hide();
+	$("#keyboard_number").hide();
+	$('#myTab a[href="#home"]').trigger("touchend");
 }
 </script>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
