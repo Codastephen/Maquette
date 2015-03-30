@@ -121,7 +121,8 @@ function cleanInput(){
 				<?php include 'plan.php';?>
 			</div>
 		</div>
-
+		<br/>
+		<?php include("alert.php") ?>
 	</div>
 	<a id="bottom_logo" href="./cerfil.php">
 		<img id="rowlogo" src="./img/designal.png" class="img-responsive"/>	

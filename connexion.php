@@ -13,7 +13,7 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 			$bdd = new connexionBDD();
 			$cli = $bdd->getVisiteur($_POST['code']);
 			if(!$cli){  
-				$_SESSION['infomsg'] = "Erreur, mauvais code";
+				$_SESSION['infomsg'] = "Votre code n'est pas bon";
 				$_SESSION['infotype'] = "danger";
 				header('Location: index.php#reconnexion');
 				exit();
@@ -27,7 +27,7 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 			//Je me connecte
 			if(empty($_POST['nomprenom']) || empty($_POST['societe'])){ 
 			//Erreurs dans les champs
-				$_SESSION['infomsg'] = "Erreur, champs incomplet";
+				$_SESSION['infomsg'] = "Vous n'avez pas saisi tout les champs";
 				$_SESSION['infotype'] = "danger";
 				header('Location: index.php');
 				exit();
@@ -44,11 +44,13 @@ if(isset($_POST['type'])){ //J'ai envoyé des infos
 function verifAdmin(){
 	if($_POST['password']=="4dmin"){ //Mon mdp est toto
 		$_SESSION['admin']=true;
-		$_SESSION['infomsg'] = "Bienvenue maitre admin";
+		$_SESSION['infomsg'] = "Bienvenue dans l'interface d'administration";
 		$_SESSION['infotype'] = "success";
 		header('Location:admin.php');
 	}else{ 
 	//Mon mdp n'est pas bon ou n'est pas donné
+		$_SESSION['infomsg'] = "Mauvais mot de passe";
+		$_SESSION['infotype'] = "danger";
 		header('Location:connexionadmin.php');
 	}
 }

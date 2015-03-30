@@ -19,6 +19,8 @@
 
 			<button type="submit" class="btn btn-success btn-lg">Valider</button>
 		</form>
+		<br/>
+		<?php include("alert.php") ?>
 	</div>
 </div>
 

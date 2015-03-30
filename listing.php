@@ -64,6 +64,8 @@
 		echo $listevisite;
 
 	}else{
+		$_SESSION['infomsg'] = "Mauvais code";
+		$_SESSION['infotype'] = "danger";
 		header("Location: cerfil.php");
 	}
 

@@ -6,16 +6,6 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<?php 
-		if(isset($_SESSION['infomsg']) && isset($_SESSION['infotype'])){
-			echo '<div class="row"><div id="alertbox" class="alert alert-'.$_SESSION['infotype'].' alert-dismissible fade in col-xs-12" role="alert">
-			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>'
-			.$_SESSION['infomsg'].'</div>
-			</div>';
-			unset($_SESSION['infomsg']);
-			unset($_SESSION['infotype']);
-		}	
-		?>
 		<?php echo $contenu ?>
 	</div>
 	<div id="keyboard-container">
