@@ -29,7 +29,8 @@ function cleanInput(){
 	$("input").val("");
 	$("#keyboard_text").hide();
 	$("#keyboard_number").hide();
-	$('#myTab a[href="#home"]').trigger("touchend");
+	if(window.location.hash != "#home")
+		$('#myTab a[href="#home"]').trigger("touchend");
 }
 </script>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
@@ -123,7 +124,6 @@ function cleanInput(){
 				<?php include 'plan.php';?>
 			</div>
 		</div>
-		<br/>
 		<?php include("alert.php") ?>
 	</div>
 	<a id="bottom_logo" href="./cerfil.php">
