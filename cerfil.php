@@ -14,7 +14,7 @@
 		<form Action ="listing.php" method ="post" role="form" act>
 			<div class="form-group">
 				<label for="password">Mot de passe :</label>
-				<input type="password" class="form-control" id="password" name ="password" required>
+				<input type="password" class="form-control borne" id="password" name ="password" required>
 			</div>
 
 			<button type="submit" class="btn btn-success btn-lg">Valider</button>

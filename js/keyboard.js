@@ -15,9 +15,11 @@ $("input.borne").click(function(e){
 	e.stopPropagation();
 	id_input = $(this);
 	keyboard_type=$(this).attr('type');
+	if(keyboard_type == "password")
+		keyboard_type = "text";
 	$("#keyboard_text").hide();
 	$("#keyboard_number").hide();
-	if(keyboard_type == "text")
+	if(keyboard_type == "text" || keyboard_type == "password" )
 		$("#keyboard_text").show();
 	else if(keyboard_type == "number")
 		$("#keyboard_number").show();
