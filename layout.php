@@ -5,6 +5,32 @@
 	<title><?= $titre ?></title>
 </head>
 <body>
+    <script>
+
+function showWaitModal(){
+    $("#myModal").modal();
+    setTimeout(function() {
+        $("#myModal").modal('hide');
+    }, 20000);
+}
+
+function showTimeOutModal(){
+    $("#myModal_timeout").modal();
+    setTimeout(function() {
+        $("#myModal_timeout").modal('hide');
+    }, 20000);
+}
+
+ function cleanInput(){
+    $("input").val("");
+    $("#keyboard_text").hide();
+    $("#keyboard_number").hide();
+    if(window.location.href.replace(window.location.hash,"") != "http://localhost/")
+        window.location = "http://localhost/";
+    if(window.location.hash != "#home")
+        $('#myTab a[href="#home"]').trigger("touchend");
+}
+</script>
 	<div class="container-fluid">
 		<?php echo $contenu ?>
 	</div>

@@ -9,30 +9,6 @@ if(isset($_SESSION['visiteur'])){
 }
 
 ob_start(); ?>
-<script>
-
-function showWaitModal(){
-	$("#myModal").modal();
-	setTimeout(function() {
-		$("#myModal").modal('hide');
-	}, 20000);
-}
-
-function showTimeOutModal(){
-	$("#myModal_timeout").modal();
-	setTimeout(function() {
-		$("#myModal_timeout").modal('hide');
-	}, 20000);
-}
-
-function cleanInput(){
-	$("input").val("");
-	$("#keyboard_text").hide();
-	$("#keyboard_number").hide();
-	if(window.location.hash != "#home")
-		$('#myTab a[href="#home"]').trigger("touchend");
-}
-</script>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 	<div class="modal-dialog">
 		<div class="modal-content" style="width:800px">
