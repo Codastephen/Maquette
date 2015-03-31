@@ -25,8 +25,6 @@ function showTimeOutModal(){
     $("input").val("");
     $("#keyboard_text").hide();
     $("#keyboard_number").hide();
-    if(window.location.href.replace(window.location.hash,"") != "http://localhost/")
-        window.location = "http://localhost/";
     if(window.location.hash != "#home")
         $('#myTab a[href="#home"]').trigger("touchend");
 }
