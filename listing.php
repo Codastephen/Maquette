@@ -5,6 +5,7 @@
 	<title>Serre file</title>
 </head>
 <body>
+	<button class="btn btn-warning btn-lg" onclick="window.location='./index.php'">Retour à l'accueil de la borne</button>
 	<?php
 	require_once('autoload.php');
 	if (session_status() == PHP_SESSION_NONE) {
