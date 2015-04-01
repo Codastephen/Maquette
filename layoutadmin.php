@@ -137,7 +137,7 @@
 							<form action="addMailHelper.php" method ="post">
 								<div class="input-group">
 									<span class="input-group-addon" id="basic-addon2">Mail :</span>
-									<input type="text" class="form-control" aria-describedby="basic-addon2" name="mail">
+									<input placeholder="@grpalu.com" type="text" class="form-control" aria-describedby="basic-addon2" name="mail">
 								</div>
 								<br/>
 								<input type="hidden" name="type" value="admin"/>
