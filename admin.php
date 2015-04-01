@@ -93,6 +93,26 @@ while ($donnees = $reponse->fetch())
 }
 $serrefile = ob_get_clean();
 
+$reponse = $conn->getMailHelper();
+$nbHelper = $reponse->rowCount();
+ob_start(); 
+
+while ($donnees = $reponse->fetch())
+{
+	echo "<tr>
+	<td width='75%'> ".$donnees['nom']." </td>
+	<td class='no-padding' width='25%'>
+	<form Action ='removeMailHelper.php' method ='post'>
+	<input type='hidden' id='type' name='type' value='admin'>
+	<input type='hidden' id='nom' name='nom' value='".$donnees['nom']."'>
+	<button type='submit' class='btn btn-warning pull-right big' style='width:100%'>Ne plus être assistant</a>
+	</form>
+	</td>
+	</tr>";
+}
+$helper = ob_get_clean();
+
+
 
 require 'layoutadmin.php'; 
 ?>

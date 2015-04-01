@@ -39,7 +39,7 @@
 						<a href="#serrefile" aria-controls="serrefile" role="tab" data-toggle="tab">
 							<div class="col-xs-12 wrapper-img text-center">
 								<img src="./img/id.png" class="img-responsive">
-								<h3>Serre-files</h3>
+								<h3>Serre-files & assistance</h3>
 							</div>
 						</a>
 					</li>
@@ -108,14 +108,15 @@
 					</div>
 					<div role="tabpanel" class="tab-pane fade text-center" id="serrefile">
 						<div class="row text-center">
-							<h1>Gestion des serre-files</h1>
+							<h1>Gestion des serre-files et assistant</h1>
 						</div>
 						<div class="col-xs-6">
-							<h3>Liste des serre-files</h3>
+							<h3>Liste des serre-files et assistant</h3>
 							<div class="tableresize" style="overflow-y:auto">
 								<br/>
 								<table id="tableSerreFile" class="table table-striped">
 									<?php echo $serrefile ?>
+									<?php echo $helper ?>
 								</table>
 							</div>
 						</div>
@@ -128,8 +129,23 @@
 								</div>
 								<br/>
 								<input type="hidden" name='type' value='admin'/>
-								<input type="submit" class="btn btn-lg btn-success"/>
+								<input type="submit" class="btn btn-lg btn-success" value="Ajouter un serre-file"/>
 							</form>
+							<?php
+							if ($nbHelper < 1){
+								echo '<h3>Ajouter un assistant</h3><br/>
+							<form action="addMailHelper.php" method ="post">
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon2">Mail :</span>
+									<input type="text" class="form-control" aria-describedby="basic-addon2" name="mail">
+								</div>
+								<br/>
+								<input type="hidden" name="type" value="admin"/>
+								<input type="submit" class="btn btn-lg btn-success" value="Ajouter un assistant"/>
+							</form>';
+							}
+							?>
+							
 						</div>
 					</div>
 				</div>

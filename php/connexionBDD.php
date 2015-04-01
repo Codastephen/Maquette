@@ -400,6 +400,35 @@ class ConnexionBDD
 	}
 
 	/**
+	 * Ajoute un utilisateur interne à l'entreprise Serre file
+	 * @param String $nom nom de l'utilisateur
+	 */
+	public function addMailHelper($nom){
+		$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'"');
+		if($reponse->rowCount()>1)
+			die("Impossible d'ajouter l'utilisateur assistant dans la base. Trop d'utilisateurs assistant ont déjà le même nom");
+		else if($reponse->rowCount()==1){
+			return ConnexionBDD::updateUser($nom,'HELPER');
+		}else{
+			$req = $this->bdd->prepare('INSERT INTO User(nom,statut) VALUES(:nom,"HELPER")');
+			$data = $req->execute(array(
+				'nom' => $nom
+				));
+			if($data){
+				$reponse = $this->bdd->query('SELECT * FROM user WHERE nom ="'.$nom.'" AND statut = "HELPER"');
+				if($reponse->rowCount()!=1)
+					die("Impossible d'ajouter l'utilisateur assistant dans la base. Trop d'utilisateurs assistant ont déjà le même nom");
+				else{
+					$data = $reponse->fetch();
+					return new User($data['nom'],$data['statut']);
+				}
+			}else{
+				die("Erreur fatale lors de l'insertion d'un user assistant");
+			}
+		}
+	}
+
+	/**
 	 * MAJ un utilisateur interne à l'entreprise Serre file
 	 * @param String $nom nom de l'utilisateur
 	 */
@@ -459,6 +488,17 @@ class ConnexionBDD
 		if(!$data){
 			die("Erreur fatale lors de l'insertion.Impossible d'ajouter un contact.");
 		}
+	}
+
+	/**
+	 * Renvoit le mail du helper
+	 */
+	public function getMailHelper(){
+		$req = $this->bdd->query("SELECT nom FROM user WHERE statut='HELPER'");
+		if(!$req){
+			die("Erreur fatale lors de l'insertion.Impossible d'ajouter un contact.");
+		}
+		return $req;
 	}
 
 }
